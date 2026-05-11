@@ -93,8 +93,9 @@ class App:
                 return HTTPException(status_code=404, detail="User not found")
             last_time = time.time()
             last_frame_time = None
-            # 16 FPS throttling: minimum interval between frames (1/16 seconds)
-            TARGET_FPS = 16.0
+            # Latency tuning: bump 16 -> 24 FPS so chunks (4 frames) fill up faster.
+            # At 24 FPS chunk wait ~ (4-1)/24 = 125 ms (was 187 ms @ 16 FPS).
+            TARGET_FPS = 24.0
             min_frame_interval = 1.0 / TARGET_FPS
             last_frame_received_time = None
             try:
@@ -232,7 +233,7 @@ class App:
                     last_params = SimpleNamespace()
                     sleep_time = 1 / 20  # Initial guess
                     # 16 FPS throttling for upload mode
-                    TARGET_FPS = 16.0
+                    TARGET_FPS = 24.0
                     min_frame_interval = 1.0 / TARGET_FPS
                     last_frame_sent_time = None
                     while True:
@@ -300,9 +301,12 @@ class App:
                             # await asyncio.sleep(sleep_time)
 
                 async def generate():
-                    MIN_FPS = 5
+                    # Latency tuning: raise MIN_FPS 5 -> 10 to cap worst-case sleep at 100ms (was 200ms),
+                    # lower SMOOTHING 0.8 -> 0.5 so EMA reacts faster to actual inference rate (~10 FPS),
+                    # avoiding output_queue backlog after a transient slow chunk.
+                    MIN_FPS = 10
                     MAX_FPS = 30
-                    SMOOTHING = 0.8  # EMA smoothing factor
+                    SMOOTHING = 0.5  # EMA smoothing factor
 
                     last_burst_time = time.time()
                     last_queue_size = 0
