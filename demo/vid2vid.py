@@ -2,8 +2,10 @@ import sys
 import os
 import logging
 import queue
+import threading
 import time
 import traceback
+from datetime import datetime
 from multiprocessing import Queue, Manager, Event, Process
 from typing import Literal
 
@@ -160,6 +162,23 @@ class Pipeline:
         self.runtime_state["prompt"] = self.prompt
         self.runtime_state["use_taehv"] = bool(getattr(self.args, "use_taehv", False))
         self.runtime_state["use_tensorrt"] = bool(getattr(self.args, "use_tensorrt", False))
+
+        # Watchdog state
+        self._watchdog_thread = None
+        self._respawn_lock = threading.Lock()
+        self._respawn_count = 0
+        self._max_respawn = int(os.environ.get("STREAMV2V_MAX_RESPAWN", "10"))
+
+        self._spawn_process(initial=True)
+        self._start_watchdog()
+
+    def _spawn_process(self, initial: bool = False):
+        """Create + start the generate_process worker. Reuses existing queues/events
+        so the main HTTP layer can keep running across restarts."""
+        # Ensure events are in a clean state for the new worker
+        self.prepare_event.clear()
+        self.restart_event.clear()
+
         self.process = Process(
             target=generate_process,
             args=(
@@ -176,11 +195,82 @@ class Pipeline:
         )
         self.process.start()
         self.processes = [self.process]
-        wait_for_processes_ready(
-            processes=self.processes,
-            ready_events=[self.prepare_event],
-            error_queue=self.error_queue,
+
+        try:
+            wait_for_processes_ready(
+                processes=self.processes,
+                ready_events=[self.prepare_event],
+                error_queue=self.error_queue,
+            )
+        except Exception:
+            if initial:
+                # First-time startup failure: bubble up so launcher fails fast.
+                raise
+            LOGGER.error(
+                "Worker respawn failed to become ready:\n%s",
+                traceback.format_exc(),
+            )
+            raise
+
+    def _start_watchdog(self):
+        if self._watchdog_thread is not None and self._watchdog_thread.is_alive():
+            return
+        self._watchdog_thread = threading.Thread(
+            target=self._watchdog_loop, name="vid2vid-watchdog", daemon=True
         )
+        self._watchdog_thread.start()
+
+    def _watchdog_loop(self):
+        """Background monitor: respawns the worker if it dies unexpectedly."""
+        while not self.stop_event.is_set():
+            time.sleep(1.0)
+            proc = getattr(self, "process", None)
+            if proc is None:
+                continue
+            if proc.is_alive():
+                continue
+            if self.stop_event.is_set():
+                return
+            # Drain any pending error report from the dead worker
+            try:
+                while True:
+                    worker_name, error_message = self.error_queue.get_nowait()
+                    LOGGER.error(
+                        "Worker '%s' reported error before exit:\n%s",
+                        worker_name,
+                        error_message,
+                    )
+            except queue.Empty:
+                pass
+
+            with self._respawn_lock:
+                if self.stop_event.is_set():
+                    return
+                if self._respawn_count >= self._max_respawn:
+                    LOGGER.error(
+                        "Worker died and respawn limit (%d) reached; giving up.",
+                        self._max_respawn,
+                    )
+                    return
+                self._respawn_count += 1
+                LOGGER.warning(
+                    "Worker process exited (exitcode=%s). Respawning (%d/%d)...",
+                    proc.exitcode,
+                    self._respawn_count,
+                    self._max_respawn,
+                )
+                # Clear stale data so the new worker starts on fresh frames
+                clear_queue(self.input_queue)
+                clear_queue(self.output_queue)
+                try:
+                    self._spawn_process(initial=False)
+                    LOGGER.info("Worker respawned successfully.")
+                except Exception:
+                    LOGGER.error(
+                        "Failed to respawn worker:\n%s", traceback.format_exc()
+                    )
+                    # Back off a bit before next attempt
+                    time.sleep(2.0)
 
     def accept_new_params(self, params: "Pipeline.InputParams"):
         if hasattr(params, "image"):
@@ -227,15 +317,27 @@ class Pipeline:
         self.stop_event.set()
 
         LOGGER.info("Waiting for demo worker shutdown")
-        for i, process in enumerate(self.processes):
-            process.join(timeout=1.0)
-            if process.is_alive():
-                LOGGER.warning("Process %s did not terminate gracefully; terminating", i)
-                process.terminate()
-                process.join(timeout=0.5)
+        # Always operate on the most recently spawned process as well as any tracked.
+        procs = list(getattr(self, "processes", []))
+        if getattr(self, "process", None) is not None and self.process not in procs:
+            procs.append(self.process)
+        for i, process in enumerate(procs):
+            try:
+                process.join(timeout=1.0)
                 if process.is_alive():
-                    LOGGER.error("Force killing process %s", i)
-                    process.kill()
+                    LOGGER.warning("Process %s did not terminate gracefully; terminating", i)
+                    process.terminate()
+                    process.join(timeout=0.5)
+                    if process.is_alive():
+                        LOGGER.error("Force killing process %s", i)
+                        process.kill()
+            except Exception:
+                LOGGER.exception("Error while shutting down process %s", i)
+
+        wd = getattr(self, "_watchdog_thread", None)
+        if wd is not None and wd.is_alive():
+            wd.join(timeout=2.0)
+
         LOGGER.info("Pipeline closed successfully")
 
 
@@ -266,11 +368,55 @@ def report_worker_error(error_queue, worker_name: str) -> None:
     error_queue.put((worker_name, traceback.format_exc()))
 
 
+def _setup_delay_logger():
+    """Per-frame inference delay logger.
+
+    Writes one line per output frame to /data/StreamDiffusionV2/log/delay.log
+    in CSV-ish format:
+        <iso_ts>,<phase>,<chunk_idx>,<frame_in_chunk>,<global_frame_idx>,<chunk_input_frames>,<chunk_wall_ms>,<frame_delay_ms>,<fps>
+    Phase is one of: init / stream.
+    Returns a stdlib Logger that writes only to the delay file (no propagation).
+    """
+    delay_log_path = "/data/StreamDiffusionV2/log/delay.log"
+    try:
+        os.makedirs(os.path.dirname(delay_log_path), exist_ok=True)
+    except Exception:
+        pass
+    logger = logging.getLogger("vid2vid.delay")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+    # Avoid stacking handlers on respawn
+    if not any(getattr(h, "_v2v_delay_handler", False) for h in logger.handlers):
+        try:
+            handler = logging.FileHandler(delay_log_path, mode="a", encoding="utf-8")
+            handler._v2v_delay_handler = True  # type: ignore[attr-defined]
+            handler.setFormatter(logging.Formatter("%(message)s"))
+            logger.addHandler(handler)
+            # Header (only if file is empty / new run)
+            try:
+                if os.path.getsize(delay_log_path) == 0:
+                    logger.info(
+                        "iso_ts,phase,chunk_idx,frame_in_chunk,global_frame_idx,"
+                        "chunk_input_frames,chunk_wall_ms,frame_delay_ms,fps"
+                    )
+            except OSError:
+                pass
+        except Exception:
+            # If we can't open the file, fall back to a no-op logger so the
+            # worker keeps running.
+            pass
+    return logger
+
+
 def generate_process(args, runtime_state, prepare_event, restart_event, stop_event, input_queue, output_queue, error_queue):
     torch.set_grad_enabled(False)
     try:
         device = resolve_worker_device(args.gpu_ids, rank=0)
         torch.cuda.set_device(device)
+
+        delay_logger = _setup_delay_logger()
+        chunk_idx = 0
+        global_frame_idx = 0
 
         current_use_taehv = bool(runtime_state.get("use_taehv", getattr(args, "use_taehv", False)))
         current_use_tensorrt = bool(runtime_state.get("use_tensorrt", getattr(args, "use_tensorrt", False)))
@@ -319,22 +465,58 @@ def generate_process(args, runtime_state, prepare_event, restart_event, stop_eve
                     restart_event.clear()
                 images = read_images_from_queue(input_queue, first_batch_num_frames, device, stop_event)
 
+                _t_init0 = time.time()
                 session, initial_video = pipeline_manager.start_stream_session(
                     prompt=prompt,
                     images=images,
                     noise_scale=args.noise_scale,
                 )
+                _init_wall_ms = (time.time() - _t_init0) * 1000.0
+                _init_frames_total = sum(len(v) for v in initial_video) if initial_video is not None else 0
+                _init_fps = (_init_frames_total / (_init_wall_ms / 1000.0)) if _init_wall_ms > 0 and _init_frames_total > 0 else 0.0
+                _frame_in_chunk = 0
                 for image in initial_video:
                     output_queue.put(image)
+                    try:
+                        delay_logger.info(
+                            f"{datetime.utcnow().isoformat()},init,{chunk_idx},"
+                            f"{_frame_in_chunk},{global_frame_idx},"
+                            f"{first_batch_num_frames},{_init_wall_ms:.2f},"
+                            f"{_init_wall_ms:.2f},{_init_fps:.2f}"
+                        )
+                    except Exception:
+                        pass
+                    _frame_in_chunk += 1
+                    global_frame_idx += 1
+                chunk_idx += 1
                 is_running = True
 
             images = read_images_from_queue(input_queue, chunk_size, device, stop_event)
             if images is None:
                 break
 
+            _t_chunk0 = time.time()
+            _frame_in_chunk = 0
             for decoded_video in pipeline_manager.run_stream_batch(session, images):
                 for image in decoded_video:
+                    _now = time.time()
+                    _frame_delay_ms = (_now - _t_chunk0) * 1000.0
                     output_queue.put(image)
+                    try:
+                        # chunk_wall_ms is the same as frame_delay_ms for the *last* frame of the chunk;
+                        # for intermediate frames it represents how long since chunk start.
+                        delay_logger.info(
+                            f"{datetime.utcnow().isoformat()},stream,{chunk_idx},"
+                            f"{_frame_in_chunk},{global_frame_idx},"
+                            f"{chunk_size},{_frame_delay_ms:.2f},"
+                            f"{_frame_delay_ms:.2f},"
+                            f"{(global_frame_idx + 1) / max(_now - _t_chunk0, 1e-6):.2f}"
+                        )
+                    except Exception:
+                        pass
+                    _frame_in_chunk += 1
+                    global_frame_idx += 1
+            chunk_idx += 1
     except Exception:
         report_worker_error(error_queue, "single_gpu_demo_worker")
         raise
