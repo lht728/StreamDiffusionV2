@@ -22,6 +22,11 @@ import torch.distributed as dist
 import warnings
 
 try:
+    # Runtime kill-switch shared with attention.py: STREAMDIFF_DISABLE_FLASH=1
+    # forces SDPA fallback even when flash-attn is installed.
+    import os as _os
+    if _os.environ.get("STREAMDIFF_DISABLE_FLASH", "").lower() in ("1", "true", "yes"):
+        raise ModuleNotFoundError("flash-attn disabled via STREAMDIFF_DISABLE_FLASH")
     from flash_attn import flash_attn_interface
     FLASH_ATTN_AVAILABLE = True
 except ModuleNotFoundError:

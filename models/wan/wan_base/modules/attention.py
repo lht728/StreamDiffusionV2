@@ -1,13 +1,23 @@
 # Copyright 2024-2025 The Alibaba Wan Team Authors. All rights reserved.
+import os
 import torch
 
+# Runtime kill-switch: STREAMDIFF_DISABLE_FLASH=1 forces SDPA fallback even
+# when flash-attn package is installed.  Useful for A/B comparing FA vs SDPA
+# without uninstalling the wheel.
+_DISABLE_FLASH = os.environ.get("STREAMDIFF_DISABLE_FLASH", "").lower() in ("1", "true", "yes")
+
 try:
+    if _DISABLE_FLASH:
+        raise ModuleNotFoundError("flash-attn disabled via STREAMDIFF_DISABLE_FLASH")
     import flash_attn_interface
     FLASH_ATTN_3_AVAILABLE = True
 except ModuleNotFoundError:
     FLASH_ATTN_3_AVAILABLE = False
 
 try:
+    if _DISABLE_FLASH:
+        raise ModuleNotFoundError("flash-attn disabled via STREAMDIFF_DISABLE_FLASH")
     import flash_attn
     FLASH_ATTN_2_AVAILABLE = True
 except ModuleNotFoundError:
@@ -234,6 +244,8 @@ def flash_attention(
                 0, dtype=torch.int32).to(q.device, non_blocking=True),
             cu_seqlens_k=torch.cat([k_lens.new_zeros([1]), k_lens]).cumsum(
                 0, dtype=torch.int32).to(q.device, non_blocking=True),
+            seqused_q=q_lens.to(dtype=torch.int32, device=q.device, non_blocking=True),
+            seqused_k=k_lens.to(dtype=torch.int32, device=q.device, non_blocking=True),
             max_seqlen_q=lq,
             max_seqlen_k=lk,
             softmax_scale=softmax_scale,

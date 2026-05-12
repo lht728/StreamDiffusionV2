@@ -108,7 +108,9 @@ def input_process(rank, block_num, total_blocks, args, runtime_state, prepare_ev
         prompt = runtime_state["prompt"]
         schedule_block = args.schedule_block
 
-        torch.cuda.memory._record_memory_history(max_entries=100000)
+        # NOTE: previously enabled torch.cuda.memory._record_memory_history(...)
+        # for offline snapshotting; it has measurable overhead per allocation
+        # and is unused in production, so it stays disabled here.
 
         prepare_event.set()
 
@@ -463,12 +465,23 @@ def middle_process(rank, block_num, total_blocks, args, runtime_state, prepare_e
 
 
 def init_dist_tcp(rank: int, world_size: int, master_addr: str = "127.0.0.1", master_port: int = 29500, device: torch.device = None):
+    # The demo workers are event-driven: rank 0 (input) blocks waiting for the
+    # client to upload a frame before issuing the first collective, while
+    # rank N-1 (output) immediately enters _receive_initial_noise() and waits
+    # on a broadcast from rank 0. With NCCL's default 10-minute watchdog
+    # timeout, any idle period longer than 600s (e.g. nobody clicks Start
+    # within 10 minutes of server start, or pauses mid-stream) causes the
+    # watchdog to tear the rank down with a `WorkNCCL ... timeout` error,
+    # leaving the process group permanently broken (single static frame).
+    # Use a 7-day timeout so idle waits never trigger this.
+    import datetime
     dist.init_process_group(
         backend="nccl",
         init_method=f"tcp://{master_addr}:{master_port}",
         rank=rank,
         world_size=world_size,
         device_id=device,
+        timeout=datetime.timedelta(days=7),
     )
 
 

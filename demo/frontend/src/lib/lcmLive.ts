@@ -28,7 +28,16 @@ export const lcmLiveActions = {
                     websocket.send(JSON.stringify({ status: "resume", timestamp: Date.now() }));
                     streamId.set(userId);
                     resolve({ status: "connected"});
-                } else {
+                    return;
+                } else if (websocket) {
+                    // Tear down any stale instance (CONNECTING/CLOSING/CLOSED) before creating a new one
+                    try {
+                        websocket.onopen = null;
+                        websocket.onclose = null;
+                        websocket.onerror = null;
+                        websocket.onmessage = null;
+                        websocket.close();
+                    } catch (_) { /* noop */ }
                     websocket = null;
                 }
 
@@ -36,18 +45,23 @@ export const lcmLiveActions = {
                 const websocketURL = `${window.location.protocol === "https:" ? "wss" : "ws"
                     }://${window.location.host}/api/ws/${userId}`;
 
-                websocket = new WebSocket(websocketURL);
-                websocket.onopen = () => {
+                const ws = new WebSocket(websocketURL);
+                websocket = ws;
+                ws.onopen = () => {
                     console.log("Connected to websocket");
                 };
-                websocket.onclose = () => {
-                    lcmLiveStatus.set(LCMLiveStatus.DISCONNECTED);
+                ws.onclose = () => {
+                    if (websocket === ws) {
+                        lcmLiveStatus.set(LCMLiveStatus.DISCONNECTED);
+                    }
                     console.log("Disconnected from websocket");
                 };
-                websocket.onerror = (err) => {
+                ws.onerror = (err) => {
                     console.error(err);
                 };
-                websocket.onmessage = (event) => {
+                ws.onmessage = (event) => {
+                    // Ignore messages from a stale instance that has been replaced
+                    if (websocket !== ws) return;
                     const data = JSON.parse(event.data);
                     switch (data.status) {
                         case "connected":
@@ -59,10 +73,13 @@ export const lcmLiveActions = {
                             if (get(lcmLiveStatus) === LCMLiveStatus.PAUSED) {
                                 break;
                             }
+                            if (ws.readyState !== WebSocket.OPEN) {
+                                break;
+                            }
                             lcmLiveStatus.set(LCMLiveStatus.SEND_FRAME);
                             const streamData = getSreamdata();
-                            websocket?.send(JSON.stringify({ 
-                                status: "next_frame", 
+                            ws.send(JSON.stringify({
+                                status: "next_frame",
                                 timestamp: Date.now()
                             }));
                             for (const d of streamData) {

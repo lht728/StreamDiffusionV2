@@ -1,0 +1,47 @@
+{
+  "user_id": "dca6ef69-864d-454e-a0f4-57309640a75f",
+  "timestamp": "20260512_1512",
+  "target_latency": 0.4,
+  "batch_count": 1000,
+  "total_frames": 3980,
+  "latency_stats": {
+    "mean_latency": 0.4539178880614851,
+    "median_latency": 0.41177845001220703,
+    "p50_latency": 0.41177845001220703,
+    "p90_latency": 0.5211657524108887,
+    "p95_latency": 0.6277310252189623,
+    "p99_latency": 1.921543564796448,
+    "p99_9_latency": 2.4063572726249913,
+    "min_latency": 0.28148865699768066,
+    "max_latency": 6.982591152191162,
+    "std_latency": 0.26759089898744154,
+    "sample_count": 3980
+  },
+  "deadline_miss_rate": {
+    "deadline_seconds": 0.4,
+    "deadline_miss_rate": 0.5394472361809045,
+    "missed_frames": 2147,
+    "total_frames": 3980
+  },
+  "jitter_distribution": {
+    "mean_jitter": 0.0953313323474164,
+    "std_jitter": 0.15343864314995262,
+    "max_jitter": 6.693518161773682,
+    "min_jitter": 0.00756525993347168,
+    "p50_jitter": 0.0617828369140625,
+    "p90_jitter": 0.17953076362609868,
+    "p95_jitter": 0.20939619541168208,
+    "p99_jitter": 0.3290631723403926,
+    "p99.9_jitter": 0.607405057907203,
+    "jitter_variance": 0.023543417211698503
+  },
+  "tail_latency": {
+    "p90_latency": 0.5211657524108887,
+    "p95_latency": 0.6277310252189623,
+    "p99_latency": 1.921543564796448,
+    "p99_9_latency": 2.4063572726249913,
+    "max_latency": 6.982591152191162,
+    "mean_latency": 0.4539178880614851,
+    "median_latency": 0.41177845001220703
+  }
+}

@@ -109,4 +109,16 @@ if len(gpu_ids) != parsed_args["num_gpus"]:
     )
 parsed_args["gpu_ids"] = ",".join(gpu_ids)
 
+# `--fast` is documented as syntactic sugar for `--use_taehv --use_tensorrt`
+# (and it also implies the `_fast.yaml` model config). The shared normalizer
+# in streamv2v.inference_common handles all of that, but historically the
+# demo's multi-GPU path never invoked it, so `--fast` was a silent no-op
+# here (use_tensorrt stayed False, no TRT engine ever got built, and the
+# DiT kept falling back to scaled_dot_product_attention). Apply it once on
+# the parsed CLI dict so the same semantics hold no matter which entry
+# point the user picked.
+from streamv2v.inference_common import normalize_acceleration_flags  # noqa: E402
+
+parsed_args = normalize_acceleration_flags(parsed_args)
+
 config = Args(**parsed_args)

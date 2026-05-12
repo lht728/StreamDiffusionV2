@@ -4,6 +4,12 @@ set -eu
 # Unified offline launcher for all supported video-to-video inference modes.
 # Environment variables can override the default config, checkpoint, output, GPU,
 # and launch parameters without having to edit the script itself.
+
+# Disable flash-attn at runtime by default (FA2/FA3 are no faster than SDPA on H20
+# for step=1 + KV-cache + short sequences; FA3 was observed to be slower).
+# Set STREAMDIFF_DISABLE_FLASH=0 to re-enable flash-attn for A/B comparison.
+export STREAMDIFF_DISABLE_FLASH="${STREAMDIFF_DISABLE_FLASH:-1}"
+
 MODE="${1:-single}"
 if [ "$#" -gt 0 ]; then
   shift

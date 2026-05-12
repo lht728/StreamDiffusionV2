@@ -1,0 +1,239 @@
+
+
+host: 0.0.0.0
+port: 7860
+max_queue_size: 0
+timeout: 0.0
+ssl_certfile: None
+ssl_keyfile: None
+config_path: /data/StreamDiffusionV2/configs/wan_causal_dmd_v2v.yaml
+checkpoint_folder: /data/StreamDiffusionV2/ckpts/wan_causal_dmd_v2v
+step: 1
+noise_scale: 0.8
+debug: True
+num_gpus: 2
+gpu_ids: 0,1
+max_outstanding: 2
+schedule_block: False
+model_type: T2V-1.3B
+use_taehv: True
+use_tensorrt: True
+fast: True
+enable_metrics: True
+target_latency: 0.4
+t2v: False
+
+
+[Rank 0] 2026-05-12 16:22:38,824 - rank_0 - INFO - Initialized InferencePipelineManager for rank 0
+[Rank 0] 2026-05-12 16:22:40,584 - rank_0 - INFO - Model loaded successfully from /data/StreamDiffusionV2/ckpts/wan_causal_dmd_v2v/model.pt
+[Rank 1] 2026-05-12 16:22:41,346 - rank_1 - INFO - Initialized InferencePipelineManager for rank 1
+[Rank 1] 2026-05-12 16:22:43,899 - rank_1 - INFO - Model loaded successfully from /data/StreamDiffusionV2/ckpts/wan_causal_dmd_v2v/model.pt
+[Rank 1] 2026-05-12 16:22:43,998 - rank_1 - INFO - Initializing rank 1 first batch
+/data/StreamDiffusionV2/demo/main.py:477: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @self.app.on_event("shutdown")
+INFO:     Started server process [61598]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:7860 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54860 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54868 - "GET /_app/immutable/assets/2.fe512841.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54860 - "GET /_app/immutable/entry/start.d2f4b82c.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54860 - "GET /_app/immutable/nodes/0.8ff09618.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54868 - "GET /_app/immutable/chunks/index.c65141b6.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54868 - "GET /_app/immutable/nodes/2.16a3852c.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54860 - "GET /_app/immutable/entry/app.fd9d03f2.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54872 - "GET /_app/immutable/assets/0.8076736b.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54900 - "GET /_app/immutable/chunks/scheduler.2c37d817.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54888 - "GET /_app/immutable/chunks/singletons.39b95d87.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54910 - "GET /_app/immutable/chunks/index.b16a6579.js HTTP/1.1" 304 Not Modified
+/data/StreamDiffusionV2/demo/main.py:455: PydanticDeprecatedSince20: The `schema` method is deprecated; use `model_json_schema` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
+  info_schema = self.pipeline.Info.schema()
+/data/StreamDiffusionV2/demo/main.py:460: PydanticDeprecatedSince20: The `schema` method is deprecated; use `model_json_schema` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
+  input_params = self.pipeline.InputParams.schema()
+INFO:     127.0.0.1:54900 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54888 - "GET /favicon.png HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54910 - "GET /_app/immutable/nodes/1.545dc6f6.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52442 - "WebSocket /api/ws/8c0445c4-df76-4727-9d32-5e51ba6c0ed5" [accepted]
+2026-05-12 16:24:54,124 - INFO - User count: 0
+2026-05-12 16:24:54,124 - INFO - New user connected: 8c0445c4-df76-4727-9d32-5e51ba6c0ed5
+INFO:     connection open
+INFO:     127.0.0.1:54900 - "GET /api/stream/8c0445c4-df76-4727-9d32-5e51ba6c0ed5?t=1778574294045 HTTP/1.1" 200 OK
+[Rank 0] 2026-05-12 16:24:54,664 - rank_0 - INFO - Initializing rank 0 first batch
+/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py:1750: UserWarning: flash_attn is not installed; falling back to scaled_dot_product_attention for KV-cache attention.
+  return forward_call(*args, **kwargs)
+Process Process-2:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/data/StreamDiffusionV2/demo/vid2vid_pipe.py", line 174, in input_process
+    session = pipeline_manager.start_demo_input_stream_session(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/streamv2v/inference_pipe.py", line 363, in start_demo_input_stream_session
+    self.prepare_demo_input_session(images, prompt, block_num, noise_scale)
+  File "/data/StreamDiffusionV2/streamv2v/inference_pipe.py", line 343, in prepare_demo_input_session
+    self.prepare_pipeline(
+  File "/data/StreamDiffusionV2/streamv2v/inference_pipe.py", line 173, in prepare_pipeline
+    denoised_pred = self.pipeline.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_stream_inference.py", line 189, in prepare
+    denoised_pred = self.generator(
+                    ^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/wan_wrapper.py", line 239, in forward
+    flow_pred = self.model(
+                ^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_model.py", line 1009, in forward
+    return self._forward_inference(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_model.py", line 878, in _forward_inference
+    x = block(x, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_model.py", line 533, in forward
+    x = cross_attn_ffn(x, context, context_lens, e, crossattn_cache)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_model.py", line 522, in cross_attn_ffn
+    x = x + self.cross_attn(self.norm3(x), context,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/wan_base/modules/model.py", line 189, in forward
+    x = flash_attention(q, k, v, k_lens=context_lens)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/wan_base/modules/attention.py", line 229, in flash_attention
+    x = flash_attn_interface.flash_attn_varlen_func(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: flash_attn_varlen_func() missing 2 required positional arguments: 'seqused_q' and 'seqused_k'
+/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py:1750: UserWarning: flash_attn is not installed; falling back to scaled_dot_product_attention for KV-cache attention.
+  return forward_call(*args, **kwargs)
+Process Process-3:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/data/StreamDiffusionV2/demo/vid2vid_pipe.py", line 301, in output_process
+    images = pipeline_manager.prepare_demo_worker_session(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/streamv2v/inference_pipe.py", line 382, in prepare_demo_worker_session
+    denoised_pred = self.prepare_pipeline(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/streamv2v/inference_pipe.py", line 173, in prepare_pipeline
+    denoised_pred = self.pipeline.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_stream_inference.py", line 189, in prepare
+    denoised_pred = self.generator(
+                    ^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/wan_wrapper.py", line 239, in forward
+    flow_pred = self.model(
+                ^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_model.py", line 1009, in forward
+    return self._forward_inference(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_model.py", line 878, in _forward_inference
+    x = block(x, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_model.py", line 533, in forward
+    x = cross_attn_ffn(x, context, context_lens, e, crossattn_cache)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/causal_model.py", line 522, in cross_attn_ffn
+    x = x + self.cross_attn(self.norm3(x), context,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/wan_base/modules/model.py", line 189, in forward
+    x = flash_attention(q, k, v, k_lens=context_lens)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/models/wan/wan_base/modules/attention.py", line 229, in flash_attention
+    x = flash_attn_interface.flash_attn_varlen_func(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: flash_attn_varlen_func() missing 2 required positional arguments: 'seqused_q' and 'seqused_k'
+[rank0]:[W512 16:24:56.517355207 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+INFO:     127.0.0.1:53650 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53650 - "GET / HTTP/1.1" 304 Not Modified
+2026-05-12 16:25:05,451 - ERROR - Error: Receive bytes: (<CloseCode.ABNORMAL_CLOSURE: 1006>, '')
+2026-05-12 16:25:05,451 - ERROR - Websocket Error: (<CloseCode.ABNORMAL_CLOSURE: 1006>, ''), 8c0445c4-df76-4727-9d32-5e51ba6c0ed5 
+2026-05-12 16:25:05,451 - INFO - Disconnecting user: 8c0445c4-df76-4727-9d32-5e51ba6c0ed5
+2026-05-12 16:25:05,451 - INFO - Deleting user: 8c0445c4-df76-4727-9d32-5e51ba6c0ed5
+2026-05-12 16:25:05,451 - INFO - User 8c0445c4-df76-4727-9d32-5e51ba6c0ed5 removed from connections
+INFO:     connection closed
+2026-05-12 16:25:05,451 - INFO - User disconnected: 8c0445c4-df76-4727-9d32-5e51ba6c0ed5
+2026-05-12 16:25:05,451 - INFO - Disconnecting user: 8c0445c4-df76-4727-9d32-5e51ba6c0ed5
+2026-05-12 16:25:05,451 - INFO - Deleting user: 8c0445c4-df76-4727-9d32-5e51ba6c0ed5
+2026-05-12 16:25:05,451 - INFO - User 8c0445c4-df76-4727-9d32-5e51ba6c0ed5 removed from connections
+INFO:     127.0.0.1:53650 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53650 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53662 - "WebSocket /api/ws/1fa498d5-d331-4cfd-a214-a28d2eee8291" [accepted]
+2026-05-12 16:25:10,224 - INFO - User count: 0
+2026-05-12 16:25:10,224 - INFO - New user connected: 1fa498d5-d331-4cfd-a214-a28d2eee8291
+INFO:     connection open
+INFO:     127.0.0.1:53650 - "GET /api/stream/1fa498d5-d331-4cfd-a214-a28d2eee8291?t=1778574310144 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53666 - "GET /api/stream/1fa498d5-d331-4cfd-a214-a28d2eee8291?t=1778574310984 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47898 - "GET / HTTP/1.1" 304 Not Modified
+2026-05-12 16:25:21,785 - ERROR - Error: Send json: 
+2026-05-12 16:25:21,786 - ERROR - Websocket Error: , 1fa498d5-d331-4cfd-a214-a28d2eee8291 
+2026-05-12 16:25:21,786 - INFO - Disconnecting user: 1fa498d5-d331-4cfd-a214-a28d2eee8291
+2026-05-12 16:25:21,786 - ERROR - Error: Exception while closing websocket for 1fa498d5-d331-4cfd-a214-a28d2eee8291: Cannot call "send" once a close message has been sent.
+2026-05-12 16:25:21,786 - INFO - Deleting user: 1fa498d5-d331-4cfd-a214-a28d2eee8291
+2026-05-12 16:25:21,786 - INFO - User 1fa498d5-d331-4cfd-a214-a28d2eee8291 removed from connections
+2026-05-12 16:25:21,786 - INFO - User disconnected: 1fa498d5-d331-4cfd-a214-a28d2eee8291
+2026-05-12 16:25:21,786 - INFO - Disconnecting user: 1fa498d5-d331-4cfd-a214-a28d2eee8291
+2026-05-12 16:25:21,786 - INFO - Deleting user: 1fa498d5-d331-4cfd-a214-a28d2eee8291
+2026-05-12 16:25:21,786 - INFO - User 1fa498d5-d331-4cfd-a214-a28d2eee8291 removed from connections
+INFO:     connection closed
+INFO:     127.0.0.1:47898 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47898 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51648 - "WebSocket /api/ws/fd724940-6f44-4576-b831-2eed6da31678" [accepted]
+2026-05-12 16:25:24,486 - INFO - User count: 0
+2026-05-12 16:25:24,486 - INFO - New user connected: fd724940-6f44-4576-b831-2eed6da31678
+INFO:     connection open
+INFO:     127.0.0.1:47898 - "GET /api/stream/fd724940-6f44-4576-b831-2eed6da31678?t=1778574324407 HTTP/1.1" 200 OK

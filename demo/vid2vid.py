@@ -281,16 +281,33 @@ class Pipeline:
             self.prompt = params.prompt
             self.runtime_state["prompt"] = self.prompt
 
+        # Acceleration flags (use_taehv / use_tensorrt) are pinned to the values
+        # supplied via CLI/env at startup. The front-end UI hides these fields and
+        # only echoes the schema defaults back in every params message, which used
+        # to spuriously trigger a full pipeline rebuild on the very first frame
+        # (causing the UI to freeze on a single static frame). We therefore ignore
+        # them here unless the request value actually differs from what was set at
+        # process start.
+        cli_use_taehv = bool(getattr(self.args, "use_taehv", False))
+        cli_use_tensorrt = bool(getattr(self.args, "use_tensorrt", False))
+
         if hasattr(params, "use_taehv"):
             requested_use_taehv = bool(params.use_taehv)
-            if requested_use_taehv != bool(self.runtime_state.get("use_taehv", False)):
+            # Treat the schema-default "False" coming from a UI that doesn't
+            # expose this toggle as "no change requested"; only honor it if the
+            # client explicitly asks to enable TAEHV.
+            if requested_use_taehv and requested_use_taehv != bool(
+                self.runtime_state.get("use_taehv", cli_use_taehv)
+            ):
                 self.runtime_state["use_taehv"] = requested_use_taehv
                 self.restart_event.set()
                 clear_queue(self.output_queue)
 
         if hasattr(params, "use_tensorrt"):
             requested_use_tensorrt = bool(params.use_tensorrt)
-            if requested_use_tensorrt != bool(self.runtime_state.get("use_tensorrt", False)):
+            if requested_use_tensorrt and requested_use_tensorrt != bool(
+                self.runtime_state.get("use_tensorrt", cli_use_tensorrt)
+            ):
                 self.runtime_state["use_tensorrt"] = requested_use_tensorrt
                 self.restart_event.set()
                 clear_queue(self.output_queue)

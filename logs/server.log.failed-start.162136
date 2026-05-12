@@ -1,0 +1,116 @@
+
+
+host: 0.0.0.0
+port: 7860
+max_queue_size: 0
+timeout: 0.0
+ssl_certfile: None
+ssl_keyfile: None
+config_path: /data/StreamDiffusionV2/configs/wan_causal_dmd_v2v.yaml
+checkpoint_folder: /data/StreamDiffusionV2/ckpts/wan_causal_dmd_v2v
+step: 1
+noise_scale: 0.8
+debug: True
+num_gpus: 2
+gpu_ids: 0,1
+max_outstanding: 2
+schedule_block: False
+model_type: T2V-1.3B
+use_taehv: True
+use_tensorrt: True
+fast: True
+enable_metrics: False
+target_latency: 1.0
+t2v: False
+
+
+Process Process-2:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/data/StreamDiffusionV2/demo/vid2vid_pipe.py", line 96, in input_process
+    init_dist_tcp(rank, args.num_gpus, device=device)
+  File "/data/StreamDiffusionV2/demo/vid2vid_pipe.py", line 478, in init_dist_tcp
+    dist.init_process_group(
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/rendezvous.py", line 226, in _tcp_rendezvous_handler
+    store = _create_c10d_store(
+            ^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+           ^^^^^^^^^
+RuntimeError: The server socket has failed to listen on any local network address. port: 29500, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+Traceback (most recent call last):
+  File "/data/StreamDiffusionV2/demo/main.py", line 680, in <module>
+    pipeline = MultiGPUPipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/demo/vid2vid.py", line 152, in __init__
+    self.prepare()
+  File "/data/StreamDiffusionV2/demo/vid2vid_pipe.py", line 61, in prepare
+    wait_for_processes_ready(
+  File "/data/StreamDiffusionV2/demo/vid2vid.py", line 372, in wait_for_processes_ready
+    _maybe_raise_worker_error(error_queue)
+  File "/data/StreamDiffusionV2/demo/vid2vid.py", line 366, in _maybe_raise_worker_error
+    raise RuntimeError(f"{worker_name} failed during startup:\n{error_message}")
+RuntimeError: multi_gpu_input_rank_0 failed during startup:
+Traceback (most recent call last):
+  File "/data/StreamDiffusionV2/demo/vid2vid_pipe.py", line 96, in input_process
+    init_dist_tcp(rank, args.num_gpus, device=device)
+  File "/data/StreamDiffusionV2/demo/vid2vid_pipe.py", line 478, in init_dist_tcp
+    dist.init_process_group(
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/distributed_c10d.py", line 1714, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/rendezvous.py", line 226, in _tcp_rendezvous_handler
+    store = _create_c10d_store(
+            ^^^^^^^^^^^^^^^^^^^
+  File "/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/distributed/rendezvous.py", line 194, in _create_c10d_store
+    return TCPStore(
+           ^^^^^^^^^
+RuntimeError: The server socket has failed to listen on any local network address. port: 29500, useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+
+Process Process-3:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/managers.py", line 814, in _callmethod
+    conn = self._tls.connection
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ForkAwareLocal' object has no attribute 'connection'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/data/StreamDiffusionV2/demo/vid2vid_pipe.py", line 258, in output_process
+    current_use_taehv = bool(runtime_state.get("use_taehv", getattr(args, "use_taehv", False)))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/lib64/python3.11/multiprocessing/managers.py", line 818, in _callmethod
+    self._connect()
+  File "/usr/lib64/python3.11/multiprocessing/managers.py", line 805, in _connect
+    conn = self._Client(self._token.address, authkey=self._authkey)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 523, in Client
+    c = SocketClient(address)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 651, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
