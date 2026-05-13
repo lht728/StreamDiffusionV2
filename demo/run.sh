@@ -31,6 +31,16 @@ is_running() {
   [ -s "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null
 }
 
+# Path of the venv python; used as a safety filter when sweeping orphans so
+# we never touch python procs from outside this repo. We must use the
+# logical absolute path (no "..", no symlink resolution): the kernel
+# records argv[0] verbatim as the launcher passed it, which for our
+# wrapper -> start.sh -> .venv/bin/python chain is the *logical* path
+# below. Resolving with realpath would yield /usr/bin/python3.11 (venv
+# python is a symlink) and would risk matching unrelated system pythons.
+REPO_ROOT="$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)"
+VENV_PY="$REPO_ROOT/.venv/bin/python"
+
 cmd_start() {
   if is_running; then
     echo "already running, pid=$(cat "$PID_FILE")"
@@ -41,7 +51,11 @@ cmd_start() {
     mv "$LOG_FILE" "$LOG_FILE.$(date +%Y%m%d_%H%M%S)"
   fi
   cd "$SCRIPT_DIR"
-  nohup ./start.sh >"$LOG_FILE" 2>&1 &
+  # Run the wrapper in its own session so wrapper + main.py + every
+  # mp.spawn rank worker + every torch._inductor.compile_worker share one
+  # process group (pgid == wrapper pid). cmd_stop relies on this to reap
+  # the whole tree with a single signal-to-pgid.
+  setsid nohup ./start.sh >"$LOG_FILE" 2>&1 < /dev/null &
   echo $! > "$PID_FILE"
   sleep 1
   if is_running; then
@@ -53,29 +67,69 @@ cmd_start() {
   fi
 }
 
+# Sweep any leftover python procs from this repo's venv. Safe because we
+# match on the absolute path to .venv/bin/python which is unique to this
+# checkout. Used as belt-and-suspenders in cmd_stop.
+sweep_repo_python() {
+  local sig="$1"
+  # -f matches against full cmdline; pattern is anchored to the absolute
+  # interpreter path so we never hit unrelated python procs on the host.
+  pkill "-${sig}" -f "^${VENV_PY}( |$)" 2>/dev/null || true
+}
+
 cmd_stop() {
   if ! is_running; then
     echo "not running"
     rm -f "$PID_FILE"
+    # Even when the wrapper is gone, mp.spawn / inductor compile workers
+    # may have outlived it on previous unclean exits; sweep them too.
+    sweep_repo_python TERM
+    sleep 2
+    sweep_repo_python KILL
+    fuser -k "${PORT}/tcp" 2>/dev/null || true
+    fuser -k 29500/tcp 2>/dev/null || true
     return 0
   fi
   PID=$(cat "$PID_FILE")
-  echo "stopping pid=$PID ..."
-  kill -TERM "$PID" 2>/dev/null || true
+  # With setsid in cmd_start, pgid == PID. Signalling -PID hits every
+  # descendant in the group at once (rank workers, compile workers, ...).
+  echo "stopping pid=$PID (process group) ..."
+  kill -TERM -- "-$PID" 2>/dev/null || kill -TERM "$PID" 2>/dev/null || true
   for i in $(seq 1 15); do
     sleep 1
     is_running || break
   done
   if is_running; then
-    echo "TERM did not work, sending KILL"
+    echo "TERM did not work, sending KILL to group"
+    kill -KILL -- "-$PID" 2>/dev/null || true
     kill -KILL "$PID" 2>/dev/null || true
-    pkill -9 -f 'demo/main.py' 2>/dev/null || true
-    pkill -9 -f 'StreamDiffusionV2' 2>/dev/null || true
   fi
   rm -f "$PID_FILE"
-  # belt & suspenders: free 7860 / 29500 if leaked
+  # Belt-and-suspenders: any straggler from this repo's venv that somehow
+  # detached from the group (rare, but observed historically), plus port
+  # cleanup for the listener and the torch.distributed rendezvous port.
+  sweep_repo_python TERM
+  sleep 2
+  sweep_repo_python KILL
   fuser -k "${PORT}/tcp" 2>/dev/null || true
   fuser -k 29500/tcp 2>/dev/null || true
+  # Final sanity check: report if any /dev/nvidia* holders remain that
+  # belong to this repo, so the operator notices before the next start.
+  # Match by reading argv[0] from /proc/<pid>/cmdline (kernel-recorded
+  # logical path) instead of /proc/<pid>/exe (which would resolve the
+  # venv python symlink to /usr/bin/python3.11 and over-match).
+  if command -v fuser >/dev/null 2>&1; then
+    leftover=$(fuser /dev/nvidia* 2>/dev/null | tr ' ' '\n' \
+      | grep -E '^[0-9]+$' | sort -u \
+      | while read -r p; do
+          [ -d "/proc/$p" ] || continue
+          argv0=$(tr '\0' '\n' <"/proc/$p/cmdline" 2>/dev/null | head -n1)
+          [ "$argv0" = "$VENV_PY" ] && echo "$p"
+        done)
+    if [ -n "$leftover" ]; then
+      echo "warning: repo procs still holding /dev/nvidia*: $(echo "$leftover" | tr '\n' ' ')"
+    fi
+  fi
   echo "stopped"
 }
 

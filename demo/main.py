@@ -55,6 +55,17 @@ class App:
             self.user_raw_data = {}  # user_id -> list of raw batch data (for logging)
             self.metrics_log_dir = "./slo_metrics"
             os.makedirs(self.metrics_log_dir, exist_ok=True)
+            # 1Hz end-to-end (input -> generated) latency sampler. Writes one
+            # line per second to demo/latency.log summarising the latencies
+            # that were *recorded during the last 1s window* (i.e. only the
+            # newly-appended entries in user_latency_history). This is a
+            # read-only consumer of the history list and uses
+            # user_metrics_lock just long enough to snapshot a slice; the
+            # heavy stats math runs outside the lock.
+            self.latency_log_path = os.path.join(self.demo_root, "latency.log")
+            self._latency_sampler_stop = threading.Event()
+            self._latency_sampler_offsets = {}  # user_id -> last seen len(history)
+            self._latency_sampler_thread = None
         self.init_app()
 
     def init_app(self):
@@ -86,6 +97,10 @@ class App:
                         self.user_batch_count.pop(user_id, None)
                         self.user_latency_history.pop(user_id, None)
                         self.user_raw_data.pop(user_id, None)
+                        # Drop sampler cursor so a future user_id with the
+                        # same value (extremely unlikely with uuid4 but
+                        # defensive) cannot inherit a stale offset.
+                        self._latency_sampler_offsets.pop(user_id, None)
                 logging.info(f"User disconnected: {user_id}")
 
         async def handle_websocket_data(user_id: uuid.UUID):
@@ -479,6 +494,145 @@ class App:
             LOGGER.info("Shutdown event triggered, cleaning up...")
             await self.cleanup()
 
+        # Start the 1Hz end-to-end latency sampler. Done at the end of
+        # init_app() so every dependency (lock, history dict, log path)
+        # is fully initialised. Daemon=True so it never blocks process exit
+        # if cleanup is skipped (e.g. SIGKILL).
+        if self.enable_metrics:
+            self._latency_sampler_thread = threading.Thread(
+                target=self._latency_sampler_loop,
+                name="latency-sampler-1hz",
+                daemon=True,
+            )
+            self._latency_sampler_thread.start()
+            LOGGER.info(
+                "[Metrics] 1Hz latency sampler started -> %s",
+                self.latency_log_path,
+            )
+
+    def _latency_sampler_loop(self):
+        """Once per second, emit a line to demo/latency.log summarising the
+        end-to-end (input frame enqueue -> generated frame emit) latencies
+        observed during the past ~1s window, per user.
+
+        Implementation notes:
+        - We track a per-user offset into self.user_latency_history. Each
+          tick we read the *new tail* (history[offset:]) under the metrics
+          lock as a Python slice (cheap copy of float refs), then release
+          the lock before computing stats.
+        - The downstream code in generate() periodically resets
+          self.user_latency_history[user_id] = [] when a 1000-batch window
+          completes. We detect that as len < offset and rebase to 0, so
+          stats stay correct across resets.
+        - One log line per active user per tick. If no user produced any
+          new samples in the last second we still emit a heartbeat line
+          ("no_new_samples") so the cadence is visible in the file.
+        """
+        import math
+        log_path = self.latency_log_path
+        # Open in line-buffered append mode so each row is flushed even if
+        # the process is killed; survives demo restarts (we want history).
+        try:
+            log_fh = open(log_path, "a", buffering=1)
+        except OSError as e:
+            LOGGER.error("[Metrics] cannot open %s: %s", log_path, e)
+            return
+        try:
+            log_fh.write(
+                f"# latency sampler started at {time.strftime('%Y-%m-%d %H:%M:%S')} "
+                f"(unix={time.time():.3f}); columns: ts user count mean p50 p95 p99 min max remaining_input_q\n"
+            )
+        except OSError:
+            pass
+
+        def _percentile(sorted_vals, q):
+            # Linear-interp percentile on a pre-sorted list. q in [0,100].
+            if not sorted_vals:
+                return float("nan")
+            if len(sorted_vals) == 1:
+                return sorted_vals[0]
+            k = (len(sorted_vals) - 1) * (q / 100.0)
+            lo = math.floor(k)
+            hi = math.ceil(k)
+            if lo == hi:
+                return sorted_vals[int(k)]
+            return sorted_vals[lo] + (sorted_vals[hi] - sorted_vals[lo]) * (k - lo)
+
+        next_tick = time.monotonic()
+        while not self._latency_sampler_stop.is_set():
+            next_tick += 1.0
+            sleep_for = next_tick - time.monotonic()
+            if sleep_for > 0:
+                # Use Event.wait so shutdown wakes us immediately.
+                if self._latency_sampler_stop.wait(timeout=sleep_for):
+                    break
+            else:
+                # We fell behind (GC pause etc.); resync to now to avoid a
+                # burst of catch-up ticks.
+                next_tick = time.monotonic()
+
+            ts = time.time()
+            # Snapshot phase: minimise time under the lock.
+            snapshots = []  # list of (user_id, new_slice, remaining_input_q)
+            try:
+                with self.user_metrics_lock:
+                    user_ids = list(self.user_latency_history.keys())
+                    for uid in user_ids:
+                        hist = self.user_latency_history.get(uid, [])
+                        prev = self._latency_sampler_offsets.get(uid, 0)
+                        cur_len = len(hist)
+                        # Detect window reset (downstream truncates list).
+                        if cur_len < prev:
+                            prev = 0
+                        if cur_len == prev:
+                            new_slice = []
+                        else:
+                            # Slice copy of float refs is O(n) on n new
+                            # samples; n is at most a few dozen per second
+                            # at expected throughput, so this is cheap.
+                            new_slice = hist[prev:cur_len]
+                        self._latency_sampler_offsets[uid] = cur_len
+                        remaining = len(self.user_input_timestamps.get(uid, deque()))
+                        snapshots.append((uid, new_slice, remaining))
+            except Exception as e:
+                # Never let the sampler crash the server; just record it.
+                LOGGER.warning("[Metrics] sampler snapshot error: %s", e)
+                continue
+
+            # Stats + write phase: outside the lock.
+            try:
+                if not snapshots:
+                    log_fh.write(f"{ts:.3f} - no_active_users\n")
+                    continue
+                for uid, samples, remaining in snapshots:
+                    if not samples:
+                        log_fh.write(
+                            f"{ts:.3f} {uid} count=0 no_new_samples remaining_input_q={remaining}\n"
+                        )
+                        continue
+                    s = sorted(samples)
+                    n = len(s)
+                    mean = sum(s) / n
+                    p50 = _percentile(s, 50)
+                    p95 = _percentile(s, 95)
+                    p99 = _percentile(s, 99)
+                    log_fh.write(
+                        f"{ts:.3f} {uid} count={n} "
+                        f"mean={mean:.4f} p50={p50:.4f} p95={p95:.4f} "
+                        f"p99={p99:.4f} min={s[0]:.4f} max={s[-1]:.4f} "
+                        f"remaining_input_q={remaining}\n"
+                    )
+            except Exception as e:
+                LOGGER.warning("[Metrics] sampler write error: %s", e)
+
+        try:
+            log_fh.write(
+                f"# latency sampler stopped at {time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+            )
+            log_fh.close()
+        except OSError:
+            pass
+
     def _log_metrics_to_file(self, user_id: uuid.UUID):
         """Log metrics to file after collecting 1000 batches"""
         try:
@@ -601,7 +755,19 @@ class App:
         
         # Set shutdown event
         self.shutdown_event.set()
-        
+
+        # Stop the 1Hz latency sampler thread (if running). Done early so
+        # any further latency stats print only the existing data and we
+        # don't keep an open file handle once user state is being torn
+        # down.
+        if getattr(self, "_latency_sampler_thread", None) is not None:
+            self._latency_sampler_stop.set()
+            self._latency_sampler_thread.join(timeout=2.0)
+            if self._latency_sampler_thread.is_alive():
+                LOGGER.warning("[Metrics] latency sampler did not stop in 2s")
+            else:
+                LOGGER.info("[Metrics] latency sampler stopped")
+
         # Stop all background tasks
         for user_id in list(self.prediction_workers):
             await self._stop_prediction_worker(user_id)
