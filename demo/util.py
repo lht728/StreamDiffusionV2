@@ -10,6 +10,40 @@ import torch
 
 LOGGER = logging.getLogger(__name__)
 
+# ---------------------------------------------------------------------------
+# JPEG encoder selection
+#
+# Hot path: produce_predictions 每个 chunk 把 4 个 numpy uint8 帧编码为 MJPEG 段。
+# PIL 默认实现是单线程 libjpeg，约 3 ms/帧 @ 512×512 ⇒ 12 ms/chunk，会阻塞
+# 输出生产线程。
+#
+# 优先级：
+#   1) PyTurboJPEG（libjpeg-turbo C 绑定，~6× PIL）—— 推荐生产环境安装。
+#   2) Pillow-SIMD（drop-in 替换 PIL，~2–4× PIL）—— 已通过 import PIL 自动生效。
+#   3) PIL（兜底，保证可运行）。
+#
+# 当 numpy 帧从 GPU 直出 uint8 时（A.4 优化），路径是
+# `np.uint8 (H,W,3)` → `encode_jpeg_bytes` → bytes，无需 PIL 中转。
+# ---------------------------------------------------------------------------
+
+_JPEG_QUALITY = int(os.environ.get("DEMO_JPEG_QUALITY", "85"))
+
+try:
+    from turbojpeg import TurboJPEG, TJPF_RGB, TJSAMP_420  # type: ignore
+
+    _TURBO_JPEG = TurboJPEG()
+    _USE_TURBOJPEG = True
+    LOGGER.info("MJPEG encoder: PyTurboJPEG (quality=%s)", _JPEG_QUALITY)
+except Exception as _exc:  # noqa: BLE001 - turbojpeg is optional
+    _TURBO_JPEG = None
+    _USE_TURBOJPEG = False
+    LOGGER.info(
+        "MJPEG encoder: PIL fallback (PyTurboJPEG not available: %s; quality=%s). "
+        "Install `PyTurboJPEG` (and libjpeg-turbo) for ~6x faster encoding.",
+        type(_exc).__name__,
+        _JPEG_QUALITY,
+    )
+
 BF16_BYTES = 2
 KV_HEAD_DIM = 128
 STREAM_BATCH_HEADROOM_BYTES = 1024**3
@@ -19,6 +53,21 @@ MODEL_LAYOUTS = {
     "T2V-14B": {"num_transformer_blocks": 40, "num_heads": 40},
 }
 
+_MJPEG_HEADER_PREFIX = b"--frame\r\nContent-Type: image/jpeg\r\nContent-Length: "
+_MJPEG_HEADER_SUFFIX = b"\r\n\r\n"
+_MJPEG_TRAILER = b"\r\n"
+
+
+def _wrap_mjpeg(jpeg_bytes: bytes) -> bytes:
+    """Wrap a JPEG payload in an MJPEG multipart-form chunk."""
+    return (
+        _MJPEG_HEADER_PREFIX
+        + str(len(jpeg_bytes)).encode("ascii")
+        + _MJPEG_HEADER_SUFFIX
+        + jpeg_bytes
+        + _MJPEG_TRAILER
+    )
+
 
 def bytes_to_pil(image_bytes: bytes) -> Image.Image:
     image = Image.open(io.BytesIO(image_bytes))
@@ -26,28 +75,78 @@ def bytes_to_pil(image_bytes: bytes) -> Image.Image:
 
 
 def pil_to_frame(image: Image.Image) -> bytes:
-    frame_data = io.BytesIO()
-    image.save(frame_data, format="JPEG")
-    frame_data = frame_data.getvalue()
-    return (
-        b"--frame\r\n"
-        + b"Content-Type: image/jpeg\r\n"
-        + f"Content-Length: {len(frame_data)}\r\n\r\n".encode()
-        + frame_data
-        + b"\r\n"
-    )
+    """Encode a PIL image into a single MJPEG multipart frame.
+
+    Uses PyTurboJPEG when available (significantly faster than PIL's libjpeg),
+    otherwise falls back to ``Image.save(format="JPEG")``.
+    """
+    if _USE_TURBOJPEG:
+        # TurboJPEG accepts ndarray; ensure RGB uint8 contiguous.
+        if image.mode != "RGB":
+            image = image.convert("RGB")
+        arr = np.asarray(image, dtype=np.uint8)
+        jpeg_bytes = _TURBO_JPEG.encode(
+            arr,
+            quality=_JPEG_QUALITY,
+            pixel_format=TJPF_RGB,
+            jpeg_subsample=TJSAMP_420,
+        )
+    else:
+        buf = io.BytesIO()
+        image.save(buf, format="JPEG", quality=_JPEG_QUALITY)
+        jpeg_bytes = buf.getvalue()
+    return _wrap_mjpeg(jpeg_bytes)
+
+
+def ndarray_uint8_to_frame(arr: np.ndarray) -> bytes:
+    """Encode a HxWx3 uint8 numpy array directly into an MJPEG frame.
+
+    Fast path used when the inference pipeline produces uint8 frames on the
+    GPU and copies them straight to numpy (see A.4 optimization), avoiding
+    an intermediate PIL Image construction.
+    """
+    if arr.dtype != np.uint8:
+        arr = arr.astype(np.uint8, copy=False)
+    if arr.ndim != 3 or arr.shape[2] != 3:
+        # Defensive: fall back to PIL for unusual layouts.
+        return pil_to_frame(Image.fromarray(arr))
+
+    if _USE_TURBOJPEG:
+        if not arr.flags["C_CONTIGUOUS"]:
+            arr = np.ascontiguousarray(arr)
+        jpeg_bytes = _TURBO_JPEG.encode(
+            arr,
+            quality=_JPEG_QUALITY,
+            pixel_format=TJPF_RGB,
+            jpeg_subsample=TJSAMP_420,
+        )
+    else:
+        buf = io.BytesIO()
+        Image.fromarray(arr, mode="RGB").save(buf, format="JPEG", quality=_JPEG_QUALITY)
+        jpeg_bytes = buf.getvalue()
+    return _wrap_mjpeg(jpeg_bytes)
 
 
 def is_firefox(user_agent: str) -> bool:
     return "Firefox" in user_agent
 
 
+# Polling cadence used while waiting for the input queue to fill enough frames
+# for one DiT chunk. Tuned for low end-to-end latency:
+#   • 10 ms (legacy) wastes up to ~10 ms after the last needed frame arrives,
+#     contributing measurable jitter on chunk-head frames.
+#   • 3 ms keeps CPU usage trivial (~0.03 core) but cuts that wake-up jitter
+#     by ~7 ms on average, with similar bound improvements on p99.
+_QUEUE_POLL_INTERVAL_S = float(os.environ.get("DEMO_QUEUE_POLL_INTERVAL_S", "0.003"))
+
+
 def read_images_from_queue(queue, num_frames_needed, device, stop_event=None):
-    # Wait until we have enough frames
+    # Wait until we have enough frames. Tight poll interval keeps wake-up
+    # latency low while remaining cheap on CPU; see _QUEUE_POLL_INTERVAL_S.
     while queue.qsize() < num_frames_needed:
         if stop_event and stop_event.is_set():
             return None
-        time.sleep(0.01)
+        time.sleep(_QUEUE_POLL_INTERVAL_S)
 
     # Read exactly num_frames_needed frames in order (FIFO), don't discard any frames.
     images = []
@@ -257,8 +356,20 @@ def image_to_array(
 
 
 def array_to_image(image_array: np.ndarray, normalize: bool = True) -> Image.Image:
+    """Convert a HxWxC numpy array to a PIL Image.
+
+    The ``normalize`` flag is **best-effort**: if the array is already
+    ``uint8`` it is treated as ready-to-display pixels regardless of the
+    flag, avoiding a redundant CPU-side ``* 255`` after the inference
+    pipeline started returning uint8 directly (see the GPU-side fuse in
+    ``streamv2v/inference{,_pipe,_wo_batch}.py:_decode_video_array``).
+    """
+    if image_array.dtype == np.uint8:
+        # Fast path: pipeline already produced quantized [0,255] uint8 frames
+        # on the GPU — no host-side multiplication needed.
+        return Image.fromarray(image_array, mode="RGB" if image_array.ndim == 3 and image_array.shape[-1] == 3 else None)
+
     if normalize:
         image_array = image_array * 255.0
     image_array = image_array.astype(np.uint8)
-    image = Image.fromarray(image_array)
-    return image
+    return Image.fromarray(image_array)

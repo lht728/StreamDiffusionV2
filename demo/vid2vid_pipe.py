@@ -17,6 +17,21 @@ import torch.distributed as dist
 from vid2vid import Pipeline, report_worker_error, set_config_value, wait_for_processes_ready
 
 
+# Opt-in flag for VAE-decode / DiT overlap on the output rank.
+# Trade-off:
+#   • OFF (default): every frame is fully decoded before being put into the
+#     output queue. Simplest, lowest single-frame latency in light-load
+#     regimes where chunk_wall < target_frame_interval.
+#   • ON: chunk N's decode runs on a dedicated CUDA stream while chunk N+1's
+#     NCCL recv + DiT forward run on the default + com streams. This lifts
+#     decode out of the critical chunk-wall path (gain ~10–25 ms / chunk),
+#     at the cost of an extra 1-chunk delay before frames become visible.
+#     Typically a net win when chunk_wall > frame_interval (i.e. the demo
+#     is throughput-bound, e.g. high-res or step>1). Enable explicitly
+#     once measured on your deployment.
+_DECODE_OVERLAP_ENABLED = os.environ.get("DEMO_DECODE_OVERLAP", "0") == "1"
+
+
 class MultiGPUPipeline(Pipeline):
     def prepare(self):
         self.total_blocks = get_num_transformer_blocks(self.args)
@@ -269,6 +284,8 @@ def output_process(rank, block_num, total_blocks, args, runtime_state, prepare_e
 
         while not stop_event.is_set():
             if need_update_prompt:
+                # 切 prompt 时丢掉任何尚未消费的 async decode，避免和新 session 串味。
+                pipeline_manager._decode_event = None
                 prompt = pipeline_manager.data_transfer.recv_prompt_async()
                 is_running = False
                 need_update_prompt = False
@@ -341,12 +358,37 @@ def output_process(rank, block_num, total_blocks, args, runtime_state, prepare_e
                     pipeline_manager._sync_for_timing(schedule_block)
                     start_vae = time.time()
 
-                for image in pipeline_manager._decode_prediction(denoised_pred):
-                    output_queue.put(image)
-
-                torch.cuda.synchronize()
+                # ----- VAE decode 与 DiT/NCCL overlap (A.3) -----
+                # 当 DEMO_DECODE_OVERLAP=1 时：
+                #   chunk N 的 decode 派发到独立 decode_stream，
+                #   chunk N+1 的 _receive_latent_data / _run_worker_stage
+                #   在默认 compute stream 与 com_stream 上并行执行。
+                #   收益：decode + D2H copy（~10–30 ms）与下一 chunk 的
+                #         NCCL recv + DiT forward 重叠 ⇒ chunk wall -10~25 ms。
+                #   代价：单帧最早可见时间相对当前 chunk 推后 1 chunk
+                #         （因为帧到 chunk N+1 才被 finish & put）。
+                #         在“吞吐受限”场景（chunk wall > 帧间隔）下净收益。
+                #
+                # 默认关闭，保留同步路径作为最低风险默认值。
+                if _DECODE_OVERLAP_ENABLED and not schedule_block:
+                    # 1) finish 上一 chunk 的 async decode 并入队。
+                    prev_frames = pipeline_manager._decode_prediction_finish()
+                    if prev_frames is not None:
+                        for image in prev_frames:
+                            output_queue.put(image)
+                    # 2) 派发本 chunk 的 decode（不阻塞 host）。
+                    pipeline_manager._decode_prediction_async(denoised_pred)
+                    # 不 sync —— 让默认 stream 进入下一轮 _receive_latent_data。
+                else:
+                    # 同步路径：decode 在默认 stream 跑完，立即 put。
+                    # `_decode_prediction` 内部已经把 D2H 拷贝压缩成 uint8，
+                    # 因此 GPU→host 流量是历史 fp32 路径的 1/4（A.4 收益）。
+                    for image in pipeline_manager._decode_prediction(denoised_pred):
+                        output_queue.put(image)
 
                 if schedule_block:
+                    # 标定路径需要稳定 timing：保证 decode 完成再读时钟。
+                    pipeline_manager._sync_for_timing(schedule_block)
                     t_vae = time.time() - start_vae
                     t_total = t_vae + pipeline_manager.t_dit
                     if t_total < pipeline_manager.t_total:

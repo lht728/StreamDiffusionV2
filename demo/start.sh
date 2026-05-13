@@ -11,9 +11,14 @@ HOST="${HOST:-0.0.0.0}"
 GPU_IDS="${GPU_IDS:-0}"
 STEP="${STEP:-1}"
 MODEL_TYPE="${MODEL_TYPE:-T2V-1.3B}"
-USE_TAEHV="${USE_TAEHV:-0}"
-USE_TENSORRT="${USE_TENSORRT:-0}"
-FAST="${FAST:-0}"
+# Always-on fast path: TAEHV decoder + TensorRT acceleration.
+# `--fast` is syntactic sugar for `--use_taehv --use_tensorrt` and also picks
+# the `_fast.yaml` model config; see streamv2v.inference_common.
+# To run the slow reference path for A/B, set FAST=0 (and USE_TAEHV=0,
+# USE_TENSORRT=0) explicitly in the environment.
+USE_TAEHV="${USE_TAEHV:-1}"
+USE_TENSORRT="${USE_TENSORRT:-1}"
+FAST="${FAST:-1}"
 # Path to the python interpreter (defaults to the project's venv if it exists,
 # otherwise falls back to whatever `python` is on PATH).
 if [ -z "${PYTHON_BIN:-}" ]; then

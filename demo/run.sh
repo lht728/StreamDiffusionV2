@@ -19,6 +19,11 @@ export HOST="${HOST:-0.0.0.0}"
 export GPU_IDS="${GPU_IDS:-0,1}"
 export STEP="${STEP:-1}"
 export MODEL_TYPE="${MODEL_TYPE:-T2V-1.3B}"
+# Fast path is the supported production config (TAEHV decoder + TensorRT engines,
+# ~2x VAE speedup, negligible quality loss). Both run.sh and start.sh default
+# these to 1; demo/config.py also defaults --fast / --use_taehv / --use_tensorrt
+# to True. To run the slow reference path for A/B, set FAST=0 USE_TAEHV=0
+# USE_TENSORRT=0 in the environment.
 export USE_TAEHV="${USE_TAEHV:-1}"
 export USE_TENSORRT="${USE_TENSORRT:-1}"
 export FAST="${FAST:-1}"

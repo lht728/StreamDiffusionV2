@@ -155,13 +155,19 @@ class SingleGPUInferencePipeline:
         return noise * noise_scale + latents * (1 - noise_scale)
 
     def _decode_video_array(self, denoised_pred: torch.Tensor, last_frame_only: bool = False) -> np.ndarray:
+        """Decode latents to a ``[T, H, W, C]`` uint8 numpy array in [0, 255].
+
+        See ``inference.py:_decode_video_array`` for design rationale; this
+        path mirrors it for the no-batch single-GPU pipeline.
+        """
         if last_frame_only:
             denoised_pred = denoised_pred[[-1]]
 
         video = self._timed_stream_decode(denoised_pred)
-        video = (video * 0.5 + 0.5).clamp(0, 1)
+        video = video.mul(127.5).add_(127.5).clamp_(0, 255)
         video = video[0].permute(0, 2, 3, 1).contiguous()
-        return video.detach().cpu().float().numpy()
+        video = video.to(torch.uint8)
+        return video.detach().cpu().numpy()
 
     def start_stream_session(self, prompt: str, images: torch.Tensor, noise_scale: float) -> tuple[SingleGPUStreamSession, np.ndarray]:
         """Initialize a no-batch streaming session and return the first decoded frames."""
