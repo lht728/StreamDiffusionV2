@@ -1,0 +1,7007 @@
+{
+  "user_id": "fff5a8af-770d-4a83-8a94-48cfe6d4d928",
+  "timestamp": "20260512_1733",
+  "target_latency": 0.4,
+  "batches": [
+    {
+      "batch_num": 1,
+      "current_frames": 4,
+      "avg_latency": 0.4111279249191284,
+      "remaining": 6,
+      "data_count": 4
+    },
+    {
+      "batch_num": 2,
+      "current_frames": 4,
+      "avg_latency": 0.4339908957481384,
+      "remaining": 5,
+      "data_count": 8
+    },
+    {
+      "batch_num": 3,
+      "current_frames": 4,
+      "avg_latency": 0.4387131333351135,
+      "remaining": 6,
+      "data_count": 12
+    },
+    {
+      "batch_num": 4,
+      "current_frames": 4,
+      "avg_latency": 0.40608400106430054,
+      "remaining": 6,
+      "data_count": 16
+    },
+    {
+      "batch_num": 5,
+      "current_frames": 4,
+      "avg_latency": 0.4320375323295593,
+      "remaining": 5,
+      "data_count": 20
+    },
+    {
+      "batch_num": 6,
+      "current_frames": 4,
+      "avg_latency": 0.44886863231658936,
+      "remaining": 6,
+      "data_count": 24
+    },
+    {
+      "batch_num": 7,
+      "current_frames": 4,
+      "avg_latency": 0.43058091402053833,
+      "remaining": 6,
+      "data_count": 28
+    },
+    {
+      "batch_num": 8,
+      "current_frames": 4,
+      "avg_latency": 0.42335110902786255,
+      "remaining": 5,
+      "data_count": 32
+    },
+    {
+      "batch_num": 9,
+      "current_frames": 4,
+      "avg_latency": 0.43159419298171997,
+      "remaining": 6,
+      "data_count": 36
+    },
+    {
+      "batch_num": 10,
+      "current_frames": 1,
+      "avg_latency": 0.5088725090026855,
+      "remaining": 8,
+      "data_count": 37
+    },
+    {
+      "batch_num": 11,
+      "current_frames": 3,
+      "avg_latency": 0.38946811358133954,
+      "remaining": 5,
+      "data_count": 40
+    },
+    {
+      "batch_num": 12,
+      "current_frames": 4,
+      "avg_latency": 0.4298401474952698,
+      "remaining": 6,
+      "data_count": 44
+    },
+    {
+      "batch_num": 13,
+      "current_frames": 4,
+      "avg_latency": 0.4127922058105469,
+      "remaining": 6,
+      "data_count": 48
+    },
+    {
+      "batch_num": 14,
+      "current_frames": 4,
+      "avg_latency": 0.4271549582481384,
+      "remaining": 5,
+      "data_count": 52
+    },
+    {
+      "batch_num": 15,
+      "current_frames": 4,
+      "avg_latency": 0.44771450757980347,
+      "remaining": 6,
+      "data_count": 56
+    },
+    {
+      "batch_num": 16,
+      "current_frames": 4,
+      "avg_latency": 0.44070321321487427,
+      "remaining": 5,
+      "data_count": 60
+    },
+    {
+      "batch_num": 17,
+      "current_frames": 4,
+      "avg_latency": 0.46495890617370605,
+      "remaining": 6,
+      "data_count": 64
+    },
+    {
+      "batch_num": 18,
+      "current_frames": 4,
+      "avg_latency": 0.4355952739715576,
+      "remaining": 6,
+      "data_count": 68
+    },
+    {
+      "batch_num": 19,
+      "current_frames": 4,
+      "avg_latency": 0.4483238458633423,
+      "remaining": 6,
+      "data_count": 72
+    },
+    {
+      "batch_num": 20,
+      "current_frames": 4,
+      "avg_latency": 0.4192461371421814,
+      "remaining": 6,
+      "data_count": 76
+    },
+    {
+      "batch_num": 21,
+      "current_frames": 4,
+      "avg_latency": 0.4338303208351135,
+      "remaining": 6,
+      "data_count": 80
+    },
+    {
+      "batch_num": 22,
+      "current_frames": 4,
+      "avg_latency": 0.436489462852478,
+      "remaining": 6,
+      "data_count": 84
+    },
+    {
+      "batch_num": 23,
+      "current_frames": 4,
+      "avg_latency": 0.41532403230667114,
+      "remaining": 5,
+      "data_count": 88
+    },
+    {
+      "batch_num": 24,
+      "current_frames": 4,
+      "avg_latency": 0.50457364320755,
+      "remaining": 5,
+      "data_count": 92
+    },
+    {
+      "batch_num": 25,
+      "current_frames": 4,
+      "avg_latency": 0.4527568817138672,
+      "remaining": 5,
+      "data_count": 96
+    },
+    {
+      "batch_num": 26,
+      "current_frames": 4,
+      "avg_latency": 0.46333324909210205,
+      "remaining": 6,
+      "data_count": 100
+    },
+    {
+      "batch_num": 27,
+      "current_frames": 4,
+      "avg_latency": 0.44568783044815063,
+      "remaining": 5,
+      "data_count": 104
+    },
+    {
+      "batch_num": 28,
+      "current_frames": 4,
+      "avg_latency": 0.43955838680267334,
+      "remaining": 5,
+      "data_count": 108
+    },
+    {
+      "batch_num": 29,
+      "current_frames": 4,
+      "avg_latency": 0.442142128944397,
+      "remaining": 5,
+      "data_count": 112
+    },
+    {
+      "batch_num": 30,
+      "current_frames": 4,
+      "avg_latency": 0.4488595724105835,
+      "remaining": 5,
+      "data_count": 116
+    },
+    {
+      "batch_num": 31,
+      "current_frames": 4,
+      "avg_latency": 0.4376729726791382,
+      "remaining": 4,
+      "data_count": 120
+    },
+    {
+      "batch_num": 32,
+      "current_frames": 4,
+      "avg_latency": 0.5883431434631348,
+      "remaining": 5,
+      "data_count": 124
+    },
+    {
+      "batch_num": 33,
+      "current_frames": 4,
+      "avg_latency": 0.4255217909812927,
+      "remaining": 6,
+      "data_count": 128
+    },
+    {
+      "batch_num": 34,
+      "current_frames": 4,
+      "avg_latency": 0.41379767656326294,
+      "remaining": 6,
+      "data_count": 132
+    },
+    {
+      "batch_num": 35,
+      "current_frames": 4,
+      "avg_latency": 0.41031414270401,
+      "remaining": 5,
+      "data_count": 136
+    },
+    {
+      "batch_num": 36,
+      "current_frames": 4,
+      "avg_latency": 0.4374733567237854,
+      "remaining": 4,
+      "data_count": 140
+    },
+    {
+      "batch_num": 37,
+      "current_frames": 4,
+      "avg_latency": 0.46687012910842896,
+      "remaining": 6,
+      "data_count": 144
+    },
+    {
+      "batch_num": 38,
+      "current_frames": 4,
+      "avg_latency": 0.43777990341186523,
+      "remaining": 5,
+      "data_count": 148
+    },
+    {
+      "batch_num": 39,
+      "current_frames": 4,
+      "avg_latency": 0.4658917188644409,
+      "remaining": 4,
+      "data_count": 152
+    },
+    {
+      "batch_num": 40,
+      "current_frames": 4,
+      "avg_latency": 0.47865837812423706,
+      "remaining": 6,
+      "data_count": 156
+    },
+    {
+      "batch_num": 41,
+      "current_frames": 4,
+      "avg_latency": 0.41896766424179077,
+      "remaining": 6,
+      "data_count": 160
+    },
+    {
+      "batch_num": 42,
+      "current_frames": 4,
+      "avg_latency": 0.4189540147781372,
+      "remaining": 5,
+      "data_count": 164
+    },
+    {
+      "batch_num": 43,
+      "current_frames": 4,
+      "avg_latency": 0.4676496386528015,
+      "remaining": 5,
+      "data_count": 168
+    },
+    {
+      "batch_num": 44,
+      "current_frames": 4,
+      "avg_latency": 0.4587804675102234,
+      "remaining": 5,
+      "data_count": 172
+    },
+    {
+      "batch_num": 45,
+      "current_frames": 4,
+      "avg_latency": 0.4396243095397949,
+      "remaining": 6,
+      "data_count": 176
+    },
+    {
+      "batch_num": 46,
+      "current_frames": 4,
+      "avg_latency": 0.43878501653671265,
+      "remaining": 6,
+      "data_count": 180
+    },
+    {
+      "batch_num": 47,
+      "current_frames": 4,
+      "avg_latency": 0.44606703519821167,
+      "remaining": 5,
+      "data_count": 184
+    },
+    {
+      "batch_num": 48,
+      "current_frames": 4,
+      "avg_latency": 0.4529193043708801,
+      "remaining": 5,
+      "data_count": 188
+    },
+    {
+      "batch_num": 49,
+      "current_frames": 4,
+      "avg_latency": 0.4467659592628479,
+      "remaining": 5,
+      "data_count": 192
+    },
+    {
+      "batch_num": 50,
+      "current_frames": 4,
+      "avg_latency": 0.44878214597702026,
+      "remaining": 6,
+      "data_count": 196
+    },
+    {
+      "batch_num": 51,
+      "current_frames": 4,
+      "avg_latency": 0.4141159653663635,
+      "remaining": 5,
+      "data_count": 200
+    },
+    {
+      "batch_num": 52,
+      "current_frames": 4,
+      "avg_latency": 0.43849343061447144,
+      "remaining": 6,
+      "data_count": 204
+    },
+    {
+      "batch_num": 53,
+      "current_frames": 4,
+      "avg_latency": 0.42439818382263184,
+      "remaining": 5,
+      "data_count": 208
+    },
+    {
+      "batch_num": 54,
+      "current_frames": 4,
+      "avg_latency": 0.4080303907394409,
+      "remaining": 5,
+      "data_count": 212
+    },
+    {
+      "batch_num": 55,
+      "current_frames": 4,
+      "avg_latency": 0.4269189238548279,
+      "remaining": 6,
+      "data_count": 216
+    },
+    {
+      "batch_num": 56,
+      "current_frames": 4,
+      "avg_latency": 0.4136233329772949,
+      "remaining": 5,
+      "data_count": 220
+    },
+    {
+      "batch_num": 57,
+      "current_frames": 4,
+      "avg_latency": 0.4287256598472595,
+      "remaining": 5,
+      "data_count": 224
+    },
+    {
+      "batch_num": 58,
+      "current_frames": 4,
+      "avg_latency": 0.43752408027648926,
+      "remaining": 6,
+      "data_count": 228
+    },
+    {
+      "batch_num": 59,
+      "current_frames": 4,
+      "avg_latency": 0.4282832741737366,
+      "remaining": 5,
+      "data_count": 232
+    },
+    {
+      "batch_num": 60,
+      "current_frames": 4,
+      "avg_latency": 0.45484209060668945,
+      "remaining": 5,
+      "data_count": 236
+    },
+    {
+      "batch_num": 61,
+      "current_frames": 4,
+      "avg_latency": 0.45287197828292847,
+      "remaining": 6,
+      "data_count": 240
+    },
+    {
+      "batch_num": 62,
+      "current_frames": 4,
+      "avg_latency": 0.4337537884712219,
+      "remaining": 6,
+      "data_count": 244
+    },
+    {
+      "batch_num": 63,
+      "current_frames": 4,
+      "avg_latency": 0.43622714281082153,
+      "remaining": 6,
+      "data_count": 248
+    },
+    {
+      "batch_num": 64,
+      "current_frames": 4,
+      "avg_latency": 0.4062478542327881,
+      "remaining": 4,
+      "data_count": 252
+    },
+    {
+      "batch_num": 65,
+      "current_frames": 4,
+      "avg_latency": 0.45020055770874023,
+      "remaining": 4,
+      "data_count": 256
+    },
+    {
+      "batch_num": 66,
+      "current_frames": 4,
+      "avg_latency": 0.46117496490478516,
+      "remaining": 5,
+      "data_count": 260
+    },
+    {
+      "batch_num": 67,
+      "current_frames": 4,
+      "avg_latency": 0.4397902488708496,
+      "remaining": 6,
+      "data_count": 264
+    },
+    {
+      "batch_num": 68,
+      "current_frames": 4,
+      "avg_latency": 0.4326922297477722,
+      "remaining": 6,
+      "data_count": 268
+    },
+    {
+      "batch_num": 69,
+      "current_frames": 4,
+      "avg_latency": 0.42858564853668213,
+      "remaining": 4,
+      "data_count": 272
+    },
+    {
+      "batch_num": 70,
+      "current_frames": 4,
+      "avg_latency": 0.4590187668800354,
+      "remaining": 6,
+      "data_count": 276
+    },
+    {
+      "batch_num": 71,
+      "current_frames": 4,
+      "avg_latency": 0.42882323265075684,
+      "remaining": 6,
+      "data_count": 280
+    },
+    {
+      "batch_num": 72,
+      "current_frames": 4,
+      "avg_latency": 0.4106042981147766,
+      "remaining": 6,
+      "data_count": 284
+    },
+    {
+      "batch_num": 73,
+      "current_frames": 4,
+      "avg_latency": 0.41672348976135254,
+      "remaining": 5,
+      "data_count": 288
+    },
+    {
+      "batch_num": 74,
+      "current_frames": 4,
+      "avg_latency": 0.44086337089538574,
+      "remaining": 6,
+      "data_count": 292
+    },
+    {
+      "batch_num": 75,
+      "current_frames": 4,
+      "avg_latency": 0.42862623929977417,
+      "remaining": 5,
+      "data_count": 296
+    },
+    {
+      "batch_num": 76,
+      "current_frames": 4,
+      "avg_latency": 0.4415203928947449,
+      "remaining": 6,
+      "data_count": 300
+    },
+    {
+      "batch_num": 77,
+      "current_frames": 4,
+      "avg_latency": 0.4402855634689331,
+      "remaining": 5,
+      "data_count": 304
+    },
+    {
+      "batch_num": 78,
+      "current_frames": 4,
+      "avg_latency": 0.43946021795272827,
+      "remaining": 5,
+      "data_count": 308
+    },
+    {
+      "batch_num": 79,
+      "current_frames": 4,
+      "avg_latency": 0.45210695266723633,
+      "remaining": 6,
+      "data_count": 312
+    },
+    {
+      "batch_num": 80,
+      "current_frames": 4,
+      "avg_latency": 0.42375993728637695,
+      "remaining": 5,
+      "data_count": 316
+    },
+    {
+      "batch_num": 81,
+      "current_frames": 4,
+      "avg_latency": 0.4551321268081665,
+      "remaining": 6,
+      "data_count": 320
+    },
+    {
+      "batch_num": 82,
+      "current_frames": 4,
+      "avg_latency": 0.4256190061569214,
+      "remaining": 5,
+      "data_count": 324
+    },
+    {
+      "batch_num": 83,
+      "current_frames": 4,
+      "avg_latency": 0.428322434425354,
+      "remaining": 6,
+      "data_count": 328
+    },
+    {
+      "batch_num": 84,
+      "current_frames": 4,
+      "avg_latency": 0.4238787889480591,
+      "remaining": 6,
+      "data_count": 332
+    },
+    {
+      "batch_num": 85,
+      "current_frames": 4,
+      "avg_latency": 0.41569095849990845,
+      "remaining": 6,
+      "data_count": 336
+    },
+    {
+      "batch_num": 86,
+      "current_frames": 4,
+      "avg_latency": 0.4355320930480957,
+      "remaining": 6,
+      "data_count": 340
+    },
+    {
+      "batch_num": 87,
+      "current_frames": 4,
+      "avg_latency": 0.4355422854423523,
+      "remaining": 6,
+      "data_count": 344
+    },
+    {
+      "batch_num": 88,
+      "current_frames": 4,
+      "avg_latency": 0.4154500961303711,
+      "remaining": 6,
+      "data_count": 348
+    },
+    {
+      "batch_num": 89,
+      "current_frames": 4,
+      "avg_latency": 0.42913877964019775,
+      "remaining": 6,
+      "data_count": 352
+    },
+    {
+      "batch_num": 90,
+      "current_frames": 4,
+      "avg_latency": 0.415599524974823,
+      "remaining": 6,
+      "data_count": 356
+    },
+    {
+      "batch_num": 91,
+      "current_frames": 4,
+      "avg_latency": 0.4125944972038269,
+      "remaining": 6,
+      "data_count": 360
+    },
+    {
+      "batch_num": 92,
+      "current_frames": 4,
+      "avg_latency": 0.4284759759902954,
+      "remaining": 5,
+      "data_count": 364
+    },
+    {
+      "batch_num": 93,
+      "current_frames": 4,
+      "avg_latency": 0.4362555742263794,
+      "remaining": 5,
+      "data_count": 368
+    },
+    {
+      "batch_num": 94,
+      "current_frames": 4,
+      "avg_latency": 0.43515241146087646,
+      "remaining": 6,
+      "data_count": 372
+    },
+    {
+      "batch_num": 95,
+      "current_frames": 4,
+      "avg_latency": 0.424686074256897,
+      "remaining": 6,
+      "data_count": 376
+    },
+    {
+      "batch_num": 96,
+      "current_frames": 4,
+      "avg_latency": 0.4332583546638489,
+      "remaining": 3,
+      "data_count": 380
+    },
+    {
+      "batch_num": 97,
+      "current_frames": 4,
+      "avg_latency": 0.497591495513916,
+      "remaining": 4,
+      "data_count": 384
+    },
+    {
+      "batch_num": 98,
+      "current_frames": 4,
+      "avg_latency": 0.4878373146057129,
+      "remaining": 5,
+      "data_count": 388
+    },
+    {
+      "batch_num": 99,
+      "current_frames": 4,
+      "avg_latency": 0.42507612705230713,
+      "remaining": 5,
+      "data_count": 392
+    },
+    {
+      "batch_num": 100,
+      "current_frames": 4,
+      "avg_latency": 0.41401273012161255,
+      "remaining": 6,
+      "data_count": 396
+    },
+    {
+      "batch_num": 101,
+      "current_frames": 4,
+      "avg_latency": 0.42434054613113403,
+      "remaining": 6,
+      "data_count": 400
+    },
+    {
+      "batch_num": 102,
+      "current_frames": 4,
+      "avg_latency": 0.43019771575927734,
+      "remaining": 5,
+      "data_count": 404
+    },
+    {
+      "batch_num": 103,
+      "current_frames": 4,
+      "avg_latency": 0.4518582820892334,
+      "remaining": 5,
+      "data_count": 408
+    },
+    {
+      "batch_num": 104,
+      "current_frames": 4,
+      "avg_latency": 0.42350757122039795,
+      "remaining": 6,
+      "data_count": 412
+    },
+    {
+      "batch_num": 105,
+      "current_frames": 4,
+      "avg_latency": 0.4082065224647522,
+      "remaining": 6,
+      "data_count": 416
+    },
+    {
+      "batch_num": 106,
+      "current_frames": 4,
+      "avg_latency": 0.4379427433013916,
+      "remaining": 5,
+      "data_count": 420
+    },
+    {
+      "batch_num": 107,
+      "current_frames": 4,
+      "avg_latency": 0.46336841583251953,
+      "remaining": 6,
+      "data_count": 424
+    },
+    {
+      "batch_num": 108,
+      "current_frames": 4,
+      "avg_latency": 0.421383798122406,
+      "remaining": 5,
+      "data_count": 428
+    },
+    {
+      "batch_num": 109,
+      "current_frames": 4,
+      "avg_latency": 0.4430385231971741,
+      "remaining": 6,
+      "data_count": 432
+    },
+    {
+      "batch_num": 110,
+      "current_frames": 4,
+      "avg_latency": 0.41468220949172974,
+      "remaining": 6,
+      "data_count": 436
+    },
+    {
+      "batch_num": 111,
+      "current_frames": 4,
+      "avg_latency": 0.42921555042266846,
+      "remaining": 6,
+      "data_count": 440
+    },
+    {
+      "batch_num": 112,
+      "current_frames": 4,
+      "avg_latency": 0.4248926639556885,
+      "remaining": 6,
+      "data_count": 444
+    },
+    {
+      "batch_num": 113,
+      "current_frames": 4,
+      "avg_latency": 0.43843215703964233,
+      "remaining": 6,
+      "data_count": 448
+    },
+    {
+      "batch_num": 114,
+      "current_frames": 4,
+      "avg_latency": 0.42089319229125977,
+      "remaining": 5,
+      "data_count": 452
+    },
+    {
+      "batch_num": 115,
+      "current_frames": 4,
+      "avg_latency": 0.4305705428123474,
+      "remaining": 5,
+      "data_count": 456
+    },
+    {
+      "batch_num": 116,
+      "current_frames": 4,
+      "avg_latency": 0.42358988523483276,
+      "remaining": 5,
+      "data_count": 460
+    },
+    {
+      "batch_num": 117,
+      "current_frames": 4,
+      "avg_latency": 0.43631285429000854,
+      "remaining": 6,
+      "data_count": 464
+    },
+    {
+      "batch_num": 118,
+      "current_frames": 4,
+      "avg_latency": 0.4142027497291565,
+      "remaining": 4,
+      "data_count": 468
+    },
+    {
+      "batch_num": 119,
+      "current_frames": 4,
+      "avg_latency": 0.49561572074890137,
+      "remaining": 5,
+      "data_count": 472
+    },
+    {
+      "batch_num": 120,
+      "current_frames": 4,
+      "avg_latency": 0.43804723024368286,
+      "remaining": 5,
+      "data_count": 476
+    },
+    {
+      "batch_num": 121,
+      "current_frames": 4,
+      "avg_latency": 0.44652044773101807,
+      "remaining": 6,
+      "data_count": 480
+    },
+    {
+      "batch_num": 122,
+      "current_frames": 4,
+      "avg_latency": 0.426358699798584,
+      "remaining": 5,
+      "data_count": 484
+    },
+    {
+      "batch_num": 123,
+      "current_frames": 4,
+      "avg_latency": 0.4409306049346924,
+      "remaining": 5,
+      "data_count": 488
+    },
+    {
+      "batch_num": 124,
+      "current_frames": 4,
+      "avg_latency": 0.44554615020751953,
+      "remaining": 5,
+      "data_count": 492
+    },
+    {
+      "batch_num": 125,
+      "current_frames": 4,
+      "avg_latency": 0.4397425651550293,
+      "remaining": 6,
+      "data_count": 496
+    },
+    {
+      "batch_num": 126,
+      "current_frames": 4,
+      "avg_latency": 0.4256293773651123,
+      "remaining": 5,
+      "data_count": 500
+    },
+    {
+      "batch_num": 127,
+      "current_frames": 4,
+      "avg_latency": 0.45213180780410767,
+      "remaining": 5,
+      "data_count": 504
+    },
+    {
+      "batch_num": 128,
+      "current_frames": 4,
+      "avg_latency": 0.41088593006134033,
+      "remaining": 6,
+      "data_count": 508
+    },
+    {
+      "batch_num": 129,
+      "current_frames": 4,
+      "avg_latency": 0.40478670597076416,
+      "remaining": 6,
+      "data_count": 512
+    },
+    {
+      "batch_num": 130,
+      "current_frames": 4,
+      "avg_latency": 0.42665427923202515,
+      "remaining": 6,
+      "data_count": 516
+    },
+    {
+      "batch_num": 131,
+      "current_frames": 4,
+      "avg_latency": 0.43923038244247437,
+      "remaining": 6,
+      "data_count": 520
+    },
+    {
+      "batch_num": 132,
+      "current_frames": 4,
+      "avg_latency": 0.42739492654800415,
+      "remaining": 6,
+      "data_count": 524
+    },
+    {
+      "batch_num": 133,
+      "current_frames": 4,
+      "avg_latency": 0.40896254777908325,
+      "remaining": 5,
+      "data_count": 528
+    },
+    {
+      "batch_num": 134,
+      "current_frames": 4,
+      "avg_latency": 0.429382860660553,
+      "remaining": 6,
+      "data_count": 532
+    },
+    {
+      "batch_num": 135,
+      "current_frames": 4,
+      "avg_latency": 0.41966569423675537,
+      "remaining": 5,
+      "data_count": 536
+    },
+    {
+      "batch_num": 136,
+      "current_frames": 4,
+      "avg_latency": 0.4080204367637634,
+      "remaining": 5,
+      "data_count": 540
+    },
+    {
+      "batch_num": 137,
+      "current_frames": 4,
+      "avg_latency": 0.4043712019920349,
+      "remaining": 5,
+      "data_count": 544
+    },
+    {
+      "batch_num": 138,
+      "current_frames": 4,
+      "avg_latency": 0.4236829876899719,
+      "remaining": 6,
+      "data_count": 548
+    },
+    {
+      "batch_num": 139,
+      "current_frames": 4,
+      "avg_latency": 0.4101983904838562,
+      "remaining": 6,
+      "data_count": 552
+    },
+    {
+      "batch_num": 140,
+      "current_frames": 4,
+      "avg_latency": 0.4153832197189331,
+      "remaining": 5,
+      "data_count": 556
+    },
+    {
+      "batch_num": 141,
+      "current_frames": 4,
+      "avg_latency": 0.4343640208244324,
+      "remaining": 6,
+      "data_count": 560
+    },
+    {
+      "batch_num": 142,
+      "current_frames": 4,
+      "avg_latency": 0.4131348729133606,
+      "remaining": 6,
+      "data_count": 564
+    },
+    {
+      "batch_num": 143,
+      "current_frames": 4,
+      "avg_latency": 0.39951246976852417,
+      "remaining": 5,
+      "data_count": 568
+    },
+    {
+      "batch_num": 144,
+      "current_frames": 4,
+      "avg_latency": 0.41747546195983887,
+      "remaining": 5,
+      "data_count": 572
+    },
+    {
+      "batch_num": 145,
+      "current_frames": 4,
+      "avg_latency": 0.42477619647979736,
+      "remaining": 6,
+      "data_count": 576
+    },
+    {
+      "batch_num": 146,
+      "current_frames": 4,
+      "avg_latency": 0.41195887327194214,
+      "remaining": 6,
+      "data_count": 580
+    },
+    {
+      "batch_num": 147,
+      "current_frames": 4,
+      "avg_latency": 0.42483073472976685,
+      "remaining": 6,
+      "data_count": 584
+    },
+    {
+      "batch_num": 148,
+      "current_frames": 4,
+      "avg_latency": 0.40518176555633545,
+      "remaining": 6,
+      "data_count": 588
+    },
+    {
+      "batch_num": 149,
+      "current_frames": 4,
+      "avg_latency": 0.41011863946914673,
+      "remaining": 6,
+      "data_count": 592
+    },
+    {
+      "batch_num": 150,
+      "current_frames": 4,
+      "avg_latency": 0.414323627948761,
+      "remaining": 6,
+      "data_count": 596
+    },
+    {
+      "batch_num": 151,
+      "current_frames": 4,
+      "avg_latency": 0.41216421127319336,
+      "remaining": 5,
+      "data_count": 600
+    },
+    {
+      "batch_num": 152,
+      "current_frames": 4,
+      "avg_latency": 0.4275462031364441,
+      "remaining": 4,
+      "data_count": 604
+    },
+    {
+      "batch_num": 153,
+      "current_frames": 4,
+      "avg_latency": 0.45250648260116577,
+      "remaining": 6,
+      "data_count": 608
+    },
+    {
+      "batch_num": 154,
+      "current_frames": 4,
+      "avg_latency": 0.389582097530365,
+      "remaining": 5,
+      "data_count": 612
+    },
+    {
+      "batch_num": 155,
+      "current_frames": 4,
+      "avg_latency": 0.4067528247833252,
+      "remaining": 5,
+      "data_count": 616
+    },
+    {
+      "batch_num": 156,
+      "current_frames": 4,
+      "avg_latency": 0.4336148500442505,
+      "remaining": 5,
+      "data_count": 620
+    },
+    {
+      "batch_num": 157,
+      "current_frames": 4,
+      "avg_latency": 0.4194833040237427,
+      "remaining": 6,
+      "data_count": 624
+    },
+    {
+      "batch_num": 158,
+      "current_frames": 4,
+      "avg_latency": 0.40898597240448,
+      "remaining": 6,
+      "data_count": 628
+    },
+    {
+      "batch_num": 159,
+      "current_frames": 4,
+      "avg_latency": 0.4095902442932129,
+      "remaining": 5,
+      "data_count": 632
+    },
+    {
+      "batch_num": 160,
+      "current_frames": 4,
+      "avg_latency": 0.42363834381103516,
+      "remaining": 5,
+      "data_count": 636
+    },
+    {
+      "batch_num": 161,
+      "current_frames": 4,
+      "avg_latency": 0.40998733043670654,
+      "remaining": 5,
+      "data_count": 640
+    },
+    {
+      "batch_num": 162,
+      "current_frames": 4,
+      "avg_latency": 0.4141571521759033,
+      "remaining": 2,
+      "data_count": 644
+    },
+    {
+      "batch_num": 163,
+      "current_frames": 4,
+      "avg_latency": 0.5417658686637878,
+      "remaining": 5,
+      "data_count": 648
+    },
+    {
+      "batch_num": 164,
+      "current_frames": 4,
+      "avg_latency": 0.4108279347419739,
+      "remaining": 5,
+      "data_count": 652
+    },
+    {
+      "batch_num": 165,
+      "current_frames": 4,
+      "avg_latency": 0.4366248846054077,
+      "remaining": 6,
+      "data_count": 656
+    },
+    {
+      "batch_num": 166,
+      "current_frames": 4,
+      "avg_latency": 0.4192321300506592,
+      "remaining": 5,
+      "data_count": 660
+    },
+    {
+      "batch_num": 167,
+      "current_frames": 4,
+      "avg_latency": 0.4422449469566345,
+      "remaining": 5,
+      "data_count": 664
+    },
+    {
+      "batch_num": 168,
+      "current_frames": 4,
+      "avg_latency": 0.42937785387039185,
+      "remaining": 5,
+      "data_count": 668
+    },
+    {
+      "batch_num": 169,
+      "current_frames": 4,
+      "avg_latency": 0.45101088285446167,
+      "remaining": 5,
+      "data_count": 672
+    },
+    {
+      "batch_num": 170,
+      "current_frames": 4,
+      "avg_latency": 0.4644778370857239,
+      "remaining": 6,
+      "data_count": 676
+    },
+    {
+      "batch_num": 171,
+      "current_frames": 4,
+      "avg_latency": 0.42185914516448975,
+      "remaining": 5,
+      "data_count": 680
+    },
+    {
+      "batch_num": 172,
+      "current_frames": 4,
+      "avg_latency": 0.43284928798675537,
+      "remaining": 5,
+      "data_count": 684
+    },
+    {
+      "batch_num": 173,
+      "current_frames": 4,
+      "avg_latency": 0.4460684061050415,
+      "remaining": 5,
+      "data_count": 688
+    },
+    {
+      "batch_num": 174,
+      "current_frames": 4,
+      "avg_latency": 0.4329455494880676,
+      "remaining": 6,
+      "data_count": 692
+    },
+    {
+      "batch_num": 175,
+      "current_frames": 4,
+      "avg_latency": 0.4182926416397095,
+      "remaining": 6,
+      "data_count": 696
+    },
+    {
+      "batch_num": 176,
+      "current_frames": 4,
+      "avg_latency": 0.43079936504364014,
+      "remaining": 6,
+      "data_count": 700
+    },
+    {
+      "batch_num": 177,
+      "current_frames": 4,
+      "avg_latency": 0.43404829502105713,
+      "remaining": 6,
+      "data_count": 704
+    },
+    {
+      "batch_num": 178,
+      "current_frames": 4,
+      "avg_latency": 0.43104785680770874,
+      "remaining": 5,
+      "data_count": 708
+    },
+    {
+      "batch_num": 179,
+      "current_frames": 4,
+      "avg_latency": 0.43092459440231323,
+      "remaining": 5,
+      "data_count": 712
+    },
+    {
+      "batch_num": 180,
+      "current_frames": 4,
+      "avg_latency": 0.4214703440666199,
+      "remaining": 5,
+      "data_count": 716
+    },
+    {
+      "batch_num": 181,
+      "current_frames": 4,
+      "avg_latency": 0.4452051520347595,
+      "remaining": 6,
+      "data_count": 720
+    },
+    {
+      "batch_num": 182,
+      "current_frames": 4,
+      "avg_latency": 0.4355699419975281,
+      "remaining": 6,
+      "data_count": 724
+    },
+    {
+      "batch_num": 183,
+      "current_frames": 4,
+      "avg_latency": 0.4427773952484131,
+      "remaining": 5,
+      "data_count": 728
+    },
+    {
+      "batch_num": 184,
+      "current_frames": 4,
+      "avg_latency": 0.46066826581954956,
+      "remaining": 5,
+      "data_count": 732
+    },
+    {
+      "batch_num": 185,
+      "current_frames": 4,
+      "avg_latency": 0.4461914896965027,
+      "remaining": 6,
+      "data_count": 736
+    },
+    {
+      "batch_num": 186,
+      "current_frames": 4,
+      "avg_latency": 0.4294649362564087,
+      "remaining": 6,
+      "data_count": 740
+    },
+    {
+      "batch_num": 187,
+      "current_frames": 4,
+      "avg_latency": 0.41586941480636597,
+      "remaining": 5,
+      "data_count": 744
+    },
+    {
+      "batch_num": 188,
+      "current_frames": 4,
+      "avg_latency": 0.43165063858032227,
+      "remaining": 5,
+      "data_count": 748
+    },
+    {
+      "batch_num": 189,
+      "current_frames": 4,
+      "avg_latency": 0.4168393015861511,
+      "remaining": 6,
+      "data_count": 752
+    },
+    {
+      "batch_num": 190,
+      "current_frames": 4,
+      "avg_latency": 0.4129842519760132,
+      "remaining": 5,
+      "data_count": 756
+    },
+    {
+      "batch_num": 191,
+      "current_frames": 4,
+      "avg_latency": 0.4199112057685852,
+      "remaining": 5,
+      "data_count": 760
+    },
+    {
+      "batch_num": 192,
+      "current_frames": 4,
+      "avg_latency": 0.45935964584350586,
+      "remaining": 5,
+      "data_count": 764
+    },
+    {
+      "batch_num": 193,
+      "current_frames": 4,
+      "avg_latency": 0.41395896673202515,
+      "remaining": 5,
+      "data_count": 768
+    },
+    {
+      "batch_num": 194,
+      "current_frames": 4,
+      "avg_latency": 0.4339647889137268,
+      "remaining": 5,
+      "data_count": 772
+    },
+    {
+      "batch_num": 195,
+      "current_frames": 4,
+      "avg_latency": 0.3981756567955017,
+      "remaining": 5,
+      "data_count": 776
+    },
+    {
+      "batch_num": 196,
+      "current_frames": 4,
+      "avg_latency": 0.4320272207260132,
+      "remaining": 5,
+      "data_count": 780
+    },
+    {
+      "batch_num": 197,
+      "current_frames": 4,
+      "avg_latency": 0.42451155185699463,
+      "remaining": 6,
+      "data_count": 784
+    },
+    {
+      "batch_num": 198,
+      "current_frames": 4,
+      "avg_latency": 0.41452789306640625,
+      "remaining": 5,
+      "data_count": 788
+    },
+    {
+      "batch_num": 199,
+      "current_frames": 4,
+      "avg_latency": 0.4234069585800171,
+      "remaining": 6,
+      "data_count": 792
+    },
+    {
+      "batch_num": 200,
+      "current_frames": 4,
+      "avg_latency": 0.41960573196411133,
+      "remaining": 5,
+      "data_count": 796
+    },
+    {
+      "batch_num": 201,
+      "current_frames": 4,
+      "avg_latency": 0.453407347202301,
+      "remaining": 6,
+      "data_count": 800
+    },
+    {
+      "batch_num": 202,
+      "current_frames": 4,
+      "avg_latency": 0.42572158575057983,
+      "remaining": 5,
+      "data_count": 804
+    },
+    {
+      "batch_num": 203,
+      "current_frames": 4,
+      "avg_latency": 0.4188612103462219,
+      "remaining": 5,
+      "data_count": 808
+    },
+    {
+      "batch_num": 204,
+      "current_frames": 4,
+      "avg_latency": 0.43603551387786865,
+      "remaining": 6,
+      "data_count": 812
+    },
+    {
+      "batch_num": 205,
+      "current_frames": 4,
+      "avg_latency": 0.43188440799713135,
+      "remaining": 5,
+      "data_count": 816
+    },
+    {
+      "batch_num": 206,
+      "current_frames": 4,
+      "avg_latency": 0.4377292990684509,
+      "remaining": 5,
+      "data_count": 820
+    },
+    {
+      "batch_num": 207,
+      "current_frames": 4,
+      "avg_latency": 0.4434499740600586,
+      "remaining": 5,
+      "data_count": 824
+    },
+    {
+      "batch_num": 208,
+      "current_frames": 4,
+      "avg_latency": 0.4321020245552063,
+      "remaining": 6,
+      "data_count": 828
+    },
+    {
+      "batch_num": 209,
+      "current_frames": 4,
+      "avg_latency": 0.4209946393966675,
+      "remaining": 6,
+      "data_count": 832
+    },
+    {
+      "batch_num": 210,
+      "current_frames": 4,
+      "avg_latency": 0.4083406329154968,
+      "remaining": 5,
+      "data_count": 836
+    },
+    {
+      "batch_num": 211,
+      "current_frames": 4,
+      "avg_latency": 0.41948020458221436,
+      "remaining": 5,
+      "data_count": 840
+    },
+    {
+      "batch_num": 212,
+      "current_frames": 4,
+      "avg_latency": 0.42369532585144043,
+      "remaining": 5,
+      "data_count": 844
+    },
+    {
+      "batch_num": 213,
+      "current_frames": 4,
+      "avg_latency": 0.4321247339248657,
+      "remaining": 5,
+      "data_count": 848
+    },
+    {
+      "batch_num": 214,
+      "current_frames": 4,
+      "avg_latency": 0.40810346603393555,
+      "remaining": 5,
+      "data_count": 852
+    },
+    {
+      "batch_num": 215,
+      "current_frames": 4,
+      "avg_latency": 0.4209447503089905,
+      "remaining": 5,
+      "data_count": 856
+    },
+    {
+      "batch_num": 216,
+      "current_frames": 4,
+      "avg_latency": 0.4085884690284729,
+      "remaining": 6,
+      "data_count": 860
+    },
+    {
+      "batch_num": 217,
+      "current_frames": 4,
+      "avg_latency": 0.4083346128463745,
+      "remaining": 6,
+      "data_count": 864
+    },
+    {
+      "batch_num": 218,
+      "current_frames": 4,
+      "avg_latency": 0.41712141036987305,
+      "remaining": 6,
+      "data_count": 868
+    },
+    {
+      "batch_num": 219,
+      "current_frames": 4,
+      "avg_latency": 0.40870237350463867,
+      "remaining": 6,
+      "data_count": 872
+    },
+    {
+      "batch_num": 220,
+      "current_frames": 4,
+      "avg_latency": 0.3966144919395447,
+      "remaining": 5,
+      "data_count": 876
+    },
+    {
+      "batch_num": 221,
+      "current_frames": 4,
+      "avg_latency": 0.4128953814506531,
+      "remaining": 4,
+      "data_count": 880
+    },
+    {
+      "batch_num": 222,
+      "current_frames": 4,
+      "avg_latency": 0.43153131008148193,
+      "remaining": 6,
+      "data_count": 884
+    },
+    {
+      "batch_num": 223,
+      "current_frames": 4,
+      "avg_latency": 0.4001603126525879,
+      "remaining": 6,
+      "data_count": 888
+    },
+    {
+      "batch_num": 224,
+      "current_frames": 4,
+      "avg_latency": 0.42166680097579956,
+      "remaining": 6,
+      "data_count": 892
+    },
+    {
+      "batch_num": 225,
+      "current_frames": 4,
+      "avg_latency": 0.4087851047515869,
+      "remaining": 6,
+      "data_count": 896
+    },
+    {
+      "batch_num": 226,
+      "current_frames": 4,
+      "avg_latency": 0.3961535692214966,
+      "remaining": 5,
+      "data_count": 900
+    },
+    {
+      "batch_num": 227,
+      "current_frames": 4,
+      "avg_latency": 0.405078649520874,
+      "remaining": 3,
+      "data_count": 904
+    },
+    {
+      "batch_num": 228,
+      "current_frames": 4,
+      "avg_latency": 0.6235966086387634,
+      "remaining": 5,
+      "data_count": 908
+    },
+    {
+      "batch_num": 229,
+      "current_frames": 4,
+      "avg_latency": 0.40993034839630127,
+      "remaining": 5,
+      "data_count": 912
+    },
+    {
+      "batch_num": 230,
+      "current_frames": 4,
+      "avg_latency": 0.4255618453025818,
+      "remaining": 6,
+      "data_count": 916
+    },
+    {
+      "batch_num": 231,
+      "current_frames": 4,
+      "avg_latency": 0.4163972735404968,
+      "remaining": 6,
+      "data_count": 920
+    },
+    {
+      "batch_num": 232,
+      "current_frames": 4,
+      "avg_latency": 0.42629992961883545,
+      "remaining": 6,
+      "data_count": 924
+    },
+    {
+      "batch_num": 233,
+      "current_frames": 4,
+      "avg_latency": 0.4204825162887573,
+      "remaining": 5,
+      "data_count": 928
+    },
+    {
+      "batch_num": 234,
+      "current_frames": 4,
+      "avg_latency": 0.42206716537475586,
+      "remaining": 5,
+      "data_count": 932
+    },
+    {
+      "batch_num": 235,
+      "current_frames": 4,
+      "avg_latency": 0.4263489842414856,
+      "remaining": 6,
+      "data_count": 936
+    },
+    {
+      "batch_num": 236,
+      "current_frames": 4,
+      "avg_latency": 0.42536288499832153,
+      "remaining": 5,
+      "data_count": 940
+    },
+    {
+      "batch_num": 237,
+      "current_frames": 4,
+      "avg_latency": 0.42057812213897705,
+      "remaining": 5,
+      "data_count": 944
+    },
+    {
+      "batch_num": 238,
+      "current_frames": 4,
+      "avg_latency": 0.42918556928634644,
+      "remaining": 5,
+      "data_count": 948
+    },
+    {
+      "batch_num": 239,
+      "current_frames": 4,
+      "avg_latency": 0.4111172556877136,
+      "remaining": 6,
+      "data_count": 952
+    },
+    {
+      "batch_num": 240,
+      "current_frames": 4,
+      "avg_latency": 0.4018763303756714,
+      "remaining": 6,
+      "data_count": 956
+    },
+    {
+      "batch_num": 241,
+      "current_frames": 4,
+      "avg_latency": 0.4025782346725464,
+      "remaining": 5,
+      "data_count": 960
+    },
+    {
+      "batch_num": 242,
+      "current_frames": 4,
+      "avg_latency": 0.4168860912322998,
+      "remaining": 5,
+      "data_count": 964
+    },
+    {
+      "batch_num": 243,
+      "current_frames": 4,
+      "avg_latency": 0.4166858196258545,
+      "remaining": 5,
+      "data_count": 968
+    },
+    {
+      "batch_num": 244,
+      "current_frames": 4,
+      "avg_latency": 0.4142265319824219,
+      "remaining": 6,
+      "data_count": 972
+    },
+    {
+      "batch_num": 245,
+      "current_frames": 4,
+      "avg_latency": 0.41996389627456665,
+      "remaining": 6,
+      "data_count": 976
+    },
+    {
+      "batch_num": 246,
+      "current_frames": 4,
+      "avg_latency": 0.4072822332382202,
+      "remaining": 6,
+      "data_count": 980
+    },
+    {
+      "batch_num": 247,
+      "current_frames": 4,
+      "avg_latency": 0.4065651297569275,
+      "remaining": 5,
+      "data_count": 984
+    },
+    {
+      "batch_num": 248,
+      "current_frames": 4,
+      "avg_latency": 0.4181835651397705,
+      "remaining": 4,
+      "data_count": 988
+    },
+    {
+      "batch_num": 249,
+      "current_frames": 4,
+      "avg_latency": 0.504287600517273,
+      "remaining": 5,
+      "data_count": 992
+    },
+    {
+      "batch_num": 250,
+      "current_frames": 4,
+      "avg_latency": 0.43203336000442505,
+      "remaining": 6,
+      "data_count": 996
+    },
+    {
+      "batch_num": 251,
+      "current_frames": 4,
+      "avg_latency": 0.4105260968208313,
+      "remaining": 5,
+      "data_count": 1000
+    },
+    {
+      "batch_num": 252,
+      "current_frames": 4,
+      "avg_latency": 0.42278629541397095,
+      "remaining": 5,
+      "data_count": 1004
+    },
+    {
+      "batch_num": 253,
+      "current_frames": 4,
+      "avg_latency": 0.4147900342941284,
+      "remaining": 5,
+      "data_count": 1008
+    },
+    {
+      "batch_num": 254,
+      "current_frames": 4,
+      "avg_latency": 0.4175211191177368,
+      "remaining": 6,
+      "data_count": 1012
+    },
+    {
+      "batch_num": 255,
+      "current_frames": 4,
+      "avg_latency": 0.4223880171775818,
+      "remaining": 6,
+      "data_count": 1016
+    },
+    {
+      "batch_num": 256,
+      "current_frames": 4,
+      "avg_latency": 0.40506166219711304,
+      "remaining": 6,
+      "data_count": 1020
+    },
+    {
+      "batch_num": 257,
+      "current_frames": 4,
+      "avg_latency": 0.42311978340148926,
+      "remaining": 6,
+      "data_count": 1024
+    },
+    {
+      "batch_num": 258,
+      "current_frames": 4,
+      "avg_latency": 0.4251880645751953,
+      "remaining": 6,
+      "data_count": 1028
+    },
+    {
+      "batch_num": 259,
+      "current_frames": 4,
+      "avg_latency": 0.41239237785339355,
+      "remaining": 6,
+      "data_count": 1032
+    },
+    {
+      "batch_num": 260,
+      "current_frames": 4,
+      "avg_latency": 0.4144459366798401,
+      "remaining": 5,
+      "data_count": 1036
+    },
+    {
+      "batch_num": 261,
+      "current_frames": 4,
+      "avg_latency": 0.4290769696235657,
+      "remaining": 6,
+      "data_count": 1040
+    },
+    {
+      "batch_num": 262,
+      "current_frames": 4,
+      "avg_latency": 0.42212337255477905,
+      "remaining": 5,
+      "data_count": 1044
+    },
+    {
+      "batch_num": 263,
+      "current_frames": 4,
+      "avg_latency": 0.4314432740211487,
+      "remaining": 5,
+      "data_count": 1048
+    },
+    {
+      "batch_num": 264,
+      "current_frames": 4,
+      "avg_latency": 0.4297153949737549,
+      "remaining": 5,
+      "data_count": 1052
+    },
+    {
+      "batch_num": 265,
+      "current_frames": 4,
+      "avg_latency": 0.43100035190582275,
+      "remaining": 5,
+      "data_count": 1056
+    },
+    {
+      "batch_num": 266,
+      "current_frames": 4,
+      "avg_latency": 0.42035752534866333,
+      "remaining": 6,
+      "data_count": 1060
+    },
+    {
+      "batch_num": 267,
+      "current_frames": 4,
+      "avg_latency": 0.39541947841644287,
+      "remaining": 6,
+      "data_count": 1064
+    },
+    {
+      "batch_num": 268,
+      "current_frames": 4,
+      "avg_latency": 0.3979763984680176,
+      "remaining": 6,
+      "data_count": 1068
+    },
+    {
+      "batch_num": 269,
+      "current_frames": 4,
+      "avg_latency": 0.39591526985168457,
+      "remaining": 4,
+      "data_count": 1072
+    },
+    {
+      "batch_num": 270,
+      "current_frames": 4,
+      "avg_latency": 0.44329696893692017,
+      "remaining": 6,
+      "data_count": 1076
+    },
+    {
+      "batch_num": 271,
+      "current_frames": 4,
+      "avg_latency": 0.418254017829895,
+      "remaining": 6,
+      "data_count": 1080
+    },
+    {
+      "batch_num": 272,
+      "current_frames": 4,
+      "avg_latency": 0.40473467111587524,
+      "remaining": 5,
+      "data_count": 1084
+    },
+    {
+      "batch_num": 273,
+      "current_frames": 4,
+      "avg_latency": 0.4233226180076599,
+      "remaining": 6,
+      "data_count": 1088
+    },
+    {
+      "batch_num": 274,
+      "current_frames": 4,
+      "avg_latency": 0.4056646227836609,
+      "remaining": 5,
+      "data_count": 1092
+    },
+    {
+      "batch_num": 275,
+      "current_frames": 4,
+      "avg_latency": 0.4211656451225281,
+      "remaining": 5,
+      "data_count": 1096
+    },
+    {
+      "batch_num": 276,
+      "current_frames": 4,
+      "avg_latency": 0.4152759909629822,
+      "remaining": 5,
+      "data_count": 1100
+    },
+    {
+      "batch_num": 277,
+      "current_frames": 4,
+      "avg_latency": 0.4732469916343689,
+      "remaining": 6,
+      "data_count": 1104
+    },
+    {
+      "batch_num": 278,
+      "current_frames": 4,
+      "avg_latency": 0.42160195112228394,
+      "remaining": 5,
+      "data_count": 1108
+    },
+    {
+      "batch_num": 279,
+      "current_frames": 4,
+      "avg_latency": 0.41603541374206543,
+      "remaining": 4,
+      "data_count": 1112
+    },
+    {
+      "batch_num": 280,
+      "current_frames": 4,
+      "avg_latency": 0.44921523332595825,
+      "remaining": 5,
+      "data_count": 1116
+    },
+    {
+      "batch_num": 281,
+      "current_frames": 4,
+      "avg_latency": 0.4070637822151184,
+      "remaining": 5,
+      "data_count": 1120
+    },
+    {
+      "batch_num": 282,
+      "current_frames": 4,
+      "avg_latency": 0.4054574966430664,
+      "remaining": 6,
+      "data_count": 1124
+    },
+    {
+      "batch_num": 283,
+      "current_frames": 4,
+      "avg_latency": 0.3793613910675049,
+      "remaining": 5,
+      "data_count": 1128
+    },
+    {
+      "batch_num": 284,
+      "current_frames": 4,
+      "avg_latency": 0.4473615288734436,
+      "remaining": 6,
+      "data_count": 1132
+    },
+    {
+      "batch_num": 285,
+      "current_frames": 4,
+      "avg_latency": 0.40413975715637207,
+      "remaining": 5,
+      "data_count": 1136
+    },
+    {
+      "batch_num": 286,
+      "current_frames": 4,
+      "avg_latency": 0.41847479343414307,
+      "remaining": 5,
+      "data_count": 1140
+    },
+    {
+      "batch_num": 287,
+      "current_frames": 4,
+      "avg_latency": 0.417563796043396,
+      "remaining": 4,
+      "data_count": 1144
+    },
+    {
+      "batch_num": 288,
+      "current_frames": 4,
+      "avg_latency": 0.45629215240478516,
+      "remaining": 5,
+      "data_count": 1148
+    },
+    {
+      "batch_num": 289,
+      "current_frames": 4,
+      "avg_latency": 0.4413765072822571,
+      "remaining": 5,
+      "data_count": 1152
+    },
+    {
+      "batch_num": 290,
+      "current_frames": 4,
+      "avg_latency": 0.4318634271621704,
+      "remaining": 5,
+      "data_count": 1156
+    },
+    {
+      "batch_num": 291,
+      "current_frames": 4,
+      "avg_latency": 0.4335976243019104,
+      "remaining": 5,
+      "data_count": 1160
+    },
+    {
+      "batch_num": 292,
+      "current_frames": 4,
+      "avg_latency": 0.4228067398071289,
+      "remaining": 6,
+      "data_count": 1164
+    },
+    {
+      "batch_num": 293,
+      "current_frames": 4,
+      "avg_latency": 0.41744935512542725,
+      "remaining": 3,
+      "data_count": 1168
+    },
+    {
+      "batch_num": 294,
+      "current_frames": 4,
+      "avg_latency": 0.573834240436554,
+      "remaining": 5,
+      "data_count": 1172
+    },
+    {
+      "batch_num": 295,
+      "current_frames": 4,
+      "avg_latency": 0.4219772219657898,
+      "remaining": 5,
+      "data_count": 1176
+    },
+    {
+      "batch_num": 296,
+      "current_frames": 4,
+      "avg_latency": 0.4191175699234009,
+      "remaining": 5,
+      "data_count": 1180
+    },
+    {
+      "batch_num": 297,
+      "current_frames": 4,
+      "avg_latency": 0.42609626054763794,
+      "remaining": 5,
+      "data_count": 1184
+    },
+    {
+      "batch_num": 298,
+      "current_frames": 4,
+      "avg_latency": 0.42319828271865845,
+      "remaining": 6,
+      "data_count": 1188
+    },
+    {
+      "batch_num": 299,
+      "current_frames": 4,
+      "avg_latency": 0.4041096568107605,
+      "remaining": 5,
+      "data_count": 1192
+    },
+    {
+      "batch_num": 300,
+      "current_frames": 4,
+      "avg_latency": 0.42792809009552,
+      "remaining": 5,
+      "data_count": 1196
+    },
+    {
+      "batch_num": 301,
+      "current_frames": 4,
+      "avg_latency": 0.4551609754562378,
+      "remaining": 5,
+      "data_count": 1200
+    },
+    {
+      "batch_num": 302,
+      "current_frames": 4,
+      "avg_latency": 0.4338189959526062,
+      "remaining": 5,
+      "data_count": 1204
+    },
+    {
+      "batch_num": 303,
+      "current_frames": 4,
+      "avg_latency": 0.4379727840423584,
+      "remaining": 6,
+      "data_count": 1208
+    },
+    {
+      "batch_num": 304,
+      "current_frames": 4,
+      "avg_latency": 0.42194080352783203,
+      "remaining": 5,
+      "data_count": 1212
+    },
+    {
+      "batch_num": 305,
+      "current_frames": 4,
+      "avg_latency": 0.46616119146347046,
+      "remaining": 6,
+      "data_count": 1216
+    },
+    {
+      "batch_num": 306,
+      "current_frames": 4,
+      "avg_latency": 0.41141456365585327,
+      "remaining": 6,
+      "data_count": 1220
+    },
+    {
+      "batch_num": 307,
+      "current_frames": 4,
+      "avg_latency": 0.42662739753723145,
+      "remaining": 5,
+      "data_count": 1224
+    },
+    {
+      "batch_num": 308,
+      "current_frames": 4,
+      "avg_latency": 0.4342714548110962,
+      "remaining": 6,
+      "data_count": 1228
+    },
+    {
+      "batch_num": 309,
+      "current_frames": 4,
+      "avg_latency": 0.4319290518760681,
+      "remaining": 5,
+      "data_count": 1232
+    },
+    {
+      "batch_num": 310,
+      "current_frames": 4,
+      "avg_latency": 0.44258129596710205,
+      "remaining": 6,
+      "data_count": 1236
+    },
+    {
+      "batch_num": 311,
+      "current_frames": 4,
+      "avg_latency": 0.4285016655921936,
+      "remaining": 5,
+      "data_count": 1240
+    },
+    {
+      "batch_num": 312,
+      "current_frames": 4,
+      "avg_latency": 0.43182218074798584,
+      "remaining": 6,
+      "data_count": 1244
+    },
+    {
+      "batch_num": 313,
+      "current_frames": 4,
+      "avg_latency": 0.4038134813308716,
+      "remaining": 4,
+      "data_count": 1248
+    },
+    {
+      "batch_num": 314,
+      "current_frames": 4,
+      "avg_latency": 0.48942458629608154,
+      "remaining": 5,
+      "data_count": 1252
+    },
+    {
+      "batch_num": 315,
+      "current_frames": 4,
+      "avg_latency": 0.422321081161499,
+      "remaining": 6,
+      "data_count": 1256
+    },
+    {
+      "batch_num": 316,
+      "current_frames": 4,
+      "avg_latency": 0.40866297483444214,
+      "remaining": 6,
+      "data_count": 1260
+    },
+    {
+      "batch_num": 317,
+      "current_frames": 4,
+      "avg_latency": 0.4046306014060974,
+      "remaining": 6,
+      "data_count": 1264
+    },
+    {
+      "batch_num": 318,
+      "current_frames": 4,
+      "avg_latency": 0.4184338450431824,
+      "remaining": 5,
+      "data_count": 1268
+    },
+    {
+      "batch_num": 319,
+      "current_frames": 4,
+      "avg_latency": 0.4368478059768677,
+      "remaining": 5,
+      "data_count": 1272
+    },
+    {
+      "batch_num": 320,
+      "current_frames": 4,
+      "avg_latency": 0.4333460330963135,
+      "remaining": 4,
+      "data_count": 1276
+    },
+    {
+      "batch_num": 321,
+      "current_frames": 4,
+      "avg_latency": 0.4524453282356262,
+      "remaining": 6,
+      "data_count": 1280
+    },
+    {
+      "batch_num": 322,
+      "current_frames": 4,
+      "avg_latency": 0.43020540475845337,
+      "remaining": 6,
+      "data_count": 1284
+    },
+    {
+      "batch_num": 323,
+      "current_frames": 4,
+      "avg_latency": 0.406791090965271,
+      "remaining": 5,
+      "data_count": 1288
+    },
+    {
+      "batch_num": 324,
+      "current_frames": 4,
+      "avg_latency": 0.4254664182662964,
+      "remaining": 5,
+      "data_count": 1292
+    },
+    {
+      "batch_num": 325,
+      "current_frames": 4,
+      "avg_latency": 0.40016108751296997,
+      "remaining": 5,
+      "data_count": 1296
+    },
+    {
+      "batch_num": 326,
+      "current_frames": 4,
+      "avg_latency": 0.4329204559326172,
+      "remaining": 5,
+      "data_count": 1300
+    },
+    {
+      "batch_num": 327,
+      "current_frames": 4,
+      "avg_latency": 0.41557347774505615,
+      "remaining": 5,
+      "data_count": 1304
+    },
+    {
+      "batch_num": 328,
+      "current_frames": 4,
+      "avg_latency": 0.465167760848999,
+      "remaining": 5,
+      "data_count": 1308
+    },
+    {
+      "batch_num": 329,
+      "current_frames": 4,
+      "avg_latency": 0.43703144788742065,
+      "remaining": 5,
+      "data_count": 1312
+    },
+    {
+      "batch_num": 330,
+      "current_frames": 4,
+      "avg_latency": 0.4211727976799011,
+      "remaining": 5,
+      "data_count": 1316
+    },
+    {
+      "batch_num": 331,
+      "current_frames": 4,
+      "avg_latency": 0.4220427870750427,
+      "remaining": 6,
+      "data_count": 1320
+    },
+    {
+      "batch_num": 332,
+      "current_frames": 4,
+      "avg_latency": 0.41397273540496826,
+      "remaining": 6,
+      "data_count": 1324
+    },
+    {
+      "batch_num": 333,
+      "current_frames": 4,
+      "avg_latency": 0.40616315603256226,
+      "remaining": 5,
+      "data_count": 1328
+    },
+    {
+      "batch_num": 334,
+      "current_frames": 4,
+      "avg_latency": 0.41667312383651733,
+      "remaining": 5,
+      "data_count": 1332
+    },
+    {
+      "batch_num": 335,
+      "current_frames": 4,
+      "avg_latency": 0.4223864674568176,
+      "remaining": 5,
+      "data_count": 1336
+    },
+    {
+      "batch_num": 336,
+      "current_frames": 4,
+      "avg_latency": 0.4302016496658325,
+      "remaining": 5,
+      "data_count": 1340
+    },
+    {
+      "batch_num": 337,
+      "current_frames": 4,
+      "avg_latency": 0.41535258293151855,
+      "remaining": 5,
+      "data_count": 1344
+    },
+    {
+      "batch_num": 338,
+      "current_frames": 4,
+      "avg_latency": 0.4265133738517761,
+      "remaining": 6,
+      "data_count": 1348
+    },
+    {
+      "batch_num": 339,
+      "current_frames": 4,
+      "avg_latency": 0.4233725070953369,
+      "remaining": 6,
+      "data_count": 1352
+    },
+    {
+      "batch_num": 340,
+      "current_frames": 4,
+      "avg_latency": 0.43425166606903076,
+      "remaining": 6,
+      "data_count": 1356
+    },
+    {
+      "batch_num": 341,
+      "current_frames": 4,
+      "avg_latency": 0.42824786901474,
+      "remaining": 6,
+      "data_count": 1360
+    },
+    {
+      "batch_num": 342,
+      "current_frames": 4,
+      "avg_latency": 0.4049426317214966,
+      "remaining": 5,
+      "data_count": 1364
+    },
+    {
+      "batch_num": 343,
+      "current_frames": 4,
+      "avg_latency": 0.43247389793395996,
+      "remaining": 5,
+      "data_count": 1368
+    },
+    {
+      "batch_num": 344,
+      "current_frames": 4,
+      "avg_latency": 0.42908453941345215,
+      "remaining": 4,
+      "data_count": 1372
+    },
+    {
+      "batch_num": 345,
+      "current_frames": 4,
+      "avg_latency": 0.4637506604194641,
+      "remaining": 6,
+      "data_count": 1376
+    },
+    {
+      "batch_num": 346,
+      "current_frames": 4,
+      "avg_latency": 0.41008108854293823,
+      "remaining": 5,
+      "data_count": 1380
+    },
+    {
+      "batch_num": 347,
+      "current_frames": 4,
+      "avg_latency": 0.4296088218688965,
+      "remaining": 5,
+      "data_count": 1384
+    },
+    {
+      "batch_num": 348,
+      "current_frames": 4,
+      "avg_latency": 0.45009493827819824,
+      "remaining": 6,
+      "data_count": 1388
+    },
+    {
+      "batch_num": 349,
+      "current_frames": 4,
+      "avg_latency": 0.40617477893829346,
+      "remaining": 5,
+      "data_count": 1392
+    },
+    {
+      "batch_num": 350,
+      "current_frames": 4,
+      "avg_latency": 0.3977596163749695,
+      "remaining": 5,
+      "data_count": 1396
+    },
+    {
+      "batch_num": 351,
+      "current_frames": 4,
+      "avg_latency": 0.43876904249191284,
+      "remaining": 5,
+      "data_count": 1400
+    },
+    {
+      "batch_num": 352,
+      "current_frames": 4,
+      "avg_latency": 0.4176052212715149,
+      "remaining": 4,
+      "data_count": 1404
+    },
+    {
+      "batch_num": 353,
+      "current_frames": 4,
+      "avg_latency": 0.47456008195877075,
+      "remaining": 5,
+      "data_count": 1408
+    },
+    {
+      "batch_num": 354,
+      "current_frames": 4,
+      "avg_latency": 0.41232699155807495,
+      "remaining": 5,
+      "data_count": 1412
+    },
+    {
+      "batch_num": 355,
+      "current_frames": 4,
+      "avg_latency": 0.41613519191741943,
+      "remaining": 4,
+      "data_count": 1416
+    },
+    {
+      "batch_num": 356,
+      "current_frames": 4,
+      "avg_latency": 0.439652681350708,
+      "remaining": 5,
+      "data_count": 1420
+    },
+    {
+      "batch_num": 357,
+      "current_frames": 4,
+      "avg_latency": 0.4269217252731323,
+      "remaining": 3,
+      "data_count": 1424
+    },
+    {
+      "batch_num": 358,
+      "current_frames": 4,
+      "avg_latency": 0.5687054395675659,
+      "remaining": 5,
+      "data_count": 1428
+    },
+    {
+      "batch_num": 359,
+      "current_frames": 4,
+      "avg_latency": 0.4356633424758911,
+      "remaining": 5,
+      "data_count": 1432
+    },
+    {
+      "batch_num": 360,
+      "current_frames": 4,
+      "avg_latency": 0.4393818974494934,
+      "remaining": 6,
+      "data_count": 1436
+    },
+    {
+      "batch_num": 361,
+      "current_frames": 4,
+      "avg_latency": 0.4156699776649475,
+      "remaining": 6,
+      "data_count": 1440
+    },
+    {
+      "batch_num": 362,
+      "current_frames": 4,
+      "avg_latency": 0.4187389016151428,
+      "remaining": 5,
+      "data_count": 1444
+    },
+    {
+      "batch_num": 363,
+      "current_frames": 4,
+      "avg_latency": 0.41519874334335327,
+      "remaining": 5,
+      "data_count": 1448
+    },
+    {
+      "batch_num": 364,
+      "current_frames": 4,
+      "avg_latency": 0.4238446354866028,
+      "remaining": 5,
+      "data_count": 1452
+    },
+    {
+      "batch_num": 365,
+      "current_frames": 4,
+      "avg_latency": 0.44314026832580566,
+      "remaining": 6,
+      "data_count": 1456
+    },
+    {
+      "batch_num": 366,
+      "current_frames": 4,
+      "avg_latency": 0.39971452951431274,
+      "remaining": 6,
+      "data_count": 1460
+    },
+    {
+      "batch_num": 367,
+      "current_frames": 4,
+      "avg_latency": 0.4010263681411743,
+      "remaining": 5,
+      "data_count": 1464
+    },
+    {
+      "batch_num": 368,
+      "current_frames": 4,
+      "avg_latency": 0.4606401324272156,
+      "remaining": 5,
+      "data_count": 1468
+    },
+    {
+      "batch_num": 369,
+      "current_frames": 4,
+      "avg_latency": 0.4250440001487732,
+      "remaining": 6,
+      "data_count": 1472
+    },
+    {
+      "batch_num": 370,
+      "current_frames": 4,
+      "avg_latency": 0.41494929790496826,
+      "remaining": 6,
+      "data_count": 1476
+    },
+    {
+      "batch_num": 371,
+      "current_frames": 4,
+      "avg_latency": 0.44576162099838257,
+      "remaining": 6,
+      "data_count": 1480
+    },
+    {
+      "batch_num": 372,
+      "current_frames": 4,
+      "avg_latency": 0.42696142196655273,
+      "remaining": 6,
+      "data_count": 1484
+    },
+    {
+      "batch_num": 373,
+      "current_frames": 4,
+      "avg_latency": 0.43402934074401855,
+      "remaining": 5,
+      "data_count": 1488
+    },
+    {
+      "batch_num": 374,
+      "current_frames": 4,
+      "avg_latency": 0.4375818967819214,
+      "remaining": 6,
+      "data_count": 1492
+    },
+    {
+      "batch_num": 375,
+      "current_frames": 4,
+      "avg_latency": 0.41204482316970825,
+      "remaining": 5,
+      "data_count": 1496
+    },
+    {
+      "batch_num": 376,
+      "current_frames": 4,
+      "avg_latency": 0.4417262077331543,
+      "remaining": 5,
+      "data_count": 1500
+    },
+    {
+      "batch_num": 377,
+      "current_frames": 4,
+      "avg_latency": 0.4203423261642456,
+      "remaining": 4,
+      "data_count": 1504
+    },
+    {
+      "batch_num": 378,
+      "current_frames": 4,
+      "avg_latency": 0.46724462509155273,
+      "remaining": 5,
+      "data_count": 1508
+    },
+    {
+      "batch_num": 379,
+      "current_frames": 4,
+      "avg_latency": 0.4316036105155945,
+      "remaining": 5,
+      "data_count": 1512
+    },
+    {
+      "batch_num": 380,
+      "current_frames": 4,
+      "avg_latency": 0.4188843369483948,
+      "remaining": 5,
+      "data_count": 1516
+    },
+    {
+      "batch_num": 381,
+      "current_frames": 4,
+      "avg_latency": 0.41842561960220337,
+      "remaining": 6,
+      "data_count": 1520
+    },
+    {
+      "batch_num": 382,
+      "current_frames": 4,
+      "avg_latency": 0.41979843378067017,
+      "remaining": 6,
+      "data_count": 1524
+    },
+    {
+      "batch_num": 383,
+      "current_frames": 4,
+      "avg_latency": 0.4291641116142273,
+      "remaining": 6,
+      "data_count": 1528
+    },
+    {
+      "batch_num": 384,
+      "current_frames": 4,
+      "avg_latency": 0.4283766746520996,
+      "remaining": 6,
+      "data_count": 1532
+    },
+    {
+      "batch_num": 385,
+      "current_frames": 4,
+      "avg_latency": 0.4193081259727478,
+      "remaining": 5,
+      "data_count": 1536
+    },
+    {
+      "batch_num": 386,
+      "current_frames": 4,
+      "avg_latency": 0.42359471321105957,
+      "remaining": 5,
+      "data_count": 1540
+    },
+    {
+      "batch_num": 387,
+      "current_frames": 4,
+      "avg_latency": 0.42940306663513184,
+      "remaining": 6,
+      "data_count": 1544
+    },
+    {
+      "batch_num": 388,
+      "current_frames": 4,
+      "avg_latency": 0.4088360071182251,
+      "remaining": 5,
+      "data_count": 1548
+    },
+    {
+      "batch_num": 389,
+      "current_frames": 4,
+      "avg_latency": 0.43118560314178467,
+      "remaining": 5,
+      "data_count": 1552
+    },
+    {
+      "batch_num": 390,
+      "current_frames": 4,
+      "avg_latency": 0.4061886668205261,
+      "remaining": 4,
+      "data_count": 1556
+    },
+    {
+      "batch_num": 391,
+      "current_frames": 4,
+      "avg_latency": 0.4361192584037781,
+      "remaining": 5,
+      "data_count": 1560
+    },
+    {
+      "batch_num": 392,
+      "current_frames": 4,
+      "avg_latency": 0.46129924058914185,
+      "remaining": 6,
+      "data_count": 1564
+    },
+    {
+      "batch_num": 393,
+      "current_frames": 4,
+      "avg_latency": 0.42003434896469116,
+      "remaining": 5,
+      "data_count": 1568
+    },
+    {
+      "batch_num": 394,
+      "current_frames": 4,
+      "avg_latency": 0.4365081787109375,
+      "remaining": 6,
+      "data_count": 1572
+    },
+    {
+      "batch_num": 395,
+      "current_frames": 4,
+      "avg_latency": 0.42416858673095703,
+      "remaining": 5,
+      "data_count": 1576
+    },
+    {
+      "batch_num": 396,
+      "current_frames": 4,
+      "avg_latency": 0.4289668798446655,
+      "remaining": 5,
+      "data_count": 1580
+    },
+    {
+      "batch_num": 397,
+      "current_frames": 4,
+      "avg_latency": 0.416803777217865,
+      "remaining": 5,
+      "data_count": 1584
+    },
+    {
+      "batch_num": 398,
+      "current_frames": 4,
+      "avg_latency": 0.42302918434143066,
+      "remaining": 6,
+      "data_count": 1588
+    },
+    {
+      "batch_num": 399,
+      "current_frames": 4,
+      "avg_latency": 0.4125754237174988,
+      "remaining": 6,
+      "data_count": 1592
+    },
+    {
+      "batch_num": 400,
+      "current_frames": 4,
+      "avg_latency": 0.4080212116241455,
+      "remaining": 5,
+      "data_count": 1596
+    },
+    {
+      "batch_num": 401,
+      "current_frames": 4,
+      "avg_latency": 0.43079304695129395,
+      "remaining": 4,
+      "data_count": 1600
+    },
+    {
+      "batch_num": 402,
+      "current_frames": 4,
+      "avg_latency": 0.4607166051864624,
+      "remaining": 6,
+      "data_count": 1604
+    },
+    {
+      "batch_num": 403,
+      "current_frames": 4,
+      "avg_latency": 0.4290332794189453,
+      "remaining": 6,
+      "data_count": 1608
+    },
+    {
+      "batch_num": 404,
+      "current_frames": 4,
+      "avg_latency": 0.41523057222366333,
+      "remaining": 6,
+      "data_count": 1612
+    },
+    {
+      "batch_num": 405,
+      "current_frames": 4,
+      "avg_latency": 0.4052169919013977,
+      "remaining": 5,
+      "data_count": 1616
+    },
+    {
+      "batch_num": 406,
+      "current_frames": 4,
+      "avg_latency": 0.4122343063354492,
+      "remaining": 5,
+      "data_count": 1620
+    },
+    {
+      "batch_num": 407,
+      "current_frames": 4,
+      "avg_latency": 0.43490076065063477,
+      "remaining": 5,
+      "data_count": 1624
+    },
+    {
+      "batch_num": 408,
+      "current_frames": 4,
+      "avg_latency": 0.42702531814575195,
+      "remaining": 5,
+      "data_count": 1628
+    },
+    {
+      "batch_num": 409,
+      "current_frames": 4,
+      "avg_latency": 0.4346246123313904,
+      "remaining": 4,
+      "data_count": 1632
+    },
+    {
+      "batch_num": 410,
+      "current_frames": 4,
+      "avg_latency": 0.43974608182907104,
+      "remaining": 5,
+      "data_count": 1636
+    },
+    {
+      "batch_num": 411,
+      "current_frames": 4,
+      "avg_latency": 0.4402960538864136,
+      "remaining": 5,
+      "data_count": 1640
+    },
+    {
+      "batch_num": 412,
+      "current_frames": 4,
+      "avg_latency": 0.4222296476364136,
+      "remaining": 5,
+      "data_count": 1644
+    },
+    {
+      "batch_num": 413,
+      "current_frames": 4,
+      "avg_latency": 0.4411590099334717,
+      "remaining": 5,
+      "data_count": 1648
+    },
+    {
+      "batch_num": 414,
+      "current_frames": 4,
+      "avg_latency": 0.4360756278038025,
+      "remaining": 6,
+      "data_count": 1652
+    },
+    {
+      "batch_num": 415,
+      "current_frames": 4,
+      "avg_latency": 0.4171844720840454,
+      "remaining": 5,
+      "data_count": 1656
+    },
+    {
+      "batch_num": 416,
+      "current_frames": 4,
+      "avg_latency": 0.433508038520813,
+      "remaining": 5,
+      "data_count": 1660
+    },
+    {
+      "batch_num": 417,
+      "current_frames": 4,
+      "avg_latency": 0.4121026396751404,
+      "remaining": 5,
+      "data_count": 1664
+    },
+    {
+      "batch_num": 418,
+      "current_frames": 4,
+      "avg_latency": 0.4221634268760681,
+      "remaining": 5,
+      "data_count": 1668
+    },
+    {
+      "batch_num": 419,
+      "current_frames": 4,
+      "avg_latency": 0.41557151079177856,
+      "remaining": 5,
+      "data_count": 1672
+    },
+    {
+      "batch_num": 420,
+      "current_frames": 4,
+      "avg_latency": 0.4015524983406067,
+      "remaining": 4,
+      "data_count": 1676
+    },
+    {
+      "batch_num": 421,
+      "current_frames": 4,
+      "avg_latency": 0.42529624700546265,
+      "remaining": 4,
+      "data_count": 1680
+    },
+    {
+      "batch_num": 422,
+      "current_frames": 4,
+      "avg_latency": 0.5774040818214417,
+      "remaining": 6,
+      "data_count": 1684
+    },
+    {
+      "batch_num": 423,
+      "current_frames": 4,
+      "avg_latency": 0.4014853239059448,
+      "remaining": 6,
+      "data_count": 1688
+    },
+    {
+      "batch_num": 424,
+      "current_frames": 4,
+      "avg_latency": 0.4050671458244324,
+      "remaining": 5,
+      "data_count": 1692
+    },
+    {
+      "batch_num": 425,
+      "current_frames": 4,
+      "avg_latency": 0.4468379616737366,
+      "remaining": 6,
+      "data_count": 1696
+    },
+    {
+      "batch_num": 426,
+      "current_frames": 4,
+      "avg_latency": 0.4171660542488098,
+      "remaining": 5,
+      "data_count": 1700
+    },
+    {
+      "batch_num": 427,
+      "current_frames": 4,
+      "avg_latency": 0.4434869885444641,
+      "remaining": 6,
+      "data_count": 1704
+    },
+    {
+      "batch_num": 428,
+      "current_frames": 4,
+      "avg_latency": 0.4328920841217041,
+      "remaining": 6,
+      "data_count": 1708
+    },
+    {
+      "batch_num": 429,
+      "current_frames": 4,
+      "avg_latency": 0.4286920428276062,
+      "remaining": 5,
+      "data_count": 1712
+    },
+    {
+      "batch_num": 430,
+      "current_frames": 4,
+      "avg_latency": 0.44223082065582275,
+      "remaining": 6,
+      "data_count": 1716
+    },
+    {
+      "batch_num": 431,
+      "current_frames": 4,
+      "avg_latency": 0.413554847240448,
+      "remaining": 6,
+      "data_count": 1720
+    },
+    {
+      "batch_num": 432,
+      "current_frames": 4,
+      "avg_latency": 0.4300898313522339,
+      "remaining": 5,
+      "data_count": 1724
+    },
+    {
+      "batch_num": 433,
+      "current_frames": 4,
+      "avg_latency": 0.4468689560890198,
+      "remaining": 6,
+      "data_count": 1728
+    },
+    {
+      "batch_num": 434,
+      "current_frames": 4,
+      "avg_latency": 0.4149026870727539,
+      "remaining": 6,
+      "data_count": 1732
+    },
+    {
+      "batch_num": 435,
+      "current_frames": 4,
+      "avg_latency": 0.4028763175010681,
+      "remaining": 6,
+      "data_count": 1736
+    },
+    {
+      "batch_num": 436,
+      "current_frames": 4,
+      "avg_latency": 0.41543930768966675,
+      "remaining": 6,
+      "data_count": 1740
+    },
+    {
+      "batch_num": 437,
+      "current_frames": 4,
+      "avg_latency": 0.4180755019187927,
+      "remaining": 5,
+      "data_count": 1744
+    },
+    {
+      "batch_num": 438,
+      "current_frames": 4,
+      "avg_latency": 0.4579682946205139,
+      "remaining": 6,
+      "data_count": 1748
+    },
+    {
+      "batch_num": 439,
+      "current_frames": 4,
+      "avg_latency": 0.4322436451911926,
+      "remaining": 6,
+      "data_count": 1752
+    },
+    {
+      "batch_num": 440,
+      "current_frames": 4,
+      "avg_latency": 0.4132661819458008,
+      "remaining": 6,
+      "data_count": 1756
+    },
+    {
+      "batch_num": 441,
+      "current_frames": 4,
+      "avg_latency": 0.3875298500061035,
+      "remaining": 4,
+      "data_count": 1760
+    },
+    {
+      "batch_num": 442,
+      "current_frames": 4,
+      "avg_latency": 0.518509030342102,
+      "remaining": 4,
+      "data_count": 1764
+    },
+    {
+      "batch_num": 443,
+      "current_frames": 4,
+      "avg_latency": 0.4403707981109619,
+      "remaining": 5,
+      "data_count": 1768
+    },
+    {
+      "batch_num": 444,
+      "current_frames": 4,
+      "avg_latency": 0.408748984336853,
+      "remaining": 6,
+      "data_count": 1772
+    },
+    {
+      "batch_num": 445,
+      "current_frames": 4,
+      "avg_latency": 0.39873892068862915,
+      "remaining": 6,
+      "data_count": 1776
+    },
+    {
+      "batch_num": 446,
+      "current_frames": 4,
+      "avg_latency": 0.40653401613235474,
+      "remaining": 5,
+      "data_count": 1780
+    },
+    {
+      "batch_num": 447,
+      "current_frames": 4,
+      "avg_latency": 0.40743738412857056,
+      "remaining": 6,
+      "data_count": 1784
+    },
+    {
+      "batch_num": 448,
+      "current_frames": 4,
+      "avg_latency": 0.4086480140686035,
+      "remaining": 5,
+      "data_count": 1788
+    },
+    {
+      "batch_num": 449,
+      "current_frames": 4,
+      "avg_latency": 0.43982332944869995,
+      "remaining": 5,
+      "data_count": 1792
+    },
+    {
+      "batch_num": 450,
+      "current_frames": 4,
+      "avg_latency": 0.4123297333717346,
+      "remaining": 5,
+      "data_count": 1796
+    },
+    {
+      "batch_num": 451,
+      "current_frames": 4,
+      "avg_latency": 0.4086708426475525,
+      "remaining": 5,
+      "data_count": 1800
+    },
+    {
+      "batch_num": 452,
+      "current_frames": 4,
+      "avg_latency": 0.44420909881591797,
+      "remaining": 6,
+      "data_count": 1804
+    },
+    {
+      "batch_num": 453,
+      "current_frames": 4,
+      "avg_latency": 0.4023420810699463,
+      "remaining": 5,
+      "data_count": 1808
+    },
+    {
+      "batch_num": 454,
+      "current_frames": 4,
+      "avg_latency": 0.412137508392334,
+      "remaining": 5,
+      "data_count": 1812
+    },
+    {
+      "batch_num": 455,
+      "current_frames": 4,
+      "avg_latency": 0.4091491103172302,
+      "remaining": 4,
+      "data_count": 1816
+    },
+    {
+      "batch_num": 456,
+      "current_frames": 4,
+      "avg_latency": 0.4503569006919861,
+      "remaining": 5,
+      "data_count": 1820
+    },
+    {
+      "batch_num": 457,
+      "current_frames": 4,
+      "avg_latency": 0.4299362897872925,
+      "remaining": 6,
+      "data_count": 1824
+    },
+    {
+      "batch_num": 458,
+      "current_frames": 4,
+      "avg_latency": 0.4284222722053528,
+      "remaining": 6,
+      "data_count": 1828
+    },
+    {
+      "batch_num": 459,
+      "current_frames": 4,
+      "avg_latency": 0.3993418216705322,
+      "remaining": 4,
+      "data_count": 1832
+    },
+    {
+      "batch_num": 460,
+      "current_frames": 4,
+      "avg_latency": 0.5078743696212769,
+      "remaining": 5,
+      "data_count": 1836
+    },
+    {
+      "batch_num": 461,
+      "current_frames": 4,
+      "avg_latency": 0.42639458179473877,
+      "remaining": 5,
+      "data_count": 1840
+    },
+    {
+      "batch_num": 462,
+      "current_frames": 4,
+      "avg_latency": 0.443941593170166,
+      "remaining": 5,
+      "data_count": 1844
+    },
+    {
+      "batch_num": 463,
+      "current_frames": 4,
+      "avg_latency": 0.41537320613861084,
+      "remaining": 5,
+      "data_count": 1848
+    },
+    {
+      "batch_num": 464,
+      "current_frames": 4,
+      "avg_latency": 0.4382391571998596,
+      "remaining": 6,
+      "data_count": 1852
+    },
+    {
+      "batch_num": 465,
+      "current_frames": 4,
+      "avg_latency": 0.42046403884887695,
+      "remaining": 6,
+      "data_count": 1856
+    },
+    {
+      "batch_num": 466,
+      "current_frames": 4,
+      "avg_latency": 0.41566210985183716,
+      "remaining": 6,
+      "data_count": 1860
+    },
+    {
+      "batch_num": 467,
+      "current_frames": 4,
+      "avg_latency": 0.42171621322631836,
+      "remaining": 5,
+      "data_count": 1864
+    },
+    {
+      "batch_num": 468,
+      "current_frames": 4,
+      "avg_latency": 0.4521728754043579,
+      "remaining": 5,
+      "data_count": 1868
+    },
+    {
+      "batch_num": 469,
+      "current_frames": 4,
+      "avg_latency": 0.4269769787788391,
+      "remaining": 5,
+      "data_count": 1872
+    },
+    {
+      "batch_num": 470,
+      "current_frames": 4,
+      "avg_latency": 0.41167372465133667,
+      "remaining": 5,
+      "data_count": 1876
+    },
+    {
+      "batch_num": 471,
+      "current_frames": 4,
+      "avg_latency": 0.41462451219558716,
+      "remaining": 4,
+      "data_count": 1880
+    },
+    {
+      "batch_num": 472,
+      "current_frames": 4,
+      "avg_latency": 0.44440990686416626,
+      "remaining": 4,
+      "data_count": 1884
+    },
+    {
+      "batch_num": 473,
+      "current_frames": 4,
+      "avg_latency": 0.47368210554122925,
+      "remaining": 5,
+      "data_count": 1888
+    },
+    {
+      "batch_num": 474,
+      "current_frames": 4,
+      "avg_latency": 0.4449489712715149,
+      "remaining": 6,
+      "data_count": 1892
+    },
+    {
+      "batch_num": 475,
+      "current_frames": 4,
+      "avg_latency": 0.4147264361381531,
+      "remaining": 6,
+      "data_count": 1896
+    },
+    {
+      "batch_num": 476,
+      "current_frames": 4,
+      "avg_latency": 0.4058645963668823,
+      "remaining": 6,
+      "data_count": 1900
+    },
+    {
+      "batch_num": 477,
+      "current_frames": 4,
+      "avg_latency": 0.39102882146835327,
+      "remaining": 5,
+      "data_count": 1904
+    },
+    {
+      "batch_num": 478,
+      "current_frames": 4,
+      "avg_latency": 0.4420623183250427,
+      "remaining": 5,
+      "data_count": 1908
+    },
+    {
+      "batch_num": 479,
+      "current_frames": 4,
+      "avg_latency": 0.4447780251502991,
+      "remaining": 6,
+      "data_count": 1912
+    },
+    {
+      "batch_num": 480,
+      "current_frames": 4,
+      "avg_latency": 0.4179660677909851,
+      "remaining": 6,
+      "data_count": 1916
+    },
+    {
+      "batch_num": 481,
+      "current_frames": 4,
+      "avg_latency": 0.425337016582489,
+      "remaining": 5,
+      "data_count": 1920
+    },
+    {
+      "batch_num": 482,
+      "current_frames": 4,
+      "avg_latency": 0.4465424418449402,
+      "remaining": 5,
+      "data_count": 1924
+    },
+    {
+      "batch_num": 483,
+      "current_frames": 4,
+      "avg_latency": 0.44356459379196167,
+      "remaining": 5,
+      "data_count": 1928
+    },
+    {
+      "batch_num": 484,
+      "current_frames": 4,
+      "avg_latency": 0.4229433536529541,
+      "remaining": 5,
+      "data_count": 1932
+    },
+    {
+      "batch_num": 485,
+      "current_frames": 4,
+      "avg_latency": 0.4269075393676758,
+      "remaining": 5,
+      "data_count": 1936
+    },
+    {
+      "batch_num": 486,
+      "current_frames": 4,
+      "avg_latency": 0.42774248123168945,
+      "remaining": 3,
+      "data_count": 1940
+    },
+    {
+      "batch_num": 487,
+      "current_frames": 4,
+      "avg_latency": 0.5151607990264893,
+      "remaining": 6,
+      "data_count": 1944
+    },
+    {
+      "batch_num": 488,
+      "current_frames": 4,
+      "avg_latency": 0.41192150115966797,
+      "remaining": 5,
+      "data_count": 1948
+    },
+    {
+      "batch_num": 489,
+      "current_frames": 4,
+      "avg_latency": 0.41941773891448975,
+      "remaining": 5,
+      "data_count": 1952
+    },
+    {
+      "batch_num": 490,
+      "current_frames": 4,
+      "avg_latency": 0.43550413846969604,
+      "remaining": 6,
+      "data_count": 1956
+    },
+    {
+      "batch_num": 491,
+      "current_frames": 4,
+      "avg_latency": 0.38863450288772583,
+      "remaining": 4,
+      "data_count": 1960
+    },
+    {
+      "batch_num": 492,
+      "current_frames": 4,
+      "avg_latency": 0.4673885703086853,
+      "remaining": 5,
+      "data_count": 1964
+    },
+    {
+      "batch_num": 493,
+      "current_frames": 4,
+      "avg_latency": 0.4166420102119446,
+      "remaining": 5,
+      "data_count": 1968
+    },
+    {
+      "batch_num": 494,
+      "current_frames": 4,
+      "avg_latency": 0.4176328778266907,
+      "remaining": 6,
+      "data_count": 1972
+    },
+    {
+      "batch_num": 495,
+      "current_frames": 4,
+      "avg_latency": 0.39825284481048584,
+      "remaining": 5,
+      "data_count": 1976
+    },
+    {
+      "batch_num": 496,
+      "current_frames": 4,
+      "avg_latency": 0.4089609980583191,
+      "remaining": 5,
+      "data_count": 1980
+    },
+    {
+      "batch_num": 497,
+      "current_frames": 4,
+      "avg_latency": 0.4065377712249756,
+      "remaining": 6,
+      "data_count": 1984
+    },
+    {
+      "batch_num": 498,
+      "current_frames": 4,
+      "avg_latency": 0.4056673049926758,
+      "remaining": 6,
+      "data_count": 1988
+    },
+    {
+      "batch_num": 499,
+      "current_frames": 4,
+      "avg_latency": 0.4263433814048767,
+      "remaining": 6,
+      "data_count": 1992
+    },
+    {
+      "batch_num": 500,
+      "current_frames": 4,
+      "avg_latency": 0.4338276982307434,
+      "remaining": 5,
+      "data_count": 1996
+    },
+    {
+      "batch_num": 501,
+      "current_frames": 4,
+      "avg_latency": 0.43485021591186523,
+      "remaining": 6,
+      "data_count": 2000
+    },
+    {
+      "batch_num": 502,
+      "current_frames": 4,
+      "avg_latency": 0.4353225827217102,
+      "remaining": 5,
+      "data_count": 2004
+    },
+    {
+      "batch_num": 503,
+      "current_frames": 4,
+      "avg_latency": 0.4396211504936218,
+      "remaining": 6,
+      "data_count": 2008
+    },
+    {
+      "batch_num": 504,
+      "current_frames": 4,
+      "avg_latency": 0.4026251435279846,
+      "remaining": 6,
+      "data_count": 2012
+    },
+    {
+      "batch_num": 505,
+      "current_frames": 4,
+      "avg_latency": 0.4004654884338379,
+      "remaining": 5,
+      "data_count": 2016
+    },
+    {
+      "batch_num": 506,
+      "current_frames": 4,
+      "avg_latency": 0.4285816550254822,
+      "remaining": 4,
+      "data_count": 2020
+    },
+    {
+      "batch_num": 507,
+      "current_frames": 4,
+      "avg_latency": 0.4334324598312378,
+      "remaining": 6,
+      "data_count": 2024
+    },
+    {
+      "batch_num": 508,
+      "current_frames": 4,
+      "avg_latency": 0.41830354928970337,
+      "remaining": 6,
+      "data_count": 2028
+    },
+    {
+      "batch_num": 509,
+      "current_frames": 4,
+      "avg_latency": 0.4198479652404785,
+      "remaining": 5,
+      "data_count": 2032
+    },
+    {
+      "batch_num": 510,
+      "current_frames": 4,
+      "avg_latency": 0.41903960704803467,
+      "remaining": 6,
+      "data_count": 2036
+    },
+    {
+      "batch_num": 511,
+      "current_frames": 4,
+      "avg_latency": 0.3913133144378662,
+      "remaining": 5,
+      "data_count": 2040
+    },
+    {
+      "batch_num": 512,
+      "current_frames": 4,
+      "avg_latency": 0.43593674898147583,
+      "remaining": 5,
+      "data_count": 2044
+    },
+    {
+      "batch_num": 513,
+      "current_frames": 4,
+      "avg_latency": 0.43913400173187256,
+      "remaining": 6,
+      "data_count": 2048
+    },
+    {
+      "batch_num": 514,
+      "current_frames": 4,
+      "avg_latency": 0.44125401973724365,
+      "remaining": 5,
+      "data_count": 2052
+    },
+    {
+      "batch_num": 515,
+      "current_frames": 4,
+      "avg_latency": 0.4723300337791443,
+      "remaining": 6,
+      "data_count": 2056
+    },
+    {
+      "batch_num": 516,
+      "current_frames": 4,
+      "avg_latency": 0.410264253616333,
+      "remaining": 6,
+      "data_count": 2060
+    },
+    {
+      "batch_num": 517,
+      "current_frames": 4,
+      "avg_latency": 0.4324004054069519,
+      "remaining": 6,
+      "data_count": 2064
+    },
+    {
+      "batch_num": 518,
+      "current_frames": 4,
+      "avg_latency": 0.418474018573761,
+      "remaining": 6,
+      "data_count": 2068
+    },
+    {
+      "batch_num": 519,
+      "current_frames": 4,
+      "avg_latency": 0.42521148920059204,
+      "remaining": 5,
+      "data_count": 2072
+    },
+    {
+      "batch_num": 520,
+      "current_frames": 4,
+      "avg_latency": 0.42866480350494385,
+      "remaining": 5,
+      "data_count": 2076
+    },
+    {
+      "batch_num": 521,
+      "current_frames": 4,
+      "avg_latency": 0.42182326316833496,
+      "remaining": 5,
+      "data_count": 2080
+    },
+    {
+      "batch_num": 522,
+      "current_frames": 4,
+      "avg_latency": 0.40766072273254395,
+      "remaining": 5,
+      "data_count": 2084
+    },
+    {
+      "batch_num": 523,
+      "current_frames": 4,
+      "avg_latency": 0.43171894550323486,
+      "remaining": 5,
+      "data_count": 2088
+    },
+    {
+      "batch_num": 524,
+      "current_frames": 4,
+      "avg_latency": 0.43089520931243896,
+      "remaining": 5,
+      "data_count": 2092
+    },
+    {
+      "batch_num": 525,
+      "current_frames": 4,
+      "avg_latency": 0.4162524938583374,
+      "remaining": 5,
+      "data_count": 2096
+    },
+    {
+      "batch_num": 526,
+      "current_frames": 4,
+      "avg_latency": 0.4174707531929016,
+      "remaining": 5,
+      "data_count": 2100
+    },
+    {
+      "batch_num": 527,
+      "current_frames": 4,
+      "avg_latency": 0.42174839973449707,
+      "remaining": 5,
+      "data_count": 2104
+    },
+    {
+      "batch_num": 528,
+      "current_frames": 4,
+      "avg_latency": 0.41578996181488037,
+      "remaining": 5,
+      "data_count": 2108
+    },
+    {
+      "batch_num": 529,
+      "current_frames": 4,
+      "avg_latency": 0.422163188457489,
+      "remaining": 5,
+      "data_count": 2112
+    },
+    {
+      "batch_num": 530,
+      "current_frames": 4,
+      "avg_latency": 0.4292036294937134,
+      "remaining": 5,
+      "data_count": 2116
+    },
+    {
+      "batch_num": 531,
+      "current_frames": 4,
+      "avg_latency": 0.42488986253738403,
+      "remaining": 6,
+      "data_count": 2120
+    },
+    {
+      "batch_num": 532,
+      "current_frames": 4,
+      "avg_latency": 0.40648943185806274,
+      "remaining": 5,
+      "data_count": 2124
+    },
+    {
+      "batch_num": 533,
+      "current_frames": 4,
+      "avg_latency": 0.43082600831985474,
+      "remaining": 5,
+      "data_count": 2128
+    },
+    {
+      "batch_num": 534,
+      "current_frames": 4,
+      "avg_latency": 0.429756760597229,
+      "remaining": 5,
+      "data_count": 2132
+    },
+    {
+      "batch_num": 535,
+      "current_frames": 4,
+      "avg_latency": 0.4260872006416321,
+      "remaining": 6,
+      "data_count": 2136
+    },
+    {
+      "batch_num": 536,
+      "current_frames": 4,
+      "avg_latency": 0.40383249521255493,
+      "remaining": 6,
+      "data_count": 2140
+    },
+    {
+      "batch_num": 537,
+      "current_frames": 4,
+      "avg_latency": 0.40429431200027466,
+      "remaining": 6,
+      "data_count": 2144
+    },
+    {
+      "batch_num": 538,
+      "current_frames": 4,
+      "avg_latency": 0.39298486709594727,
+      "remaining": 4,
+      "data_count": 2148
+    },
+    {
+      "batch_num": 539,
+      "current_frames": 4,
+      "avg_latency": 0.4568009376525879,
+      "remaining": 5,
+      "data_count": 2152
+    },
+    {
+      "batch_num": 540,
+      "current_frames": 4,
+      "avg_latency": 0.4244111180305481,
+      "remaining": 5,
+      "data_count": 2156
+    },
+    {
+      "batch_num": 541,
+      "current_frames": 4,
+      "avg_latency": 0.4360543489456177,
+      "remaining": 5,
+      "data_count": 2160
+    },
+    {
+      "batch_num": 542,
+      "current_frames": 4,
+      "avg_latency": 0.4341748356819153,
+      "remaining": 5,
+      "data_count": 2164
+    },
+    {
+      "batch_num": 543,
+      "current_frames": 4,
+      "avg_latency": 0.45069819688796997,
+      "remaining": 5,
+      "data_count": 2168
+    },
+    {
+      "batch_num": 544,
+      "current_frames": 4,
+      "avg_latency": 0.44547611474990845,
+      "remaining": 5,
+      "data_count": 2172
+    },
+    {
+      "batch_num": 545,
+      "current_frames": 4,
+      "avg_latency": 0.4493432641029358,
+      "remaining": 5,
+      "data_count": 2176
+    },
+    {
+      "batch_num": 546,
+      "current_frames": 4,
+      "avg_latency": 0.4196177124977112,
+      "remaining": 5,
+      "data_count": 2180
+    },
+    {
+      "batch_num": 547,
+      "current_frames": 4,
+      "avg_latency": 0.44319963455200195,
+      "remaining": 4,
+      "data_count": 2184
+    },
+    {
+      "batch_num": 548,
+      "current_frames": 4,
+      "avg_latency": 0.4796280264854431,
+      "remaining": 5,
+      "data_count": 2188
+    },
+    {
+      "batch_num": 549,
+      "current_frames": 4,
+      "avg_latency": 0.4471476078033447,
+      "remaining": 5,
+      "data_count": 2192
+    },
+    {
+      "batch_num": 550,
+      "current_frames": 4,
+      "avg_latency": 0.42469948530197144,
+      "remaining": 4,
+      "data_count": 2196
+    },
+    {
+      "batch_num": 551,
+      "current_frames": 4,
+      "avg_latency": 0.44246673583984375,
+      "remaining": 2,
+      "data_count": 2200
+    },
+    {
+      "batch_num": 552,
+      "current_frames": 4,
+      "avg_latency": 0.46908533573150635,
+      "remaining": 6,
+      "data_count": 2204
+    },
+    {
+      "batch_num": 553,
+      "current_frames": 4,
+      "avg_latency": 0.42402899265289307,
+      "remaining": 6,
+      "data_count": 2208
+    },
+    {
+      "batch_num": 554,
+      "current_frames": 4,
+      "avg_latency": 0.4167976975440979,
+      "remaining": 4,
+      "data_count": 2212
+    },
+    {
+      "batch_num": 555,
+      "current_frames": 4,
+      "avg_latency": 0.4813745617866516,
+      "remaining": 5,
+      "data_count": 2216
+    },
+    {
+      "batch_num": 556,
+      "current_frames": 4,
+      "avg_latency": 0.4269818067550659,
+      "remaining": 5,
+      "data_count": 2220
+    },
+    {
+      "batch_num": 557,
+      "current_frames": 4,
+      "avg_latency": 0.4404500722885132,
+      "remaining": 5,
+      "data_count": 2224
+    },
+    {
+      "batch_num": 558,
+      "current_frames": 4,
+      "avg_latency": 0.4324485659599304,
+      "remaining": 5,
+      "data_count": 2228
+    },
+    {
+      "batch_num": 559,
+      "current_frames": 4,
+      "avg_latency": 0.433366060256958,
+      "remaining": 6,
+      "data_count": 2232
+    },
+    {
+      "batch_num": 560,
+      "current_frames": 4,
+      "avg_latency": 0.40637099742889404,
+      "remaining": 5,
+      "data_count": 2236
+    },
+    {
+      "batch_num": 561,
+      "current_frames": 4,
+      "avg_latency": 0.44255906343460083,
+      "remaining": 5,
+      "data_count": 2240
+    },
+    {
+      "batch_num": 562,
+      "current_frames": 4,
+      "avg_latency": 0.4347758889198303,
+      "remaining": 5,
+      "data_count": 2244
+    },
+    {
+      "batch_num": 563,
+      "current_frames": 4,
+      "avg_latency": 0.4389770030975342,
+      "remaining": 5,
+      "data_count": 2248
+    },
+    {
+      "batch_num": 564,
+      "current_frames": 4,
+      "avg_latency": 0.41103261709213257,
+      "remaining": 4,
+      "data_count": 2252
+    },
+    {
+      "batch_num": 565,
+      "current_frames": 4,
+      "avg_latency": 0.4386361837387085,
+      "remaining": 6,
+      "data_count": 2256
+    },
+    {
+      "batch_num": 566,
+      "current_frames": 4,
+      "avg_latency": 0.4057404398918152,
+      "remaining": 6,
+      "data_count": 2260
+    },
+    {
+      "batch_num": 567,
+      "current_frames": 4,
+      "avg_latency": 0.41057533025741577,
+      "remaining": 5,
+      "data_count": 2264
+    },
+    {
+      "batch_num": 568,
+      "current_frames": 4,
+      "avg_latency": 0.44073694944381714,
+      "remaining": 5,
+      "data_count": 2268
+    },
+    {
+      "batch_num": 569,
+      "current_frames": 4,
+      "avg_latency": 0.42974185943603516,
+      "remaining": 5,
+      "data_count": 2272
+    },
+    {
+      "batch_num": 570,
+      "current_frames": 4,
+      "avg_latency": 0.40898698568344116,
+      "remaining": 5,
+      "data_count": 2276
+    },
+    {
+      "batch_num": 571,
+      "current_frames": 4,
+      "avg_latency": 0.4272530674934387,
+      "remaining": 5,
+      "data_count": 2280
+    },
+    {
+      "batch_num": 572,
+      "current_frames": 4,
+      "avg_latency": 0.43682223558425903,
+      "remaining": 6,
+      "data_count": 2284
+    },
+    {
+      "batch_num": 573,
+      "current_frames": 4,
+      "avg_latency": 0.40621525049209595,
+      "remaining": 6,
+      "data_count": 2288
+    },
+    {
+      "batch_num": 574,
+      "current_frames": 4,
+      "avg_latency": 0.41397589445114136,
+      "remaining": 5,
+      "data_count": 2292
+    },
+    {
+      "batch_num": 575,
+      "current_frames": 4,
+      "avg_latency": 0.4113907814025879,
+      "remaining": 5,
+      "data_count": 2296
+    },
+    {
+      "batch_num": 576,
+      "current_frames": 4,
+      "avg_latency": 0.41761714220046997,
+      "remaining": 4,
+      "data_count": 2300
+    },
+    {
+      "batch_num": 577,
+      "current_frames": 4,
+      "avg_latency": 0.4954345226287842,
+      "remaining": 6,
+      "data_count": 2304
+    },
+    {
+      "batch_num": 578,
+      "current_frames": 4,
+      "avg_latency": 0.40092992782592773,
+      "remaining": 6,
+      "data_count": 2308
+    },
+    {
+      "batch_num": 579,
+      "current_frames": 4,
+      "avg_latency": 0.4230169653892517,
+      "remaining": 6,
+      "data_count": 2312
+    },
+    {
+      "batch_num": 580,
+      "current_frames": 4,
+      "avg_latency": 0.41897374391555786,
+      "remaining": 6,
+      "data_count": 2316
+    },
+    {
+      "batch_num": 581,
+      "current_frames": 4,
+      "avg_latency": 0.39937567710876465,
+      "remaining": 6,
+      "data_count": 2320
+    },
+    {
+      "batch_num": 582,
+      "current_frames": 4,
+      "avg_latency": 0.4508431553840637,
+      "remaining": 5,
+      "data_count": 2324
+    },
+    {
+      "batch_num": 583,
+      "current_frames": 4,
+      "avg_latency": 0.42940807342529297,
+      "remaining": 5,
+      "data_count": 2328
+    },
+    {
+      "batch_num": 584,
+      "current_frames": 4,
+      "avg_latency": 0.4459518790245056,
+      "remaining": 5,
+      "data_count": 2332
+    },
+    {
+      "batch_num": 585,
+      "current_frames": 4,
+      "avg_latency": 0.43583834171295166,
+      "remaining": 6,
+      "data_count": 2336
+    },
+    {
+      "batch_num": 586,
+      "current_frames": 4,
+      "avg_latency": 0.4175296425819397,
+      "remaining": 5,
+      "data_count": 2340
+    },
+    {
+      "batch_num": 587,
+      "current_frames": 4,
+      "avg_latency": 0.43317729234695435,
+      "remaining": 6,
+      "data_count": 2344
+    },
+    {
+      "batch_num": 588,
+      "current_frames": 4,
+      "avg_latency": 0.40530282258987427,
+      "remaining": 6,
+      "data_count": 2348
+    },
+    {
+      "batch_num": 589,
+      "current_frames": 4,
+      "avg_latency": 0.4161544442176819,
+      "remaining": 6,
+      "data_count": 2352
+    },
+    {
+      "batch_num": 590,
+      "current_frames": 4,
+      "avg_latency": 0.4230578541755676,
+      "remaining": 6,
+      "data_count": 2356
+    },
+    {
+      "batch_num": 591,
+      "current_frames": 4,
+      "avg_latency": 0.3921974301338196,
+      "remaining": 4,
+      "data_count": 2360
+    },
+    {
+      "batch_num": 592,
+      "current_frames": 4,
+      "avg_latency": 0.4470124840736389,
+      "remaining": 6,
+      "data_count": 2364
+    },
+    {
+      "batch_num": 593,
+      "current_frames": 4,
+      "avg_latency": 0.4147210717201233,
+      "remaining": 5,
+      "data_count": 2368
+    },
+    {
+      "batch_num": 594,
+      "current_frames": 4,
+      "avg_latency": 0.4253089427947998,
+      "remaining": 5,
+      "data_count": 2372
+    },
+    {
+      "batch_num": 595,
+      "current_frames": 4,
+      "avg_latency": 0.42489302158355713,
+      "remaining": 6,
+      "data_count": 2376
+    },
+    {
+      "batch_num": 596,
+      "current_frames": 4,
+      "avg_latency": 0.41990500688552856,
+      "remaining": 6,
+      "data_count": 2380
+    },
+    {
+      "batch_num": 597,
+      "current_frames": 4,
+      "avg_latency": 0.4056288003921509,
+      "remaining": 5,
+      "data_count": 2384
+    },
+    {
+      "batch_num": 598,
+      "current_frames": 4,
+      "avg_latency": 0.42199796438217163,
+      "remaining": 4,
+      "data_count": 2388
+    },
+    {
+      "batch_num": 599,
+      "current_frames": 4,
+      "avg_latency": 0.42905300855636597,
+      "remaining": 5,
+      "data_count": 2392
+    },
+    {
+      "batch_num": 600,
+      "current_frames": 4,
+      "avg_latency": 0.42136114835739136,
+      "remaining": 5,
+      "data_count": 2396
+    },
+    {
+      "batch_num": 601,
+      "current_frames": 4,
+      "avg_latency": 0.44342970848083496,
+      "remaining": 5,
+      "data_count": 2400
+    },
+    {
+      "batch_num": 602,
+      "current_frames": 4,
+      "avg_latency": 0.43752503395080566,
+      "remaining": 6,
+      "data_count": 2404
+    },
+    {
+      "batch_num": 603,
+      "current_frames": 4,
+      "avg_latency": 0.4102342128753662,
+      "remaining": 6,
+      "data_count": 2408
+    },
+    {
+      "batch_num": 604,
+      "current_frames": 4,
+      "avg_latency": 0.3988322615623474,
+      "remaining": 6,
+      "data_count": 2412
+    },
+    {
+      "batch_num": 605,
+      "current_frames": 4,
+      "avg_latency": 0.4025261402130127,
+      "remaining": 5,
+      "data_count": 2416
+    },
+    {
+      "batch_num": 606,
+      "current_frames": 4,
+      "avg_latency": 0.44909852743148804,
+      "remaining": 5,
+      "data_count": 2420
+    },
+    {
+      "batch_num": 607,
+      "current_frames": 4,
+      "avg_latency": 0.43511730432510376,
+      "remaining": 5,
+      "data_count": 2424
+    },
+    {
+      "batch_num": 608,
+      "current_frames": 4,
+      "avg_latency": 0.41194045543670654,
+      "remaining": 6,
+      "data_count": 2428
+    },
+    {
+      "batch_num": 609,
+      "current_frames": 4,
+      "avg_latency": 0.4088618755340576,
+      "remaining": 5,
+      "data_count": 2432
+    },
+    {
+      "batch_num": 610,
+      "current_frames": 4,
+      "avg_latency": 0.41304099559783936,
+      "remaining": 5,
+      "data_count": 2436
+    },
+    {
+      "batch_num": 611,
+      "current_frames": 4,
+      "avg_latency": 0.413851797580719,
+      "remaining": 6,
+      "data_count": 2440
+    },
+    {
+      "batch_num": 612,
+      "current_frames": 4,
+      "avg_latency": 0.4042838215827942,
+      "remaining": 5,
+      "data_count": 2444
+    },
+    {
+      "batch_num": 613,
+      "current_frames": 4,
+      "avg_latency": 0.4328727722167969,
+      "remaining": 5,
+      "data_count": 2448
+    },
+    {
+      "batch_num": 614,
+      "current_frames": 4,
+      "avg_latency": 0.41050732135772705,
+      "remaining": 5,
+      "data_count": 2452
+    },
+    {
+      "batch_num": 615,
+      "current_frames": 4,
+      "avg_latency": 0.436989963054657,
+      "remaining": 3,
+      "data_count": 2456
+    },
+    {
+      "batch_num": 616,
+      "current_frames": 4,
+      "avg_latency": 0.5873010158538818,
+      "remaining": 5,
+      "data_count": 2460
+    },
+    {
+      "batch_num": 617,
+      "current_frames": 4,
+      "avg_latency": 0.43124598264694214,
+      "remaining": 5,
+      "data_count": 2464
+    },
+    {
+      "batch_num": 618,
+      "current_frames": 4,
+      "avg_latency": 0.41157466173171997,
+      "remaining": 6,
+      "data_count": 2468
+    },
+    {
+      "batch_num": 619,
+      "current_frames": 4,
+      "avg_latency": 0.412023663520813,
+      "remaining": 6,
+      "data_count": 2472
+    },
+    {
+      "batch_num": 620,
+      "current_frames": 4,
+      "avg_latency": 0.4263436198234558,
+      "remaining": 6,
+      "data_count": 2476
+    },
+    {
+      "batch_num": 621,
+      "current_frames": 4,
+      "avg_latency": 0.41620898246765137,
+      "remaining": 5,
+      "data_count": 2480
+    },
+    {
+      "batch_num": 622,
+      "current_frames": 4,
+      "avg_latency": 0.4009537100791931,
+      "remaining": 4,
+      "data_count": 2484
+    },
+    {
+      "batch_num": 623,
+      "current_frames": 4,
+      "avg_latency": 0.4566989541053772,
+      "remaining": 6,
+      "data_count": 2488
+    },
+    {
+      "batch_num": 624,
+      "current_frames": 4,
+      "avg_latency": 0.39065128564834595,
+      "remaining": 4,
+      "data_count": 2492
+    },
+    {
+      "batch_num": 625,
+      "current_frames": 4,
+      "avg_latency": 0.4416167140007019,
+      "remaining": 6,
+      "data_count": 2496
+    },
+    {
+      "batch_num": 626,
+      "current_frames": 4,
+      "avg_latency": 0.40078359842300415,
+      "remaining": 5,
+      "data_count": 2500
+    },
+    {
+      "batch_num": 627,
+      "current_frames": 4,
+      "avg_latency": 0.4060210585594177,
+      "remaining": 6,
+      "data_count": 2504
+    },
+    {
+      "batch_num": 628,
+      "current_frames": 4,
+      "avg_latency": 0.39893704652786255,
+      "remaining": 6,
+      "data_count": 2508
+    },
+    {
+      "batch_num": 629,
+      "current_frames": 4,
+      "avg_latency": 0.404354453086853,
+      "remaining": 6,
+      "data_count": 2512
+    },
+    {
+      "batch_num": 630,
+      "current_frames": 4,
+      "avg_latency": 0.4114883542060852,
+      "remaining": 5,
+      "data_count": 2516
+    },
+    {
+      "batch_num": 631,
+      "current_frames": 4,
+      "avg_latency": 0.4221841096878052,
+      "remaining": 5,
+      "data_count": 2520
+    },
+    {
+      "batch_num": 632,
+      "current_frames": 4,
+      "avg_latency": 0.41826313734054565,
+      "remaining": 5,
+      "data_count": 2524
+    },
+    {
+      "batch_num": 633,
+      "current_frames": 4,
+      "avg_latency": 0.41445207595825195,
+      "remaining": 5,
+      "data_count": 2528
+    },
+    {
+      "batch_num": 634,
+      "current_frames": 4,
+      "avg_latency": 0.4100683927536011,
+      "remaining": 6,
+      "data_count": 2532
+    },
+    {
+      "batch_num": 635,
+      "current_frames": 4,
+      "avg_latency": 0.4073784351348877,
+      "remaining": 6,
+      "data_count": 2536
+    },
+    {
+      "batch_num": 636,
+      "current_frames": 4,
+      "avg_latency": 0.41901183128356934,
+      "remaining": 6,
+      "data_count": 2540
+    },
+    {
+      "batch_num": 637,
+      "current_frames": 4,
+      "avg_latency": 0.4238508343696594,
+      "remaining": 6,
+      "data_count": 2544
+    },
+    {
+      "batch_num": 638,
+      "current_frames": 4,
+      "avg_latency": 0.4177827835083008,
+      "remaining": 5,
+      "data_count": 2548
+    },
+    {
+      "batch_num": 639,
+      "current_frames": 4,
+      "avg_latency": 0.42331957817077637,
+      "remaining": 5,
+      "data_count": 2552
+    },
+    {
+      "batch_num": 640,
+      "current_frames": 4,
+      "avg_latency": 0.4266980290412903,
+      "remaining": 5,
+      "data_count": 2556
+    },
+    {
+      "batch_num": 641,
+      "current_frames": 4,
+      "avg_latency": 0.40038615465164185,
+      "remaining": 6,
+      "data_count": 2560
+    },
+    {
+      "batch_num": 642,
+      "current_frames": 4,
+      "avg_latency": 0.3883799910545349,
+      "remaining": 5,
+      "data_count": 2564
+    },
+    {
+      "batch_num": 643,
+      "current_frames": 4,
+      "avg_latency": 0.4041798710823059,
+      "remaining": 4,
+      "data_count": 2568
+    },
+    {
+      "batch_num": 644,
+      "current_frames": 4,
+      "avg_latency": 0.4328795075416565,
+      "remaining": 5,
+      "data_count": 2572
+    },
+    {
+      "batch_num": 645,
+      "current_frames": 4,
+      "avg_latency": 0.41316574811935425,
+      "remaining": 5,
+      "data_count": 2576
+    },
+    {
+      "batch_num": 646,
+      "current_frames": 4,
+      "avg_latency": 0.3982235789299011,
+      "remaining": 5,
+      "data_count": 2580
+    },
+    {
+      "batch_num": 647,
+      "current_frames": 4,
+      "avg_latency": 0.4370332956314087,
+      "remaining": 5,
+      "data_count": 2584
+    },
+    {
+      "batch_num": 648,
+      "current_frames": 4,
+      "avg_latency": 0.42245030403137207,
+      "remaining": 5,
+      "data_count": 2588
+    },
+    {
+      "batch_num": 649,
+      "current_frames": 4,
+      "avg_latency": 0.414636492729187,
+      "remaining": 4,
+      "data_count": 2592
+    },
+    {
+      "batch_num": 650,
+      "current_frames": 4,
+      "avg_latency": 0.435124933719635,
+      "remaining": 5,
+      "data_count": 2596
+    },
+    {
+      "batch_num": 651,
+      "current_frames": 4,
+      "avg_latency": 0.42248082160949707,
+      "remaining": 4,
+      "data_count": 2600
+    },
+    {
+      "batch_num": 652,
+      "current_frames": 4,
+      "avg_latency": 0.4387909770011902,
+      "remaining": 5,
+      "data_count": 2604
+    },
+    {
+      "batch_num": 653,
+      "current_frames": 4,
+      "avg_latency": 0.44370388984680176,
+      "remaining": 5,
+      "data_count": 2608
+    },
+    {
+      "batch_num": 654,
+      "current_frames": 4,
+      "avg_latency": 0.4204815626144409,
+      "remaining": 6,
+      "data_count": 2612
+    },
+    {
+      "batch_num": 655,
+      "current_frames": 4,
+      "avg_latency": 0.42443954944610596,
+      "remaining": 6,
+      "data_count": 2616
+    },
+    {
+      "batch_num": 656,
+      "current_frames": 4,
+      "avg_latency": 0.4189413785934448,
+      "remaining": 6,
+      "data_count": 2620
+    },
+    {
+      "batch_num": 657,
+      "current_frames": 4,
+      "avg_latency": 0.4060862064361572,
+      "remaining": 5,
+      "data_count": 2624
+    },
+    {
+      "batch_num": 658,
+      "current_frames": 4,
+      "avg_latency": 0.4263591170310974,
+      "remaining": 5,
+      "data_count": 2628
+    },
+    {
+      "batch_num": 659,
+      "current_frames": 4,
+      "avg_latency": 0.4263654947280884,
+      "remaining": 5,
+      "data_count": 2632
+    },
+    {
+      "batch_num": 660,
+      "current_frames": 4,
+      "avg_latency": 0.423964262008667,
+      "remaining": 6,
+      "data_count": 2636
+    },
+    {
+      "batch_num": 661,
+      "current_frames": 4,
+      "avg_latency": 0.39547479152679443,
+      "remaining": 5,
+      "data_count": 2640
+    },
+    {
+      "batch_num": 662,
+      "current_frames": 4,
+      "avg_latency": 0.4137634038925171,
+      "remaining": 6,
+      "data_count": 2644
+    },
+    {
+      "batch_num": 663,
+      "current_frames": 4,
+      "avg_latency": 0.41881000995635986,
+      "remaining": 5,
+      "data_count": 2648
+    },
+    {
+      "batch_num": 664,
+      "current_frames": 4,
+      "avg_latency": 0.44152605533599854,
+      "remaining": 5,
+      "data_count": 2652
+    },
+    {
+      "batch_num": 665,
+      "current_frames": 4,
+      "avg_latency": 0.43047136068344116,
+      "remaining": 6,
+      "data_count": 2656
+    },
+    {
+      "batch_num": 666,
+      "current_frames": 4,
+      "avg_latency": 0.4095956087112427,
+      "remaining": 5,
+      "data_count": 2660
+    },
+    {
+      "batch_num": 667,
+      "current_frames": 4,
+      "avg_latency": 0.4300934672355652,
+      "remaining": 6,
+      "data_count": 2664
+    },
+    {
+      "batch_num": 668,
+      "current_frames": 4,
+      "avg_latency": 0.4018528461456299,
+      "remaining": 5,
+      "data_count": 2668
+    },
+    {
+      "batch_num": 669,
+      "current_frames": 4,
+      "avg_latency": 0.45043039321899414,
+      "remaining": 6,
+      "data_count": 2672
+    },
+    {
+      "batch_num": 670,
+      "current_frames": 4,
+      "avg_latency": 0.3923082947731018,
+      "remaining": 5,
+      "data_count": 2676
+    },
+    {
+      "batch_num": 671,
+      "current_frames": 4,
+      "avg_latency": 0.4215039014816284,
+      "remaining": 5,
+      "data_count": 2680
+    },
+    {
+      "batch_num": 672,
+      "current_frames": 4,
+      "avg_latency": 0.41574352979660034,
+      "remaining": 5,
+      "data_count": 2684
+    },
+    {
+      "batch_num": 673,
+      "current_frames": 4,
+      "avg_latency": 0.4226086735725403,
+      "remaining": 5,
+      "data_count": 2688
+    },
+    {
+      "batch_num": 674,
+      "current_frames": 4,
+      "avg_latency": 0.41901665925979614,
+      "remaining": 4,
+      "data_count": 2692
+    },
+    {
+      "batch_num": 675,
+      "current_frames": 4,
+      "avg_latency": 0.45985543727874756,
+      "remaining": 5,
+      "data_count": 2696
+    },
+    {
+      "batch_num": 676,
+      "current_frames": 4,
+      "avg_latency": 0.4126080870628357,
+      "remaining": 5,
+      "data_count": 2700
+    },
+    {
+      "batch_num": 677,
+      "current_frames": 4,
+      "avg_latency": 0.41638505458831787,
+      "remaining": 5,
+      "data_count": 2704
+    },
+    {
+      "batch_num": 678,
+      "current_frames": 4,
+      "avg_latency": 0.43486320972442627,
+      "remaining": 5,
+      "data_count": 2708
+    },
+    {
+      "batch_num": 679,
+      "current_frames": 4,
+      "avg_latency": 0.41932880878448486,
+      "remaining": 5,
+      "data_count": 2712
+    },
+    {
+      "batch_num": 680,
+      "current_frames": 4,
+      "avg_latency": 0.4346195459365845,
+      "remaining": 4,
+      "data_count": 2716
+    },
+    {
+      "batch_num": 681,
+      "current_frames": 2,
+      "avg_latency": 0.7096037864685059,
+      "remaining": 8,
+      "data_count": 2718
+    },
+    {
+      "batch_num": 682,
+      "current_frames": 2,
+      "avg_latency": 0.6081695556640625,
+      "remaining": 6,
+      "data_count": 2720
+    },
+    {
+      "batch_num": 683,
+      "current_frames": 4,
+      "avg_latency": 0.423522412776947,
+      "remaining": 6,
+      "data_count": 2724
+    },
+    {
+      "batch_num": 684,
+      "current_frames": 4,
+      "avg_latency": 0.4348088502883911,
+      "remaining": 6,
+      "data_count": 2728
+    },
+    {
+      "batch_num": 685,
+      "current_frames": 4,
+      "avg_latency": 0.43120312690734863,
+      "remaining": 6,
+      "data_count": 2732
+    },
+    {
+      "batch_num": 686,
+      "current_frames": 4,
+      "avg_latency": 0.417074978351593,
+      "remaining": 6,
+      "data_count": 2736
+    },
+    {
+      "batch_num": 687,
+      "current_frames": 4,
+      "avg_latency": 0.42121177911758423,
+      "remaining": 5,
+      "data_count": 2740
+    },
+    {
+      "batch_num": 688,
+      "current_frames": 4,
+      "avg_latency": 0.42798203229904175,
+      "remaining": 5,
+      "data_count": 2744
+    },
+    {
+      "batch_num": 689,
+      "current_frames": 4,
+      "avg_latency": 0.4451754093170166,
+      "remaining": 6,
+      "data_count": 2748
+    },
+    {
+      "batch_num": 690,
+      "current_frames": 4,
+      "avg_latency": 0.41499972343444824,
+      "remaining": 6,
+      "data_count": 2752
+    },
+    {
+      "batch_num": 691,
+      "current_frames": 4,
+      "avg_latency": 0.40498167276382446,
+      "remaining": 6,
+      "data_count": 2756
+    },
+    {
+      "batch_num": 692,
+      "current_frames": 4,
+      "avg_latency": 0.4147258400917053,
+      "remaining": 6,
+      "data_count": 2760
+    },
+    {
+      "batch_num": 693,
+      "current_frames": 4,
+      "avg_latency": 0.4305439591407776,
+      "remaining": 6,
+      "data_count": 2764
+    },
+    {
+      "batch_num": 694,
+      "current_frames": 4,
+      "avg_latency": 0.435232937335968,
+      "remaining": 6,
+      "data_count": 2768
+    },
+    {
+      "batch_num": 695,
+      "current_frames": 4,
+      "avg_latency": 0.41532695293426514,
+      "remaining": 5,
+      "data_count": 2772
+    },
+    {
+      "batch_num": 696,
+      "current_frames": 4,
+      "avg_latency": 0.4659043550491333,
+      "remaining": 5,
+      "data_count": 2776
+    },
+    {
+      "batch_num": 697,
+      "current_frames": 4,
+      "avg_latency": 0.4424405097961426,
+      "remaining": 5,
+      "data_count": 2780
+    },
+    {
+      "batch_num": 698,
+      "current_frames": 4,
+      "avg_latency": 0.43375444412231445,
+      "remaining": 4,
+      "data_count": 2784
+    },
+    {
+      "batch_num": 699,
+      "current_frames": 4,
+      "avg_latency": 0.4632137417793274,
+      "remaining": 5,
+      "data_count": 2788
+    },
+    {
+      "batch_num": 700,
+      "current_frames": 4,
+      "avg_latency": 0.43931877613067627,
+      "remaining": 6,
+      "data_count": 2792
+    },
+    {
+      "batch_num": 701,
+      "current_frames": 4,
+      "avg_latency": 0.42969954013824463,
+      "remaining": 7,
+      "data_count": 2796
+    },
+    {
+      "batch_num": 702,
+      "current_frames": 4,
+      "avg_latency": 0.38305193185806274,
+      "remaining": 6,
+      "data_count": 2800
+    },
+    {
+      "batch_num": 703,
+      "current_frames": 4,
+      "avg_latency": 0.3887837529182434,
+      "remaining": 5,
+      "data_count": 2804
+    },
+    {
+      "batch_num": 704,
+      "current_frames": 4,
+      "avg_latency": 0.42598581314086914,
+      "remaining": 4,
+      "data_count": 2808
+    },
+    {
+      "batch_num": 705,
+      "current_frames": 4,
+      "avg_latency": 0.41160881519317627,
+      "remaining": 5,
+      "data_count": 2812
+    },
+    {
+      "batch_num": 706,
+      "current_frames": 4,
+      "avg_latency": 0.39084339141845703,
+      "remaining": 5,
+      "data_count": 2816
+    },
+    {
+      "batch_num": 707,
+      "current_frames": 4,
+      "avg_latency": 0.41637569665908813,
+      "remaining": 5,
+      "data_count": 2820
+    },
+    {
+      "batch_num": 708,
+      "current_frames": 4,
+      "avg_latency": 0.42086261510849,
+      "remaining": 6,
+      "data_count": 2824
+    },
+    {
+      "batch_num": 709,
+      "current_frames": 4,
+      "avg_latency": 0.4082403779029846,
+      "remaining": 6,
+      "data_count": 2828
+    },
+    {
+      "batch_num": 710,
+      "current_frames": 4,
+      "avg_latency": 0.38714665174484253,
+      "remaining": 5,
+      "data_count": 2832
+    },
+    {
+      "batch_num": 711,
+      "current_frames": 4,
+      "avg_latency": 0.38433659076690674,
+      "remaining": 5,
+      "data_count": 2836
+    },
+    {
+      "batch_num": 712,
+      "current_frames": 4,
+      "avg_latency": 0.3996233344078064,
+      "remaining": 5,
+      "data_count": 2840
+    },
+    {
+      "batch_num": 713,
+      "current_frames": 4,
+      "avg_latency": 0.40714579820632935,
+      "remaining": 6,
+      "data_count": 2844
+    },
+    {
+      "batch_num": 714,
+      "current_frames": 4,
+      "avg_latency": 0.38138020038604736,
+      "remaining": 5,
+      "data_count": 2848
+    },
+    {
+      "batch_num": 715,
+      "current_frames": 4,
+      "avg_latency": 0.3828275203704834,
+      "remaining": 5,
+      "data_count": 2852
+    },
+    {
+      "batch_num": 716,
+      "current_frames": 4,
+      "avg_latency": 0.39733558893203735,
+      "remaining": 6,
+      "data_count": 2856
+    },
+    {
+      "batch_num": 717,
+      "current_frames": 4,
+      "avg_latency": 0.37556707859039307,
+      "remaining": 6,
+      "data_count": 2860
+    },
+    {
+      "batch_num": 718,
+      "current_frames": 4,
+      "avg_latency": 0.37014496326446533,
+      "remaining": 4,
+      "data_count": 2864
+    },
+    {
+      "batch_num": 719,
+      "current_frames": 4,
+      "avg_latency": 0.4693508744239807,
+      "remaining": 5,
+      "data_count": 2868
+    },
+    {
+      "batch_num": 720,
+      "current_frames": 4,
+      "avg_latency": 0.4043155908584595,
+      "remaining": 5,
+      "data_count": 2872
+    },
+    {
+      "batch_num": 721,
+      "current_frames": 4,
+      "avg_latency": 0.4014195203781128,
+      "remaining": 5,
+      "data_count": 2876
+    },
+    {
+      "batch_num": 722,
+      "current_frames": 4,
+      "avg_latency": 0.40761125087738037,
+      "remaining": 5,
+      "data_count": 2880
+    },
+    {
+      "batch_num": 723,
+      "current_frames": 4,
+      "avg_latency": 0.375332236289978,
+      "remaining": 5,
+      "data_count": 2884
+    },
+    {
+      "batch_num": 724,
+      "current_frames": 4,
+      "avg_latency": 0.37828248739242554,
+      "remaining": 5,
+      "data_count": 2888
+    },
+    {
+      "batch_num": 725,
+      "current_frames": 4,
+      "avg_latency": 0.3778327703475952,
+      "remaining": 5,
+      "data_count": 2892
+    },
+    {
+      "batch_num": 726,
+      "current_frames": 4,
+      "avg_latency": 0.40559589862823486,
+      "remaining": 5,
+      "data_count": 2896
+    },
+    {
+      "batch_num": 727,
+      "current_frames": 4,
+      "avg_latency": 0.4254632592201233,
+      "remaining": 5,
+      "data_count": 2900
+    },
+    {
+      "batch_num": 728,
+      "current_frames": 4,
+      "avg_latency": 0.40820032358169556,
+      "remaining": 5,
+      "data_count": 2904
+    },
+    {
+      "batch_num": 729,
+      "current_frames": 4,
+      "avg_latency": 0.39292997121810913,
+      "remaining": 5,
+      "data_count": 2908
+    },
+    {
+      "batch_num": 730,
+      "current_frames": 4,
+      "avg_latency": 0.4259077310562134,
+      "remaining": 5,
+      "data_count": 2912
+    },
+    {
+      "batch_num": 731,
+      "current_frames": 4,
+      "avg_latency": 0.4044066071510315,
+      "remaining": 5,
+      "data_count": 2916
+    },
+    {
+      "batch_num": 732,
+      "current_frames": 4,
+      "avg_latency": 0.4316587448120117,
+      "remaining": 5,
+      "data_count": 2920
+    },
+    {
+      "batch_num": 733,
+      "current_frames": 4,
+      "avg_latency": 0.4138808846473694,
+      "remaining": 5,
+      "data_count": 2924
+    },
+    {
+      "batch_num": 734,
+      "current_frames": 4,
+      "avg_latency": 0.4080556631088257,
+      "remaining": 5,
+      "data_count": 2928
+    },
+    {
+      "batch_num": 735,
+      "current_frames": 4,
+      "avg_latency": 0.42412203550338745,
+      "remaining": 4,
+      "data_count": 2932
+    },
+    {
+      "batch_num": 736,
+      "current_frames": 4,
+      "avg_latency": 0.445731520652771,
+      "remaining": 5,
+      "data_count": 2936
+    },
+    {
+      "batch_num": 737,
+      "current_frames": 4,
+      "avg_latency": 0.42142683267593384,
+      "remaining": 5,
+      "data_count": 2940
+    },
+    {
+      "batch_num": 738,
+      "current_frames": 4,
+      "avg_latency": 0.39831751585006714,
+      "remaining": 5,
+      "data_count": 2944
+    },
+    {
+      "batch_num": 739,
+      "current_frames": 4,
+      "avg_latency": 0.3869020342826843,
+      "remaining": 5,
+      "data_count": 2948
+    },
+    {
+      "batch_num": 740,
+      "current_frames": 4,
+      "avg_latency": 0.40468132495880127,
+      "remaining": 5,
+      "data_count": 2952
+    },
+    {
+      "batch_num": 741,
+      "current_frames": 4,
+      "avg_latency": 0.4127123951911926,
+      "remaining": 6,
+      "data_count": 2956
+    },
+    {
+      "batch_num": 742,
+      "current_frames": 4,
+      "avg_latency": 0.3910599946975708,
+      "remaining": 6,
+      "data_count": 2960
+    },
+    {
+      "batch_num": 743,
+      "current_frames": 4,
+      "avg_latency": 0.40897995233535767,
+      "remaining": 5,
+      "data_count": 2964
+    },
+    {
+      "batch_num": 744,
+      "current_frames": 4,
+      "avg_latency": 0.43085628747940063,
+      "remaining": 5,
+      "data_count": 2968
+    },
+    {
+      "batch_num": 745,
+      "current_frames": 4,
+      "avg_latency": 0.4138334393501282,
+      "remaining": 5,
+      "data_count": 2972
+    },
+    {
+      "batch_num": 746,
+      "current_frames": 4,
+      "avg_latency": 0.40383774042129517,
+      "remaining": 6,
+      "data_count": 2976
+    },
+    {
+      "batch_num": 747,
+      "current_frames": 4,
+      "avg_latency": 0.37687063217163086,
+      "remaining": 4,
+      "data_count": 2980
+    },
+    {
+      "batch_num": 748,
+      "current_frames": 4,
+      "avg_latency": 0.41048645973205566,
+      "remaining": 2,
+      "data_count": 2984
+    },
+    {
+      "batch_num": 749,
+      "current_frames": 4,
+      "avg_latency": 0.4953072667121887,
+      "remaining": 5,
+      "data_count": 2988
+    },
+    {
+      "batch_num": 750,
+      "current_frames": 4,
+      "avg_latency": 0.38039129972457886,
+      "remaining": 4,
+      "data_count": 2992
+    },
+    {
+      "batch_num": 751,
+      "current_frames": 4,
+      "avg_latency": 0.42256736755371094,
+      "remaining": 5,
+      "data_count": 2996
+    },
+    {
+      "batch_num": 752,
+      "current_frames": 4,
+      "avg_latency": 0.3992793560028076,
+      "remaining": 5,
+      "data_count": 3000
+    },
+    {
+      "batch_num": 753,
+      "current_frames": 4,
+      "avg_latency": 0.40025120973587036,
+      "remaining": 5,
+      "data_count": 3004
+    },
+    {
+      "batch_num": 754,
+      "current_frames": 4,
+      "avg_latency": 0.42028576135635376,
+      "remaining": 5,
+      "data_count": 3008
+    },
+    {
+      "batch_num": 755,
+      "current_frames": 4,
+      "avg_latency": 0.39905333518981934,
+      "remaining": 5,
+      "data_count": 3012
+    },
+    {
+      "batch_num": 756,
+      "current_frames": 4,
+      "avg_latency": 0.3758644461631775,
+      "remaining": 4,
+      "data_count": 3016
+    },
+    {
+      "batch_num": 757,
+      "current_frames": 4,
+      "avg_latency": 0.4117632508277893,
+      "remaining": 5,
+      "data_count": 3020
+    },
+    {
+      "batch_num": 758,
+      "current_frames": 4,
+      "avg_latency": 0.3922771215438843,
+      "remaining": 4,
+      "data_count": 3024
+    },
+    {
+      "batch_num": 759,
+      "current_frames": 4,
+      "avg_latency": 0.41516178846359253,
+      "remaining": 5,
+      "data_count": 3028
+    },
+    {
+      "batch_num": 760,
+      "current_frames": 4,
+      "avg_latency": 0.3980523943901062,
+      "remaining": 5,
+      "data_count": 3032
+    },
+    {
+      "batch_num": 761,
+      "current_frames": 4,
+      "avg_latency": 0.3985052704811096,
+      "remaining": 5,
+      "data_count": 3036
+    },
+    {
+      "batch_num": 762,
+      "current_frames": 4,
+      "avg_latency": 0.42536813020706177,
+      "remaining": 5,
+      "data_count": 3040
+    },
+    {
+      "batch_num": 763,
+      "current_frames": 4,
+      "avg_latency": 0.41215771436691284,
+      "remaining": 5,
+      "data_count": 3044
+    },
+    {
+      "batch_num": 764,
+      "current_frames": 4,
+      "avg_latency": 0.37698543071746826,
+      "remaining": 3,
+      "data_count": 3048
+    },
+    {
+      "batch_num": 765,
+      "current_frames": 4,
+      "avg_latency": 0.44745194911956787,
+      "remaining": 4,
+      "data_count": 3052
+    },
+    {
+      "batch_num": 766,
+      "current_frames": 4,
+      "avg_latency": 0.4341807961463928,
+      "remaining": 5,
+      "data_count": 3056
+    },
+    {
+      "batch_num": 767,
+      "current_frames": 4,
+      "avg_latency": 0.39044708013534546,
+      "remaining": 5,
+      "data_count": 3060
+    },
+    {
+      "batch_num": 768,
+      "current_frames": 4,
+      "avg_latency": 0.4067270755767822,
+      "remaining": 5,
+      "data_count": 3064
+    },
+    {
+      "batch_num": 769,
+      "current_frames": 4,
+      "avg_latency": 0.40969347953796387,
+      "remaining": 5,
+      "data_count": 3068
+    },
+    {
+      "batch_num": 770,
+      "current_frames": 4,
+      "avg_latency": 0.40379977226257324,
+      "remaining": 5,
+      "data_count": 3072
+    },
+    {
+      "batch_num": 771,
+      "current_frames": 4,
+      "avg_latency": 0.3940920829772949,
+      "remaining": 5,
+      "data_count": 3076
+    },
+    {
+      "batch_num": 772,
+      "current_frames": 4,
+      "avg_latency": 0.39450377225875854,
+      "remaining": 5,
+      "data_count": 3080
+    },
+    {
+      "batch_num": 773,
+      "current_frames": 4,
+      "avg_latency": 0.40859454870224,
+      "remaining": 5,
+      "data_count": 3084
+    },
+    {
+      "batch_num": 774,
+      "current_frames": 4,
+      "avg_latency": 0.3993380069732666,
+      "remaining": 6,
+      "data_count": 3088
+    },
+    {
+      "batch_num": 775,
+      "current_frames": 4,
+      "avg_latency": 0.38413262367248535,
+      "remaining": 6,
+      "data_count": 3092
+    },
+    {
+      "batch_num": 776,
+      "current_frames": 4,
+      "avg_latency": 0.38819998502731323,
+      "remaining": 6,
+      "data_count": 3096
+    },
+    {
+      "batch_num": 777,
+      "current_frames": 4,
+      "avg_latency": 0.38177186250686646,
+      "remaining": 5,
+      "data_count": 3100
+    },
+    {
+      "batch_num": 778,
+      "current_frames": 4,
+      "avg_latency": 0.3999696969985962,
+      "remaining": 5,
+      "data_count": 3104
+    },
+    {
+      "batch_num": 779,
+      "current_frames": 4,
+      "avg_latency": 0.3841820955276489,
+      "remaining": 5,
+      "data_count": 3108
+    },
+    {
+      "batch_num": 780,
+      "current_frames": 4,
+      "avg_latency": 0.40354061126708984,
+      "remaining": 5,
+      "data_count": 3112
+    },
+    {
+      "batch_num": 781,
+      "current_frames": 4,
+      "avg_latency": 0.4196694493293762,
+      "remaining": 5,
+      "data_count": 3116
+    },
+    {
+      "batch_num": 782,
+      "current_frames": 4,
+      "avg_latency": 0.42401403188705444,
+      "remaining": 6,
+      "data_count": 3120
+    },
+    {
+      "batch_num": 783,
+      "current_frames": 4,
+      "avg_latency": 0.3906221389770508,
+      "remaining": 5,
+      "data_count": 3124
+    },
+    {
+      "batch_num": 784,
+      "current_frames": 4,
+      "avg_latency": 0.39868783950805664,
+      "remaining": 5,
+      "data_count": 3128
+    },
+    {
+      "batch_num": 785,
+      "current_frames": 4,
+      "avg_latency": 0.4067891836166382,
+      "remaining": 5,
+      "data_count": 3132
+    },
+    {
+      "batch_num": 786,
+      "current_frames": 4,
+      "avg_latency": 0.3961060643196106,
+      "remaining": 4,
+      "data_count": 3136
+    },
+    {
+      "batch_num": 787,
+      "current_frames": 4,
+      "avg_latency": 0.41400861740112305,
+      "remaining": 5,
+      "data_count": 3140
+    },
+    {
+      "batch_num": 788,
+      "current_frames": 4,
+      "avg_latency": 0.3906402587890625,
+      "remaining": 5,
+      "data_count": 3144
+    },
+    {
+      "batch_num": 789,
+      "current_frames": 4,
+      "avg_latency": 0.41637128591537476,
+      "remaining": 5,
+      "data_count": 3148
+    },
+    {
+      "batch_num": 790,
+      "current_frames": 4,
+      "avg_latency": 0.4130076766014099,
+      "remaining": 5,
+      "data_count": 3152
+    },
+    {
+      "batch_num": 791,
+      "current_frames": 4,
+      "avg_latency": 0.4123727083206177,
+      "remaining": 5,
+      "data_count": 3156
+    },
+    {
+      "batch_num": 792,
+      "current_frames": 4,
+      "avg_latency": 0.38224512338638306,
+      "remaining": 5,
+      "data_count": 3160
+    },
+    {
+      "batch_num": 793,
+      "current_frames": 4,
+      "avg_latency": 0.40227019786834717,
+      "remaining": 5,
+      "data_count": 3164
+    },
+    {
+      "batch_num": 794,
+      "current_frames": 4,
+      "avg_latency": 0.3949061632156372,
+      "remaining": 5,
+      "data_count": 3168
+    },
+    {
+      "batch_num": 795,
+      "current_frames": 4,
+      "avg_latency": 0.39777499437332153,
+      "remaining": 5,
+      "data_count": 3172
+    },
+    {
+      "batch_num": 796,
+      "current_frames": 4,
+      "avg_latency": 0.40207022428512573,
+      "remaining": 5,
+      "data_count": 3176
+    },
+    {
+      "batch_num": 797,
+      "current_frames": 4,
+      "avg_latency": 0.39666664600372314,
+      "remaining": 5,
+      "data_count": 3180
+    },
+    {
+      "batch_num": 798,
+      "current_frames": 4,
+      "avg_latency": 0.391448438167572,
+      "remaining": 5,
+      "data_count": 3184
+    },
+    {
+      "batch_num": 799,
+      "current_frames": 4,
+      "avg_latency": 0.40674757957458496,
+      "remaining": 5,
+      "data_count": 3188
+    },
+    {
+      "batch_num": 800,
+      "current_frames": 4,
+      "avg_latency": 0.4225424528121948,
+      "remaining": 5,
+      "data_count": 3192
+    },
+    {
+      "batch_num": 801,
+      "current_frames": 4,
+      "avg_latency": 0.4165528416633606,
+      "remaining": 5,
+      "data_count": 3196
+    },
+    {
+      "batch_num": 802,
+      "current_frames": 4,
+      "avg_latency": 0.3987961411476135,
+      "remaining": 5,
+      "data_count": 3200
+    },
+    {
+      "batch_num": 803,
+      "current_frames": 4,
+      "avg_latency": 0.3853304386138916,
+      "remaining": 6,
+      "data_count": 3204
+    },
+    {
+      "batch_num": 804,
+      "current_frames": 4,
+      "avg_latency": 0.38724857568740845,
+      "remaining": 5,
+      "data_count": 3208
+    },
+    {
+      "batch_num": 805,
+      "current_frames": 4,
+      "avg_latency": 0.39377206563949585,
+      "remaining": 4,
+      "data_count": 3212
+    },
+    {
+      "batch_num": 806,
+      "current_frames": 4,
+      "avg_latency": 0.4189838171005249,
+      "remaining": 5,
+      "data_count": 3216
+    },
+    {
+      "batch_num": 807,
+      "current_frames": 4,
+      "avg_latency": 0.4228174686431885,
+      "remaining": 6,
+      "data_count": 3220
+    },
+    {
+      "batch_num": 808,
+      "current_frames": 4,
+      "avg_latency": 0.4177566170692444,
+      "remaining": 5,
+      "data_count": 3224
+    },
+    {
+      "batch_num": 809,
+      "current_frames": 4,
+      "avg_latency": 0.40728604793548584,
+      "remaining": 5,
+      "data_count": 3228
+    },
+    {
+      "batch_num": 810,
+      "current_frames": 4,
+      "avg_latency": 0.3965943455696106,
+      "remaining": 5,
+      "data_count": 3232
+    },
+    {
+      "batch_num": 811,
+      "current_frames": 4,
+      "avg_latency": 0.4025341272354126,
+      "remaining": 5,
+      "data_count": 3236
+    },
+    {
+      "batch_num": 812,
+      "current_frames": 4,
+      "avg_latency": 0.40181446075439453,
+      "remaining": 4,
+      "data_count": 3240
+    },
+    {
+      "batch_num": 813,
+      "current_frames": 4,
+      "avg_latency": 0.42709219455718994,
+      "remaining": 5,
+      "data_count": 3244
+    },
+    {
+      "batch_num": 814,
+      "current_frames": 4,
+      "avg_latency": 0.37662243843078613,
+      "remaining": 2,
+      "data_count": 3248
+    },
+    {
+      "batch_num": 815,
+      "current_frames": 4,
+      "avg_latency": 0.502414345741272,
+      "remaining": 5,
+      "data_count": 3252
+    },
+    {
+      "batch_num": 816,
+      "current_frames": 4,
+      "avg_latency": 0.3908904194831848,
+      "remaining": 5,
+      "data_count": 3256
+    },
+    {
+      "batch_num": 817,
+      "current_frames": 4,
+      "avg_latency": 0.3923543691635132,
+      "remaining": 5,
+      "data_count": 3260
+    },
+    {
+      "batch_num": 818,
+      "current_frames": 4,
+      "avg_latency": 0.3981321454048157,
+      "remaining": 5,
+      "data_count": 3264
+    },
+    {
+      "batch_num": 819,
+      "current_frames": 4,
+      "avg_latency": 0.41422969102859497,
+      "remaining": 6,
+      "data_count": 3268
+    },
+    {
+      "batch_num": 820,
+      "current_frames": 4,
+      "avg_latency": 0.37856417894363403,
+      "remaining": 5,
+      "data_count": 3272
+    },
+    {
+      "batch_num": 821,
+      "current_frames": 4,
+      "avg_latency": 0.3747822046279907,
+      "remaining": 5,
+      "data_count": 3276
+    },
+    {
+      "batch_num": 822,
+      "current_frames": 4,
+      "avg_latency": 0.42405933141708374,
+      "remaining": 5,
+      "data_count": 3280
+    },
+    {
+      "batch_num": 823,
+      "current_frames": 4,
+      "avg_latency": 0.41791820526123047,
+      "remaining": 5,
+      "data_count": 3284
+    },
+    {
+      "batch_num": 824,
+      "current_frames": 4,
+      "avg_latency": 0.4124433994293213,
+      "remaining": 5,
+      "data_count": 3288
+    },
+    {
+      "batch_num": 825,
+      "current_frames": 4,
+      "avg_latency": 0.39017313718795776,
+      "remaining": 5,
+      "data_count": 3292
+    },
+    {
+      "batch_num": 826,
+      "current_frames": 4,
+      "avg_latency": 0.39069539308547974,
+      "remaining": 5,
+      "data_count": 3296
+    },
+    {
+      "batch_num": 827,
+      "current_frames": 4,
+      "avg_latency": 0.39902055263519287,
+      "remaining": 6,
+      "data_count": 3300
+    },
+    {
+      "batch_num": 828,
+      "current_frames": 4,
+      "avg_latency": 0.3951205611228943,
+      "remaining": 6,
+      "data_count": 3304
+    },
+    {
+      "batch_num": 829,
+      "current_frames": 4,
+      "avg_latency": 0.37923282384872437,
+      "remaining": 5,
+      "data_count": 3308
+    },
+    {
+      "batch_num": 830,
+      "current_frames": 4,
+      "avg_latency": 0.3849135637283325,
+      "remaining": 4,
+      "data_count": 3312
+    },
+    {
+      "batch_num": 831,
+      "current_frames": 4,
+      "avg_latency": 0.4082018733024597,
+      "remaining": 5,
+      "data_count": 3316
+    },
+    {
+      "batch_num": 832,
+      "current_frames": 4,
+      "avg_latency": 0.41310811042785645,
+      "remaining": 5,
+      "data_count": 3320
+    },
+    {
+      "batch_num": 833,
+      "current_frames": 4,
+      "avg_latency": 0.4048917293548584,
+      "remaining": 6,
+      "data_count": 3324
+    },
+    {
+      "batch_num": 834,
+      "current_frames": 4,
+      "avg_latency": 0.39575183391571045,
+      "remaining": 6,
+      "data_count": 3328
+    },
+    {
+      "batch_num": 835,
+      "current_frames": 4,
+      "avg_latency": 0.3910961151123047,
+      "remaining": 5,
+      "data_count": 3332
+    },
+    {
+      "batch_num": 836,
+      "current_frames": 4,
+      "avg_latency": 0.3982698321342468,
+      "remaining": 5,
+      "data_count": 3336
+    },
+    {
+      "batch_num": 837,
+      "current_frames": 4,
+      "avg_latency": 0.39250409603118896,
+      "remaining": 5,
+      "data_count": 3340
+    },
+    {
+      "batch_num": 838,
+      "current_frames": 4,
+      "avg_latency": 0.41284358501434326,
+      "remaining": 5,
+      "data_count": 3344
+    },
+    {
+      "batch_num": 839,
+      "current_frames": 4,
+      "avg_latency": 0.4227948784828186,
+      "remaining": 6,
+      "data_count": 3348
+    },
+    {
+      "batch_num": 840,
+      "current_frames": 4,
+      "avg_latency": 0.3818697929382324,
+      "remaining": 6,
+      "data_count": 3352
+    },
+    {
+      "batch_num": 841,
+      "current_frames": 4,
+      "avg_latency": 0.3729693293571472,
+      "remaining": 5,
+      "data_count": 3356
+    },
+    {
+      "batch_num": 842,
+      "current_frames": 4,
+      "avg_latency": 0.3986635208129883,
+      "remaining": 5,
+      "data_count": 3360
+    },
+    {
+      "batch_num": 843,
+      "current_frames": 4,
+      "avg_latency": 0.3868345022201538,
+      "remaining": 6,
+      "data_count": 3364
+    },
+    {
+      "batch_num": 844,
+      "current_frames": 4,
+      "avg_latency": 0.3699791431427002,
+      "remaining": 5,
+      "data_count": 3368
+    },
+    {
+      "batch_num": 845,
+      "current_frames": 4,
+      "avg_latency": 0.4126644730567932,
+      "remaining": 5,
+      "data_count": 3372
+    },
+    {
+      "batch_num": 846,
+      "current_frames": 4,
+      "avg_latency": 0.40722620487213135,
+      "remaining": 5,
+      "data_count": 3376
+    },
+    {
+      "batch_num": 847,
+      "current_frames": 4,
+      "avg_latency": 0.3837546706199646,
+      "remaining": 5,
+      "data_count": 3380
+    },
+    {
+      "batch_num": 848,
+      "current_frames": 4,
+      "avg_latency": 0.4114515781402588,
+      "remaining": 5,
+      "data_count": 3384
+    },
+    {
+      "batch_num": 849,
+      "current_frames": 4,
+      "avg_latency": 0.390577495098114,
+      "remaining": 4,
+      "data_count": 3388
+    },
+    {
+      "batch_num": 850,
+      "current_frames": 4,
+      "avg_latency": 0.40822726488113403,
+      "remaining": 4,
+      "data_count": 3392
+    },
+    {
+      "batch_num": 851,
+      "current_frames": 4,
+      "avg_latency": 0.4400430917739868,
+      "remaining": 5,
+      "data_count": 3396
+    },
+    {
+      "batch_num": 852,
+      "current_frames": 4,
+      "avg_latency": 0.38961970806121826,
+      "remaining": 5,
+      "data_count": 3400
+    },
+    {
+      "batch_num": 853,
+      "current_frames": 4,
+      "avg_latency": 0.40999412536621094,
+      "remaining": 5,
+      "data_count": 3404
+    },
+    {
+      "batch_num": 854,
+      "current_frames": 4,
+      "avg_latency": 0.40484189987182617,
+      "remaining": 6,
+      "data_count": 3408
+    },
+    {
+      "batch_num": 855,
+      "current_frames": 4,
+      "avg_latency": 0.3803479075431824,
+      "remaining": 5,
+      "data_count": 3412
+    },
+    {
+      "batch_num": 856,
+      "current_frames": 4,
+      "avg_latency": 0.3964235782623291,
+      "remaining": 5,
+      "data_count": 3416
+    },
+    {
+      "batch_num": 857,
+      "current_frames": 4,
+      "avg_latency": 0.38456493616104126,
+      "remaining": 5,
+      "data_count": 3420
+    },
+    {
+      "batch_num": 858,
+      "current_frames": 4,
+      "avg_latency": 0.39155369997024536,
+      "remaining": 5,
+      "data_count": 3424
+    },
+    {
+      "batch_num": 859,
+      "current_frames": 4,
+      "avg_latency": 0.3945733904838562,
+      "remaining": 5,
+      "data_count": 3428
+    },
+    {
+      "batch_num": 860,
+      "current_frames": 4,
+      "avg_latency": 0.4042884111404419,
+      "remaining": 6,
+      "data_count": 3432
+    },
+    {
+      "batch_num": 861,
+      "current_frames": 4,
+      "avg_latency": 0.37796610593795776,
+      "remaining": 5,
+      "data_count": 3436
+    },
+    {
+      "batch_num": 862,
+      "current_frames": 4,
+      "avg_latency": 0.38778501749038696,
+      "remaining": 5,
+      "data_count": 3440
+    },
+    {
+      "batch_num": 863,
+      "current_frames": 4,
+      "avg_latency": 0.38781487941741943,
+      "remaining": 5,
+      "data_count": 3444
+    },
+    {
+      "batch_num": 864,
+      "current_frames": 4,
+      "avg_latency": 0.41273772716522217,
+      "remaining": 5,
+      "data_count": 3448
+    },
+    {
+      "batch_num": 865,
+      "current_frames": 4,
+      "avg_latency": 0.3977547883987427,
+      "remaining": 5,
+      "data_count": 3452
+    },
+    {
+      "batch_num": 866,
+      "current_frames": 4,
+      "avg_latency": 0.39079731702804565,
+      "remaining": 5,
+      "data_count": 3456
+    },
+    {
+      "batch_num": 867,
+      "current_frames": 4,
+      "avg_latency": 0.4051659107208252,
+      "remaining": 5,
+      "data_count": 3460
+    },
+    {
+      "batch_num": 868,
+      "current_frames": 4,
+      "avg_latency": 0.40760499238967896,
+      "remaining": 6,
+      "data_count": 3464
+    },
+    {
+      "batch_num": 869,
+      "current_frames": 4,
+      "avg_latency": 0.3787229657173157,
+      "remaining": 5,
+      "data_count": 3468
+    },
+    {
+      "batch_num": 870,
+      "current_frames": 4,
+      "avg_latency": 0.37342458963394165,
+      "remaining": 5,
+      "data_count": 3472
+    },
+    {
+      "batch_num": 871,
+      "current_frames": 4,
+      "avg_latency": 0.377765953540802,
+      "remaining": 5,
+      "data_count": 3476
+    },
+    {
+      "batch_num": 872,
+      "current_frames": 4,
+      "avg_latency": 0.4033523201942444,
+      "remaining": 4,
+      "data_count": 3480
+    },
+    {
+      "batch_num": 873,
+      "current_frames": 4,
+      "avg_latency": 0.43270957469940186,
+      "remaining": 4,
+      "data_count": 3484
+    },
+    {
+      "batch_num": 874,
+      "current_frames": 4,
+      "avg_latency": 0.4205082058906555,
+      "remaining": 5,
+      "data_count": 3488
+    },
+    {
+      "batch_num": 875,
+      "current_frames": 4,
+      "avg_latency": 0.41670137643814087,
+      "remaining": 5,
+      "data_count": 3492
+    },
+    {
+      "batch_num": 876,
+      "current_frames": 4,
+      "avg_latency": 0.4067935347557068,
+      "remaining": 5,
+      "data_count": 3496
+    },
+    {
+      "batch_num": 877,
+      "current_frames": 4,
+      "avg_latency": 0.3863714933395386,
+      "remaining": 4,
+      "data_count": 3500
+    },
+    {
+      "batch_num": 878,
+      "current_frames": 4,
+      "avg_latency": 0.41845041513442993,
+      "remaining": 5,
+      "data_count": 3504
+    },
+    {
+      "batch_num": 879,
+      "current_frames": 4,
+      "avg_latency": 0.3924325704574585,
+      "remaining": 4,
+      "data_count": 3508
+    },
+    {
+      "batch_num": 880,
+      "current_frames": 4,
+      "avg_latency": 0.4357094168663025,
+      "remaining": 5,
+      "data_count": 3512
+    },
+    {
+      "batch_num": 881,
+      "current_frames": 4,
+      "avg_latency": 0.4078081250190735,
+      "remaining": 2,
+      "data_count": 3516
+    },
+    {
+      "batch_num": 882,
+      "current_frames": 4,
+      "avg_latency": 0.4941033720970154,
+      "remaining": 4,
+      "data_count": 3520
+    },
+    {
+      "batch_num": 883,
+      "current_frames": 4,
+      "avg_latency": 0.41544705629348755,
+      "remaining": 4,
+      "data_count": 3524
+    },
+    {
+      "batch_num": 884,
+      "current_frames": 4,
+      "avg_latency": 0.4120928645133972,
+      "remaining": 5,
+      "data_count": 3528
+    },
+    {
+      "batch_num": 885,
+      "current_frames": 4,
+      "avg_latency": 0.399245023727417,
+      "remaining": 5,
+      "data_count": 3532
+    },
+    {
+      "batch_num": 886,
+      "current_frames": 4,
+      "avg_latency": 0.39629697799682617,
+      "remaining": 5,
+      "data_count": 3536
+    },
+    {
+      "batch_num": 887,
+      "current_frames": 4,
+      "avg_latency": 0.4003860354423523,
+      "remaining": 5,
+      "data_count": 3540
+    },
+    {
+      "batch_num": 888,
+      "current_frames": 4,
+      "avg_latency": 0.3945774435997009,
+      "remaining": 3,
+      "data_count": 3544
+    },
+    {
+      "batch_num": 889,
+      "current_frames": 4,
+      "avg_latency": 0.45204460620880127,
+      "remaining": 6,
+      "data_count": 3548
+    },
+    {
+      "batch_num": 890,
+      "current_frames": 4,
+      "avg_latency": 0.3804694414138794,
+      "remaining": 5,
+      "data_count": 3552
+    },
+    {
+      "batch_num": 891,
+      "current_frames": 4,
+      "avg_latency": 0.40029311180114746,
+      "remaining": 5,
+      "data_count": 3556
+    },
+    {
+      "batch_num": 892,
+      "current_frames": 4,
+      "avg_latency": 0.4020739197731018,
+      "remaining": 5,
+      "data_count": 3560
+    },
+    {
+      "batch_num": 893,
+      "current_frames": 4,
+      "avg_latency": 0.4120674729347229,
+      "remaining": 6,
+      "data_count": 3564
+    },
+    {
+      "batch_num": 894,
+      "current_frames": 4,
+      "avg_latency": 0.39768391847610474,
+      "remaining": 5,
+      "data_count": 3568
+    },
+    {
+      "batch_num": 895,
+      "current_frames": 4,
+      "avg_latency": 0.39467501640319824,
+      "remaining": 3,
+      "data_count": 3572
+    },
+    {
+      "batch_num": 896,
+      "current_frames": 4,
+      "avg_latency": 0.4728407859802246,
+      "remaining": 6,
+      "data_count": 3576
+    },
+    {
+      "batch_num": 897,
+      "current_frames": 4,
+      "avg_latency": 0.37793129682540894,
+      "remaining": 5,
+      "data_count": 3580
+    },
+    {
+      "batch_num": 898,
+      "current_frames": 4,
+      "avg_latency": 0.38305968046188354,
+      "remaining": 5,
+      "data_count": 3584
+    },
+    {
+      "batch_num": 899,
+      "current_frames": 4,
+      "avg_latency": 0.37666696310043335,
+      "remaining": 5,
+      "data_count": 3588
+    },
+    {
+      "batch_num": 900,
+      "current_frames": 4,
+      "avg_latency": 0.3924185633659363,
+      "remaining": 5,
+      "data_count": 3592
+    },
+    {
+      "batch_num": 901,
+      "current_frames": 4,
+      "avg_latency": 0.38713884353637695,
+      "remaining": 5,
+      "data_count": 3596
+    },
+    {
+      "batch_num": 902,
+      "current_frames": 4,
+      "avg_latency": 0.38798463344573975,
+      "remaining": 5,
+      "data_count": 3600
+    },
+    {
+      "batch_num": 903,
+      "current_frames": 4,
+      "avg_latency": 0.39861321449279785,
+      "remaining": 5,
+      "data_count": 3604
+    },
+    {
+      "batch_num": 904,
+      "current_frames": 4,
+      "avg_latency": 0.3966369032859802,
+      "remaining": 5,
+      "data_count": 3608
+    },
+    {
+      "batch_num": 905,
+      "current_frames": 4,
+      "avg_latency": 0.4003291130065918,
+      "remaining": 5,
+      "data_count": 3612
+    },
+    {
+      "batch_num": 906,
+      "current_frames": 4,
+      "avg_latency": 0.39816468954086304,
+      "remaining": 5,
+      "data_count": 3616
+    },
+    {
+      "batch_num": 907,
+      "current_frames": 4,
+      "avg_latency": 0.3956332206726074,
+      "remaining": 5,
+      "data_count": 3620
+    },
+    {
+      "batch_num": 908,
+      "current_frames": 4,
+      "avg_latency": 0.39840227365493774,
+      "remaining": 5,
+      "data_count": 3624
+    },
+    {
+      "batch_num": 909,
+      "current_frames": 4,
+      "avg_latency": 0.41075319051742554,
+      "remaining": 5,
+      "data_count": 3628
+    },
+    {
+      "batch_num": 910,
+      "current_frames": 4,
+      "avg_latency": 0.3949318528175354,
+      "remaining": 5,
+      "data_count": 3632
+    },
+    {
+      "batch_num": 911,
+      "current_frames": 4,
+      "avg_latency": 0.39417606592178345,
+      "remaining": 5,
+      "data_count": 3636
+    },
+    {
+      "batch_num": 912,
+      "current_frames": 4,
+      "avg_latency": 0.39464759826660156,
+      "remaining": 5,
+      "data_count": 3640
+    },
+    {
+      "batch_num": 913,
+      "current_frames": 4,
+      "avg_latency": 0.39172160625457764,
+      "remaining": 5,
+      "data_count": 3644
+    },
+    {
+      "batch_num": 914,
+      "current_frames": 4,
+      "avg_latency": 0.38789480924606323,
+      "remaining": 5,
+      "data_count": 3648
+    },
+    {
+      "batch_num": 915,
+      "current_frames": 4,
+      "avg_latency": 0.3983340263366699,
+      "remaining": 5,
+      "data_count": 3652
+    },
+    {
+      "batch_num": 916,
+      "current_frames": 4,
+      "avg_latency": 0.3880767226219177,
+      "remaining": 5,
+      "data_count": 3656
+    },
+    {
+      "batch_num": 917,
+      "current_frames": 4,
+      "avg_latency": 0.394334614276886,
+      "remaining": 5,
+      "data_count": 3660
+    },
+    {
+      "batch_num": 918,
+      "current_frames": 4,
+      "avg_latency": 0.40255308151245117,
+      "remaining": 6,
+      "data_count": 3664
+    },
+    {
+      "batch_num": 919,
+      "current_frames": 4,
+      "avg_latency": 0.3769991397857666,
+      "remaining": 4,
+      "data_count": 3668
+    },
+    {
+      "batch_num": 920,
+      "current_frames": 4,
+      "avg_latency": 0.41615021228790283,
+      "remaining": 5,
+      "data_count": 3672
+    },
+    {
+      "batch_num": 921,
+      "current_frames": 4,
+      "avg_latency": 0.3973923325538635,
+      "remaining": 4,
+      "data_count": 3676
+    },
+    {
+      "batch_num": 922,
+      "current_frames": 4,
+      "avg_latency": 0.41932690143585205,
+      "remaining": 6,
+      "data_count": 3680
+    },
+    {
+      "batch_num": 923,
+      "current_frames": 4,
+      "avg_latency": 0.38225358724594116,
+      "remaining": 5,
+      "data_count": 3684
+    },
+    {
+      "batch_num": 924,
+      "current_frames": 4,
+      "avg_latency": 0.4142184853553772,
+      "remaining": 6,
+      "data_count": 3688
+    },
+    {
+      "batch_num": 925,
+      "current_frames": 4,
+      "avg_latency": 0.3926631808280945,
+      "remaining": 5,
+      "data_count": 3692
+    },
+    {
+      "batch_num": 926,
+      "current_frames": 4,
+      "avg_latency": 0.3943353295326233,
+      "remaining": 5,
+      "data_count": 3696
+    },
+    {
+      "batch_num": 927,
+      "current_frames": 4,
+      "avg_latency": 0.3983302712440491,
+      "remaining": 5,
+      "data_count": 3700
+    },
+    {
+      "batch_num": 928,
+      "current_frames": 4,
+      "avg_latency": 0.395341694355011,
+      "remaining": 6,
+      "data_count": 3704
+    },
+    {
+      "batch_num": 929,
+      "current_frames": 4,
+      "avg_latency": 0.38372641801834106,
+      "remaining": 5,
+      "data_count": 3708
+    },
+    {
+      "batch_num": 930,
+      "current_frames": 4,
+      "avg_latency": 0.4002745747566223,
+      "remaining": 4,
+      "data_count": 3712
+    },
+    {
+      "batch_num": 931,
+      "current_frames": 4,
+      "avg_latency": 0.42266780138015747,
+      "remaining": 6,
+      "data_count": 3716
+    },
+    {
+      "batch_num": 932,
+      "current_frames": 4,
+      "avg_latency": 0.38886457681655884,
+      "remaining": 5,
+      "data_count": 3720
+    },
+    {
+      "batch_num": 933,
+      "current_frames": 4,
+      "avg_latency": 0.4022562503814697,
+      "remaining": 6,
+      "data_count": 3724
+    },
+    {
+      "batch_num": 934,
+      "current_frames": 4,
+      "avg_latency": 0.37589770555496216,
+      "remaining": 5,
+      "data_count": 3728
+    },
+    {
+      "batch_num": 935,
+      "current_frames": 4,
+      "avg_latency": 0.3963029980659485,
+      "remaining": 4,
+      "data_count": 3732
+    },
+    {
+      "batch_num": 936,
+      "current_frames": 4,
+      "avg_latency": 0.4246012568473816,
+      "remaining": 6,
+      "data_count": 3736
+    },
+    {
+      "batch_num": 937,
+      "current_frames": 4,
+      "avg_latency": 0.3897898197174072,
+      "remaining": 5,
+      "data_count": 3740
+    },
+    {
+      "batch_num": 938,
+      "current_frames": 4,
+      "avg_latency": 0.40479791164398193,
+      "remaining": 5,
+      "data_count": 3744
+    },
+    {
+      "batch_num": 939,
+      "current_frames": 4,
+      "avg_latency": 0.4032149314880371,
+      "remaining": 5,
+      "data_count": 3748
+    },
+    {
+      "batch_num": 940,
+      "current_frames": 4,
+      "avg_latency": 0.3802639842033386,
+      "remaining": 5,
+      "data_count": 3752
+    },
+    {
+      "batch_num": 941,
+      "current_frames": 4,
+      "avg_latency": 0.4026491045951843,
+      "remaining": 5,
+      "data_count": 3756
+    },
+    {
+      "batch_num": 942,
+      "current_frames": 4,
+      "avg_latency": 0.41940146684646606,
+      "remaining": 5,
+      "data_count": 3760
+    },
+    {
+      "batch_num": 943,
+      "current_frames": 4,
+      "avg_latency": 0.40369534492492676,
+      "remaining": 5,
+      "data_count": 3764
+    },
+    {
+      "batch_num": 944,
+      "current_frames": 4,
+      "avg_latency": 0.39465945959091187,
+      "remaining": 5,
+      "data_count": 3768
+    },
+    {
+      "batch_num": 945,
+      "current_frames": 4,
+      "avg_latency": 0.3936883211135864,
+      "remaining": 5,
+      "data_count": 3772
+    },
+    {
+      "batch_num": 946,
+      "current_frames": 4,
+      "avg_latency": 0.4214200973510742,
+      "remaining": 5,
+      "data_count": 3776
+    },
+    {
+      "batch_num": 947,
+      "current_frames": 4,
+      "avg_latency": 0.41635483503341675,
+      "remaining": 4,
+      "data_count": 3780
+    },
+    {
+      "batch_num": 948,
+      "current_frames": 4,
+      "avg_latency": 0.598305344581604,
+      "remaining": 6,
+      "data_count": 3784
+    },
+    {
+      "batch_num": 949,
+      "current_frames": 4,
+      "avg_latency": 0.38861048221588135,
+      "remaining": 5,
+      "data_count": 3788
+    },
+    {
+      "batch_num": 950,
+      "current_frames": 4,
+      "avg_latency": 0.3911265730857849,
+      "remaining": 5,
+      "data_count": 3792
+    },
+    {
+      "batch_num": 951,
+      "current_frames": 4,
+      "avg_latency": 0.426386296749115,
+      "remaining": 5,
+      "data_count": 3796
+    },
+    {
+      "batch_num": 952,
+      "current_frames": 4,
+      "avg_latency": 0.4102833867073059,
+      "remaining": 6,
+      "data_count": 3800
+    },
+    {
+      "batch_num": 953,
+      "current_frames": 4,
+      "avg_latency": 0.39761418104171753,
+      "remaining": 5,
+      "data_count": 3804
+    },
+    {
+      "batch_num": 954,
+      "current_frames": 4,
+      "avg_latency": 0.5249283909797668,
+      "remaining": 7,
+      "data_count": 3808
+    },
+    {
+      "batch_num": 955,
+      "current_frames": 4,
+      "avg_latency": 0.3867650628089905,
+      "remaining": 5,
+      "data_count": 3812
+    },
+    {
+      "batch_num": 956,
+      "current_frames": 4,
+      "avg_latency": 0.39604687690734863,
+      "remaining": 5,
+      "data_count": 3816
+    },
+    {
+      "batch_num": 957,
+      "current_frames": 4,
+      "avg_latency": 0.40814512968063354,
+      "remaining": 5,
+      "data_count": 3820
+    },
+    {
+      "batch_num": 958,
+      "current_frames": 4,
+      "avg_latency": 0.3872634768486023,
+      "remaining": 4,
+      "data_count": 3824
+    },
+    {
+      "batch_num": 959,
+      "current_frames": 4,
+      "avg_latency": 0.450009286403656,
+      "remaining": 5,
+      "data_count": 3828
+    },
+    {
+      "batch_num": 960,
+      "current_frames": 4,
+      "avg_latency": 0.40737485885620117,
+      "remaining": 5,
+      "data_count": 3832
+    },
+    {
+      "batch_num": 961,
+      "current_frames": 4,
+      "avg_latency": 0.4004173278808594,
+      "remaining": 5,
+      "data_count": 3836
+    },
+    {
+      "batch_num": 962,
+      "current_frames": 4,
+      "avg_latency": 0.4017863869667053,
+      "remaining": 4,
+      "data_count": 3840
+    },
+    {
+      "batch_num": 963,
+      "current_frames": 4,
+      "avg_latency": 0.42671847343444824,
+      "remaining": 5,
+      "data_count": 3844
+    },
+    {
+      "batch_num": 964,
+      "current_frames": 4,
+      "avg_latency": 0.3937697410583496,
+      "remaining": 5,
+      "data_count": 3848
+    },
+    {
+      "batch_num": 965,
+      "current_frames": 4,
+      "avg_latency": 0.36939918994903564,
+      "remaining": 5,
+      "data_count": 3852
+    },
+    {
+      "batch_num": 966,
+      "current_frames": 4,
+      "avg_latency": 0.4224989414215088,
+      "remaining": 5,
+      "data_count": 3856
+    },
+    {
+      "batch_num": 967,
+      "current_frames": 4,
+      "avg_latency": 0.3876991868019104,
+      "remaining": 5,
+      "data_count": 3860
+    },
+    {
+      "batch_num": 968,
+      "current_frames": 4,
+      "avg_latency": 0.40639740228652954,
+      "remaining": 5,
+      "data_count": 3864
+    },
+    {
+      "batch_num": 969,
+      "current_frames": 4,
+      "avg_latency": 0.4055955410003662,
+      "remaining": 4,
+      "data_count": 3868
+    },
+    {
+      "batch_num": 970,
+      "current_frames": 4,
+      "avg_latency": 0.44031602144241333,
+      "remaining": 6,
+      "data_count": 3872
+    },
+    {
+      "batch_num": 971,
+      "current_frames": 4,
+      "avg_latency": 0.38358938694000244,
+      "remaining": 5,
+      "data_count": 3876
+    },
+    {
+      "batch_num": 972,
+      "current_frames": 4,
+      "avg_latency": 0.4394958019256592,
+      "remaining": 6,
+      "data_count": 3880
+    },
+    {
+      "batch_num": 973,
+      "current_frames": 4,
+      "avg_latency": 0.3920501470565796,
+      "remaining": 5,
+      "data_count": 3884
+    },
+    {
+      "batch_num": 974,
+      "current_frames": 4,
+      "avg_latency": 0.42102986574172974,
+      "remaining": 5,
+      "data_count": 3888
+    },
+    {
+      "batch_num": 975,
+      "current_frames": 4,
+      "avg_latency": 0.41150981187820435,
+      "remaining": 5,
+      "data_count": 3892
+    },
+    {
+      "batch_num": 976,
+      "current_frames": 4,
+      "avg_latency": 0.39541536569595337,
+      "remaining": 5,
+      "data_count": 3896
+    },
+    {
+      "batch_num": 977,
+      "current_frames": 4,
+      "avg_latency": 0.40008193254470825,
+      "remaining": 5,
+      "data_count": 3900
+    },
+    {
+      "batch_num": 978,
+      "current_frames": 4,
+      "avg_latency": 0.3996320366859436,
+      "remaining": 5,
+      "data_count": 3904
+    },
+    {
+      "batch_num": 979,
+      "current_frames": 4,
+      "avg_latency": 0.40801548957824707,
+      "remaining": 5,
+      "data_count": 3908
+    },
+    {
+      "batch_num": 980,
+      "current_frames": 4,
+      "avg_latency": 0.3859924077987671,
+      "remaining": 5,
+      "data_count": 3912
+    },
+    {
+      "batch_num": 981,
+      "current_frames": 4,
+      "avg_latency": 0.37757784128189087,
+      "remaining": 5,
+      "data_count": 3916
+    },
+    {
+      "batch_num": 982,
+      "current_frames": 4,
+      "avg_latency": 0.38624560832977295,
+      "remaining": 5,
+      "data_count": 3920
+    },
+    {
+      "batch_num": 983,
+      "current_frames": 4,
+      "avg_latency": 0.383609414100647,
+      "remaining": 5,
+      "data_count": 3924
+    },
+    {
+      "batch_num": 984,
+      "current_frames": 4,
+      "avg_latency": 0.3887457251548767,
+      "remaining": 5,
+      "data_count": 3928
+    },
+    {
+      "batch_num": 985,
+      "current_frames": 4,
+      "avg_latency": 0.4074057936668396,
+      "remaining": 5,
+      "data_count": 3932
+    },
+    {
+      "batch_num": 986,
+      "current_frames": 4,
+      "avg_latency": 0.4024260640144348,
+      "remaining": 5,
+      "data_count": 3936
+    },
+    {
+      "batch_num": 987,
+      "current_frames": 4,
+      "avg_latency": 0.4086688160896301,
+      "remaining": 5,
+      "data_count": 3940
+    },
+    {
+      "batch_num": 988,
+      "current_frames": 4,
+      "avg_latency": 0.40008634328842163,
+      "remaining": 5,
+      "data_count": 3944
+    },
+    {
+      "batch_num": 989,
+      "current_frames": 4,
+      "avg_latency": 0.39434748888015747,
+      "remaining": 5,
+      "data_count": 3948
+    },
+    {
+      "batch_num": 990,
+      "current_frames": 4,
+      "avg_latency": 0.41000741720199585,
+      "remaining": 5,
+      "data_count": 3952
+    },
+    {
+      "batch_num": 991,
+      "current_frames": 4,
+      "avg_latency": 0.3995857238769531,
+      "remaining": 5,
+      "data_count": 3956
+    },
+    {
+      "batch_num": 992,
+      "current_frames": 4,
+      "avg_latency": 0.386804461479187,
+      "remaining": 4,
+      "data_count": 3960
+    },
+    {
+      "batch_num": 993,
+      "current_frames": 4,
+      "avg_latency": 0.42136573791503906,
+      "remaining": 6,
+      "data_count": 3964
+    },
+    {
+      "batch_num": 994,
+      "current_frames": 4,
+      "avg_latency": 0.3954002261161804,
+      "remaining": 5,
+      "data_count": 3968
+    },
+    {
+      "batch_num": 995,
+      "current_frames": 4,
+      "avg_latency": 0.39768922328948975,
+      "remaining": 5,
+      "data_count": 3972
+    },
+    {
+      "batch_num": 996,
+      "current_frames": 4,
+      "avg_latency": 0.3944610357284546,
+      "remaining": 5,
+      "data_count": 3976
+    },
+    {
+      "batch_num": 997,
+      "current_frames": 4,
+      "avg_latency": 0.37513118982315063,
+      "remaining": 4,
+      "data_count": 3980
+    },
+    {
+      "batch_num": 998,
+      "current_frames": 4,
+      "avg_latency": 0.41723859310150146,
+      "remaining": 5,
+      "data_count": 3984
+    },
+    {
+      "batch_num": 999,
+      "current_frames": 4,
+      "avg_latency": 0.4013383984565735,
+      "remaining": 5,
+      "data_count": 3988
+    },
+    {
+      "batch_num": 1000,
+      "current_frames": 4,
+      "avg_latency": 0.41215789318084717,
+      "remaining": 5,
+      "data_count": 3992
+    }
+  ]
+}

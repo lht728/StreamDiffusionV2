@@ -177,13 +177,22 @@ class SingleGPUInferencePipeline:
         return noise * noise_scale + latents * (1 - noise_scale)
 
     def _decode_video_array(self, denoised_pred: torch.Tensor, last_frame_only: bool = False) -> np.ndarray:
+        """Decode latents to a ``[T, H, W, C]`` uint8 numpy array in [0, 255].
+
+        Fuses the (x*0.5+0.5).clamp(0,1)*255 → uint8 conversion on the GPU so
+        only a uint8 buffer crosses PCIe (4x less traffic than the legacy
+        fp32 path), and downstream consumers can construct PIL images
+        without an additional host-side multiplication.
+        """
         if last_frame_only:
             denoised_pred = denoised_pred[[-1]]
 
         video = self._timed_stream_decode(denoised_pred)
-        video = (video * 0.5 + 0.5).clamp(0, 1)
+        # Fuse scale/shift/clamp/quantize on GPU.
+        video = video.mul(127.5).add_(127.5).clamp_(0, 255)
         video = video[0].permute(0, 2, 3, 1).contiguous()
-        return video.detach().cpu().float().numpy()
+        video = video.to(torch.uint8)
+        return video.detach().cpu().numpy()
 
     def start_stream_session(self, prompt: str, images: torch.Tensor, noise_scale: float) -> tuple[SingleGPUStreamSession, np.ndarray]:
         """Initialize a streaming session and return the first decoded frames."""

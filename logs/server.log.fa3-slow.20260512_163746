@@ -1,0 +1,475 @@
+
+
+host: 0.0.0.0
+port: 7860
+max_queue_size: 0
+timeout: 0.0
+ssl_certfile: None
+ssl_keyfile: None
+config_path: /data/StreamDiffusionV2/configs/wan_causal_dmd_v2v.yaml
+checkpoint_folder: /data/StreamDiffusionV2/ckpts/wan_causal_dmd_v2v
+step: 1
+noise_scale: 0.8
+debug: True
+num_gpus: 2
+gpu_ids: 0,1
+max_outstanding: 2
+schedule_block: False
+model_type: T2V-1.3B
+use_taehv: True
+use_tensorrt: True
+fast: True
+enable_metrics: True
+target_latency: 0.4
+t2v: False
+
+
+[Rank 0] 2026-05-12 16:29:15,451 - rank_0 - INFO - Initialized InferencePipelineManager for rank 0
+[Rank 1] 2026-05-12 16:29:16,593 - rank_1 - INFO - Initialized InferencePipelineManager for rank 1
+[Rank 0] 2026-05-12 16:29:17,337 - rank_0 - INFO - Model loaded successfully from /data/StreamDiffusionV2/ckpts/wan_causal_dmd_v2v/model.pt
+[Rank 1] 2026-05-12 16:29:19,251 - rank_1 - INFO - Model loaded successfully from /data/StreamDiffusionV2/ckpts/wan_causal_dmd_v2v/model.pt
+[Rank 1] 2026-05-12 16:29:19,354 - rank_1 - INFO - Initializing rank 1 first batch
+/data/StreamDiffusionV2/demo/main.py:477: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @self.app.on_event("shutdown")
+INFO:     Started server process [64327]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:7860 (Press CTRL+C to quit)
+INFO:     127.0.0.1:48968 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:48968 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+/data/StreamDiffusionV2/demo/main.py:455: PydanticDeprecatedSince20: The `schema` method is deprecated; use `model_json_schema` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
+  info_schema = self.pipeline.Info.schema()
+/data/StreamDiffusionV2/demo/main.py:460: PydanticDeprecatedSince20: The `schema` method is deprecated; use `model_json_schema` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.10/migration/
+  input_params = self.pipeline.InputParams.schema()
+INFO:     127.0.0.1:48968 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57300 - "WebSocket /api/ws/f723b6af-35cd-45f2-9413-6c7c43ecc6e7" [accepted]
+2026-05-12 16:30:55,188 - INFO - User count: 0
+2026-05-12 16:30:55,188 - INFO - New user connected: f723b6af-35cd-45f2-9413-6c7c43ecc6e7
+INFO:     connection open
+INFO:     127.0.0.1:48968 - "GET /api/stream/f723b6af-35cd-45f2-9413-6c7c43ecc6e7?t=1778574655126 HTTP/1.1" 200 OK
+[Rank 0] 2026-05-12 16:30:55,646 - rank_0 - INFO - Initializing rank 0 first batch
+/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py:1750: UserWarning: flash_attn is not installed; falling back to scaled_dot_product_attention for KV-cache attention.
+  return forward_call(*args, **kwargs)
+/data/StreamDiffusionV2/.venv/lib64/python3.11/site-packages/torch/nn/modules/module.py:1750: UserWarning: flash_attn is not installed; falling back to scaled_dot_product_attention for KV-cache attention.
+  return forward_call(*args, **kwargs)
+[Rank 0] 2026-05-12 16:30:57,680 - rank_0 - INFO - Starting rank 0 inference loop
+[Rank 1] 2026-05-12 16:30:57,778 - rank_1 - INFO - Starting rank 1 inference loop
+2026-05-12 16:30:57,796 - INFO - [Metrics] Batch 1/1000: current_frames=4, avg_latency=2.4223s, remaining=24, data_count=4
+2026-05-12 16:30:59,649 - INFO - [Metrics] Batch 2/1000: current_frames=4, avg_latency=3.7654s, remaining=47, data_count=8
+2026-05-12 16:31:00,186 - INFO - [Metrics] Batch 3/1000: current_frames=4, avg_latency=3.8541s, remaining=48, data_count=12
+2026-05-12 16:31:00,727 - INFO - [Metrics] Batch 4/1000: current_frames=4, avg_latency=4.1254s, remaining=51, data_count=16
+2026-05-12 16:31:01,170 - INFO - [Metrics] Batch 5/1000: current_frames=4, avg_latency=4.2872s, remaining=54, data_count=20
+2026-05-12 16:31:01,613 - INFO - [Metrics] Batch 6/1000: current_frames=4, avg_latency=4.4509s, remaining=56, data_count=24
+2026-05-12 16:31:02,049 - INFO - [Metrics] Batch 7/1000: current_frames=4, avg_latency=4.5763s, remaining=58, data_count=28
+2026-05-12 16:31:02,493 - INFO - [Metrics] Batch 8/1000: current_frames=4, avg_latency=4.4861s, remaining=59, data_count=32
+2026-05-12 16:31:02,927 - INFO - [Metrics] Batch 9/1000: current_frames=4, avg_latency=4.5847s, remaining=61, data_count=36
+2026-05-12 16:31:03,376 - INFO - [Metrics] Batch 10/1000: current_frames=4, avg_latency=4.7936s, remaining=64, data_count=40
+2026-05-12 16:31:03,812 - INFO - [Metrics] Batch 11/1000: current_frames=4, avg_latency=4.9863s, remaining=67, data_count=44
+2026-05-12 16:31:04,313 - INFO - [Metrics] Batch 12/1000: current_frames=4, avg_latency=5.2356s, remaining=69, data_count=48
+2026-05-12 16:31:04,744 - INFO - [Metrics] Batch 13/1000: current_frames=4, avg_latency=5.3623s, remaining=71, data_count=52
+2026-05-12 16:31:05,191 - INFO - [Metrics] Batch 14/1000: current_frames=4, avg_latency=5.5532s, remaining=75, data_count=56
+2026-05-12 16:31:05,629 - INFO - [Metrics] Batch 15/1000: current_frames=4, avg_latency=5.6171s, remaining=77, data_count=60
+2026-05-12 16:31:06,136 - INFO - [Metrics] Batch 16/1000: current_frames=4, avg_latency=5.7479s, remaining=81, data_count=64
+2026-05-12 16:31:06,597 - INFO - [Metrics] Batch 17/1000: current_frames=4, avg_latency=5.9117s, remaining=84, data_count=68
+2026-05-12 16:31:07,033 - INFO - [Metrics] Batch 18/1000: current_frames=4, avg_latency=6.1144s, remaining=85, data_count=72
+2026-05-12 16:31:07,474 - INFO - [Metrics] Batch 19/1000: current_frames=4, avg_latency=6.3012s, remaining=87, data_count=76
+2026-05-12 16:31:07,906 - INFO - [Metrics] Batch 20/1000: current_frames=4, avg_latency=6.4582s, remaining=90, data_count=80
+2026-05-12 16:31:08,344 - INFO - [Metrics] Batch 21/1000: current_frames=4, avg_latency=6.5866s, remaining=93, data_count=84
+2026-05-12 16:31:08,779 - INFO - [Metrics] Batch 22/1000: current_frames=4, avg_latency=6.7061s, remaining=93, data_count=88
+2026-05-12 16:31:09,216 - INFO - [Metrics] Batch 23/1000: current_frames=4, avg_latency=6.7987s, remaining=95, data_count=92
+2026-05-12 16:31:09,649 - INFO - [Metrics] Batch 24/1000: current_frames=4, avg_latency=6.9408s, remaining=98, data_count=96
+2026-05-12 16:31:10,090 - INFO - [Metrics] Batch 25/1000: current_frames=4, avg_latency=7.0949s, remaining=101, data_count=100
+2026-05-12 16:31:10,525 - INFO - [Metrics] Batch 26/1000: current_frames=4, avg_latency=7.2828s, remaining=104, data_count=104
+2026-05-12 16:31:10,956 - INFO - [Metrics] Batch 27/1000: current_frames=4, avg_latency=7.4710s, remaining=104, data_count=108
+2026-05-12 16:31:11,396 - INFO - [Metrics] Batch 28/1000: current_frames=4, avg_latency=7.6679s, remaining=106, data_count=112
+2026-05-12 16:31:11,834 - INFO - [Metrics] Batch 29/1000: current_frames=4, avg_latency=7.7931s, remaining=108, data_count=116
+2026-05-12 16:31:12,273 - INFO - [Metrics] Batch 30/1000: current_frames=4, avg_latency=7.9137s, remaining=111, data_count=120
+2026-05-12 16:31:12,709 - INFO - [Metrics] Batch 31/1000: current_frames=4, avg_latency=8.0366s, remaining=113, data_count=124
+2026-05-12 16:31:13,142 - INFO - [Metrics] Batch 32/1000: current_frames=4, avg_latency=8.2385s, remaining=115, data_count=128
+2026-05-12 16:31:13,585 - INFO - [Metrics] Batch 33/1000: current_frames=4, avg_latency=8.4485s, remaining=117, data_count=132
+2026-05-12 16:31:14,007 - INFO - [Metrics] Batch 34/1000: current_frames=1, avg_latency=8.7080s, remaining=121, data_count=133
+2026-05-12 16:31:14,020 - INFO - [Metrics] Batch 35/1000: current_frames=3, avg_latency=8.5974s, remaining=118, data_count=136
+2026-05-12 16:31:14,461 - INFO - [Metrics] Batch 36/1000: current_frames=4, avg_latency=8.7359s, remaining=120, data_count=140
+2026-05-12 16:31:14,898 - INFO - [Metrics] Batch 37/1000: current_frames=4, avg_latency=8.9264s, remaining=122, data_count=144
+2026-05-12 16:31:15,334 - INFO - [Metrics] Batch 38/1000: current_frames=4, avg_latency=9.1194s, remaining=124, data_count=148
+2026-05-12 16:31:15,778 - INFO - [Metrics] Batch 39/1000: current_frames=4, avg_latency=9.3187s, remaining=126, data_count=152
+2026-05-12 16:31:16,207 - INFO - [Metrics] Batch 40/1000: current_frames=4, avg_latency=9.4066s, remaining=129, data_count=156
+2026-05-12 16:31:16,649 - INFO - [Metrics] Batch 41/1000: current_frames=4, avg_latency=9.5276s, remaining=132, data_count=160
+2026-05-12 16:31:17,080 - INFO - [Metrics] Batch 42/1000: current_frames=4, avg_latency=9.6567s, remaining=135, data_count=164
+2026-05-12 16:31:17,516 - INFO - [Metrics] Batch 43/1000: current_frames=4, avg_latency=9.8502s, remaining=138, data_count=168
+2026-05-12 16:31:17,949 - INFO - [Metrics] Batch 44/1000: current_frames=4, avg_latency=10.0647s, remaining=141, data_count=172
+2026-05-12 16:31:18,386 - INFO - [Metrics] Batch 45/1000: current_frames=4, avg_latency=10.2628s, remaining=143, data_count=176
+2026-05-12 16:31:18,823 - INFO - [Metrics] Batch 46/1000: current_frames=4, avg_latency=10.4227s, remaining=146, data_count=180
+2026-05-12 16:31:19,258 - INFO - [Metrics] Batch 47/1000: current_frames=4, avg_latency=10.4472s, remaining=148, data_count=184
+2026-05-12 16:31:19,698 - INFO - [Metrics] Batch 48/1000: current_frames=4, avg_latency=10.5500s, remaining=151, data_count=188
+2026-05-12 16:31:20,136 - INFO - [Metrics] Batch 49/1000: current_frames=4, avg_latency=10.7222s, remaining=154, data_count=192
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:31:20,575 - INFO - [Metrics] Batch 50/1000: current_frames=4, avg_latency=10.9388s, remaining=157, data_count=196
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:31:21,035 - INFO - [Metrics] Batch 51/1000: current_frames=4, avg_latency=11.1237s, remaining=160, data_count=200
+2026-05-12 16:31:21,472 - INFO - [Metrics] Batch 52/1000: current_frames=4, avg_latency=11.2853s, remaining=162, data_count=204
+2026-05-12 16:31:21,907 - INFO - [Metrics] Batch 53/1000: current_frames=4, avg_latency=11.4775s, remaining=164, data_count=208
+2026-05-12 16:31:22,345 - INFO - [Metrics] Batch 54/1000: current_frames=4, avg_latency=11.5836s, remaining=168, data_count=212
+2026-05-12 16:31:22,783 - INFO - [Metrics] Batch 55/1000: current_frames=4, avg_latency=11.7219s, remaining=168, data_count=216
+2026-05-12 16:31:23,217 - INFO - [Metrics] Batch 56/1000: current_frames=4, avg_latency=11.8457s, remaining=170, data_count=220
+2026-05-12 16:31:23,654 - INFO - [Metrics] Batch 57/1000: current_frames=4, avg_latency=11.9826s, remaining=174, data_count=224
+2026-05-12 16:31:24,092 - INFO - [Metrics] Batch 58/1000: current_frames=4, avg_latency=12.1267s, remaining=173, data_count=228
+2026-05-12 16:31:24,528 - INFO - [Metrics] Batch 59/1000: current_frames=4, avg_latency=12.3150s, remaining=175, data_count=232
+2026-05-12 16:31:24,964 - INFO - [Metrics] Batch 60/1000: current_frames=4, avg_latency=12.4312s, remaining=177, data_count=236
+2026-05-12 16:31:25,406 - INFO - [Metrics] Batch 61/1000: current_frames=4, avg_latency=12.6088s, remaining=179, data_count=240
+2026-05-12 16:31:25,839 - INFO - [Metrics] Batch 62/1000: current_frames=4, avg_latency=12.7832s, remaining=181, data_count=244
+2026-05-12 16:31:26,272 - INFO - [Metrics] Batch 63/1000: current_frames=4, avg_latency=12.8787s, remaining=184, data_count=248
+2026-05-12 16:31:26,708 - INFO - [Metrics] Batch 64/1000: current_frames=4, avg_latency=13.0285s, remaining=186, data_count=252
+2026-05-12 16:31:27,143 - INFO - [Metrics] Batch 65/1000: current_frames=4, avg_latency=13.1551s, remaining=189, data_count=256
+2026-05-12 16:31:27,583 - INFO - [Metrics] Batch 66/1000: current_frames=4, avg_latency=13.2752s, remaining=191, data_count=260
+2026-05-12 16:31:28,016 - INFO - [Metrics] Batch 67/1000: current_frames=4, avg_latency=13.4067s, remaining=192, data_count=264
+2026-05-12 16:31:28,449 - INFO - [Metrics] Batch 68/1000: current_frames=4, avg_latency=13.5238s, remaining=193, data_count=268
+2026-05-12 16:31:28,883 - INFO - [Metrics] Batch 69/1000: current_frames=4, avg_latency=13.6694s, remaining=195, data_count=272
+2026-05-12 16:31:29,320 - INFO - [Metrics] Batch 70/1000: current_frames=4, avg_latency=13.8279s, remaining=199, data_count=276
+2026-05-12 16:31:29,756 - INFO - [Metrics] Batch 71/1000: current_frames=4, avg_latency=13.9791s, remaining=201, data_count=280
+2026-05-12 16:31:30,205 - INFO - [Metrics] Batch 72/1000: current_frames=4, avg_latency=14.1935s, remaining=202, data_count=284
+2026-05-12 16:31:30,638 - INFO - [Metrics] Batch 73/1000: current_frames=4, avg_latency=14.3995s, remaining=204, data_count=288
+2026-05-12 16:31:31,072 - INFO - [Metrics] Batch 74/1000: current_frames=4, avg_latency=14.5731s, remaining=206, data_count=292
+2026-05-12 16:31:31,509 - INFO - [Metrics] Batch 75/1000: current_frames=4, avg_latency=14.7462s, remaining=208, data_count=296
+2026-05-12 16:31:31,944 - INFO - [Metrics] Batch 76/1000: current_frames=4, avg_latency=14.9173s, remaining=209, data_count=300
+2026-05-12 16:31:32,384 - INFO - [Metrics] Batch 77/1000: current_frames=4, avg_latency=15.0801s, remaining=211, data_count=304
+2026-05-12 16:31:32,819 - INFO - [Metrics] Batch 78/1000: current_frames=4, avg_latency=15.2932s, remaining=213, data_count=308
+2026-05-12 16:31:33,253 - INFO - [Metrics] Batch 79/1000: current_frames=4, avg_latency=15.4679s, remaining=215, data_count=312
+2026-05-12 16:31:33,691 - INFO - [Metrics] Batch 80/1000: current_frames=4, avg_latency=15.6516s, remaining=217, data_count=316
+2026-05-12 16:31:34,123 - INFO - [Metrics] Batch 81/1000: current_frames=4, avg_latency=15.8083s, remaining=219, data_count=320
+2026-05-12 16:31:34,560 - INFO - [Metrics] Batch 82/1000: current_frames=4, avg_latency=16.0157s, remaining=221, data_count=324
+2026-05-12 16:31:34,995 - INFO - [Metrics] Batch 83/1000: current_frames=4, avg_latency=16.1801s, remaining=223, data_count=328
+2026-05-12 16:31:35,432 - INFO - [Metrics] Batch 84/1000: current_frames=4, avg_latency=16.3429s, remaining=226, data_count=332
+2026-05-12 16:31:35,868 - INFO - [Metrics] Batch 85/1000: current_frames=4, avg_latency=16.5189s, remaining=227, data_count=336
+2026-05-12 16:31:36,305 - INFO - [Metrics] Batch 86/1000: current_frames=4, avg_latency=16.6955s, remaining=231, data_count=340
+2026-05-12 16:31:36,742 - INFO - [Metrics] Batch 87/1000: current_frames=4, avg_latency=16.8819s, remaining=233, data_count=344
+2026-05-12 16:31:37,178 - INFO - [Metrics] Batch 88/1000: current_frames=4, avg_latency=17.0548s, remaining=234, data_count=348
+2026-05-12 16:31:37,613 - INFO - [Metrics] Batch 89/1000: current_frames=4, avg_latency=17.2209s, remaining=234, data_count=352
+2026-05-12 16:31:38,050 - INFO - [Metrics] Batch 90/1000: current_frames=4, avg_latency=17.4083s, remaining=236, data_count=356
+2026-05-12 16:31:38,491 - INFO - [Metrics] Batch 91/1000: current_frames=4, avg_latency=17.5875s, remaining=238, data_count=360
+2026-05-12 16:31:38,921 - INFO - [Metrics] Batch 92/1000: current_frames=4, avg_latency=17.7608s, remaining=241, data_count=364
+2026-05-12 16:31:39,358 - INFO - [Metrics] Batch 93/1000: current_frames=4, avg_latency=17.8992s, remaining=239, data_count=368
+2026-05-12 16:31:39,791 - INFO - [Metrics] Batch 94/1000: current_frames=4, avg_latency=18.0750s, remaining=242, data_count=372
+2026-05-12 16:31:40,225 - INFO - [Metrics] Batch 95/1000: current_frames=4, avg_latency=18.2267s, remaining=245, data_count=376
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:31:40,662 - INFO - [Metrics] Batch 96/1000: current_frames=4, avg_latency=18.4230s, remaining=248, data_count=380
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:31:41,125 - INFO - [Metrics] Batch 97/1000: current_frames=4, avg_latency=18.5426s, remaining=251, data_count=384
+2026-05-12 16:31:41,563 - INFO - [Metrics] Batch 98/1000: current_frames=4, avg_latency=18.6291s, remaining=251, data_count=388
+2026-05-12 16:31:42,004 - INFO - [Metrics] Batch 99/1000: current_frames=4, avg_latency=18.7937s, remaining=247, data_count=392
+2026-05-12 16:31:42,441 - INFO - [Metrics] Batch 100/1000: current_frames=4, avg_latency=18.9881s, remaining=243, data_count=396
+2026-05-12 16:31:42,880 - INFO - [Metrics] Batch 101/1000: current_frames=4, avg_latency=19.2006s, remaining=239, data_count=400
+2026-05-12 16:31:43,314 - INFO - [Metrics] Batch 102/1000: current_frames=4, avg_latency=19.1681s, remaining=235, data_count=404
+2026-05-12 16:31:43,752 - INFO - [Metrics] Batch 103/1000: current_frames=4, avg_latency=19.3439s, remaining=231, data_count=408
+2026-05-12 16:31:44,181 - INFO - [Metrics] Batch 104/1000: current_frames=4, avg_latency=19.4588s, remaining=227, data_count=412
+2026-05-12 16:31:44,624 - INFO - [Metrics] Batch 105/1000: current_frames=4, avg_latency=19.5856s, remaining=223, data_count=416
+2026-05-12 16:31:45,056 - INFO - [Metrics] Batch 106/1000: current_frames=4, avg_latency=19.6940s, remaining=219, data_count=420
+2026-05-12 16:31:45,492 - INFO - [Metrics] Batch 107/1000: current_frames=4, avg_latency=19.8408s, remaining=215, data_count=424
+2026-05-12 16:31:45,928 - INFO - [Metrics] Batch 108/1000: current_frames=4, avg_latency=20.0583s, remaining=211, data_count=428
+2026-05-12 16:31:46,362 - INFO - [Metrics] Batch 109/1000: current_frames=4, avg_latency=20.2320s, remaining=207, data_count=432
+2026-05-12 16:31:46,800 - INFO - [Metrics] Batch 110/1000: current_frames=4, avg_latency=20.4169s, remaining=203, data_count=436
+2026-05-12 16:31:47,236 - INFO - [Metrics] Batch 111/1000: current_frames=4, avg_latency=20.5643s, remaining=199, data_count=440
+2026-05-12 16:31:47,671 - INFO - [Metrics] Batch 112/1000: current_frames=4, avg_latency=20.7453s, remaining=195, data_count=444
+2026-05-12 16:31:48,115 - INFO - [Metrics] Batch 113/1000: current_frames=4, avg_latency=20.8924s, remaining=191, data_count=448
+2026-05-12 16:31:48,552 - INFO - [Metrics] Batch 114/1000: current_frames=4, avg_latency=21.0542s, remaining=187, data_count=452
+2026-05-12 16:31:48,994 - INFO - [Metrics] Batch 115/1000: current_frames=4, avg_latency=21.1116s, remaining=183, data_count=456
+2026-05-12 16:31:49,426 - INFO - [Metrics] Batch 116/1000: current_frames=4, avg_latency=21.2127s, remaining=179, data_count=460
+2026-05-12 16:31:49,863 - INFO - [Metrics] Batch 117/1000: current_frames=4, avg_latency=21.3712s, remaining=175, data_count=464
+2026-05-12 16:31:50,305 - INFO - [Metrics] Batch 118/1000: current_frames=4, avg_latency=21.5104s, remaining=171, data_count=468
+2026-05-12 16:31:50,741 - INFO - [Metrics] Batch 119/1000: current_frames=4, avg_latency=21.7219s, remaining=167, data_count=472
+2026-05-12 16:31:51,184 - INFO - [Metrics] Batch 120/1000: current_frames=4, avg_latency=21.9244s, remaining=163, data_count=476
+2026-05-12 16:31:51,617 - INFO - [Metrics] Batch 121/1000: current_frames=4, avg_latency=22.1184s, remaining=159, data_count=480
+2026-05-12 16:31:52,053 - INFO - [Metrics] Batch 122/1000: current_frames=4, avg_latency=22.2087s, remaining=155, data_count=484
+2026-05-12 16:31:52,489 - INFO - [Metrics] Batch 123/1000: current_frames=4, avg_latency=22.2810s, remaining=151, data_count=488
+2026-05-12 16:31:52,925 - INFO - [Metrics] Batch 124/1000: current_frames=4, avg_latency=22.4236s, remaining=147, data_count=492
+2026-05-12 16:31:53,363 - INFO - [Metrics] Batch 125/1000: current_frames=4, avg_latency=22.5524s, remaining=143, data_count=496
+2026-05-12 16:31:53,800 - INFO - [Metrics] Batch 126/1000: current_frames=4, avg_latency=22.7040s, remaining=139, data_count=500
+2026-05-12 16:31:54,236 - INFO - [Metrics] Batch 127/1000: current_frames=4, avg_latency=22.8274s, remaining=135, data_count=504
+2026-05-12 16:31:54,679 - INFO - [Metrics] Batch 128/1000: current_frames=4, avg_latency=22.9985s, remaining=131, data_count=508
+2026-05-12 16:31:55,108 - INFO - [Metrics] Batch 129/1000: current_frames=4, avg_latency=23.0705s, remaining=127, data_count=512
+2026-05-12 16:31:55,547 - INFO - [Metrics] Batch 130/1000: current_frames=4, avg_latency=23.2261s, remaining=123, data_count=516
+2026-05-12 16:31:55,984 - INFO - [Metrics] Batch 131/1000: current_frames=4, avg_latency=23.3981s, remaining=119, data_count=520
+2026-05-12 16:31:56,413 - INFO - [Metrics] Batch 132/1000: current_frames=4, avg_latency=23.5123s, remaining=115, data_count=524
+2026-05-12 16:31:56,852 - INFO - [Metrics] Batch 133/1000: current_frames=4, avg_latency=23.6690s, remaining=111, data_count=528
+2026-05-12 16:31:57,287 - INFO - [Metrics] Batch 134/1000: current_frames=4, avg_latency=23.7949s, remaining=107, data_count=532
+2026-05-12 16:31:57,723 - INFO - [Metrics] Batch 135/1000: current_frames=4, avg_latency=23.9408s, remaining=103, data_count=536
+2026-05-12 16:31:58,159 - INFO - [Metrics] Batch 136/1000: current_frames=4, avg_latency=24.1379s, remaining=99, data_count=540
+2026-05-12 16:31:58,595 - INFO - [Metrics] Batch 137/1000: current_frames=4, avg_latency=24.2934s, remaining=95, data_count=544
+2026-05-12 16:31:59,032 - INFO - [Metrics] Batch 138/1000: current_frames=4, avg_latency=24.4120s, remaining=91, data_count=548
+2026-05-12 16:31:59,467 - INFO - [Metrics] Batch 139/1000: current_frames=4, avg_latency=24.5881s, remaining=87, data_count=552
+2026-05-12 16:31:59,901 - INFO - [Metrics] Batch 140/1000: current_frames=4, avg_latency=24.7090s, remaining=83, data_count=556
+2026-05-12 16:32:00,338 - INFO - [Metrics] Batch 141/1000: current_frames=4, avg_latency=24.8710s, remaining=79, data_count=560
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:32:00,775 - INFO - [Metrics] Batch 142/1000: current_frames=4, avg_latency=24.9942s, remaining=75, data_count=564
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:32:01,244 - INFO - [Metrics] Batch 143/1000: current_frames=4, avg_latency=25.1828s, remaining=71, data_count=568
+2026-05-12 16:32:01,683 - INFO - [Metrics] Batch 144/1000: current_frames=4, avg_latency=25.4071s, remaining=67, data_count=572
+2026-05-12 16:32:02,121 - INFO - [Metrics] Batch 145/1000: current_frames=4, avg_latency=25.5872s, remaining=63, data_count=576
+2026-05-12 16:32:02,559 - INFO - [Metrics] Batch 146/1000: current_frames=4, avg_latency=25.7916s, remaining=59, data_count=580
+2026-05-12 16:32:03,003 - INFO - [Metrics] Batch 147/1000: current_frames=4, avg_latency=25.8072s, remaining=55, data_count=584
+2026-05-12 16:32:03,434 - INFO - [Metrics] Batch 148/1000: current_frames=4, avg_latency=25.9192s, remaining=51, data_count=588
+2026-05-12 16:32:03,875 - INFO - [Metrics] Batch 149/1000: current_frames=4, avg_latency=25.9804s, remaining=47, data_count=592
+2026-05-12 16:32:04,311 - INFO - [Metrics] Batch 150/1000: current_frames=4, avg_latency=26.0887s, remaining=43, data_count=596
+2026-05-12 16:32:04,756 - INFO - [Metrics] Batch 151/1000: current_frames=4, avg_latency=26.2929s, remaining=39, data_count=600
+2026-05-12 16:32:05,239 - INFO - [Metrics] Batch 152/1000: current_frames=4, avg_latency=26.4684s, remaining=35, data_count=604
+2026-05-12 16:32:05,682 - INFO - [Metrics] Batch 153/1000: current_frames=4, avg_latency=26.4427s, remaining=31, data_count=608
+2026-05-12 16:32:06,109 - INFO - [Metrics] Batch 154/1000: current_frames=4, avg_latency=26.5758s, remaining=27, data_count=612
+2026-05-12 16:32:06,546 - INFO - [Metrics] Batch 155/1000: current_frames=4, avg_latency=26.7656s, remaining=23, data_count=616
+2026-05-12 16:32:06,985 - INFO - [Metrics] Batch 156/1000: current_frames=4, avg_latency=26.9786s, remaining=19, data_count=620
+2026-05-12 16:32:07,422 - INFO - [Metrics] Batch 157/1000: current_frames=4, avg_latency=27.1590s, remaining=15, data_count=624
+2026-05-12 16:32:07,862 - INFO - [Metrics] Batch 158/1000: current_frames=4, avg_latency=27.3502s, remaining=11, data_count=628
+2026-05-12 16:32:08,292 - INFO - [Metrics] Batch 159/1000: current_frames=4, avg_latency=27.4537s, remaining=7, data_count=632
+2026-05-12 16:32:08,731 - INFO - [Metrics] Batch 160/1000: current_frames=4, avg_latency=27.6625s, remaining=3, data_count=636
+2026-05-12 16:33:45,198 - INFO - [Metrics] Batch 161/1000: current_frames=4, avg_latency=93.0795s, remaining=9, data_count=640
+2026-05-12 16:33:45,636 - INFO - [Metrics] Batch 162/1000: current_frames=4, avg_latency=1.0459s, remaining=5, data_count=644
+2026-05-12 16:33:46,076 - INFO - [Metrics] Batch 163/1000: current_frames=4, avg_latency=1.1951s, remaining=1, data_count=648
+2026-05-12 16:34:08,168 - INFO - [Metrics] Batch 164/1000: current_frames=4, avg_latency=6.4122s, remaining=8, data_count=652
+2026-05-12 16:34:08,606 - INFO - [Metrics] Batch 165/1000: current_frames=4, avg_latency=0.9976s, remaining=6, data_count=656
+2026-05-12 16:34:09,039 - INFO - [Metrics] Batch 166/1000: current_frames=4, avg_latency=1.1903s, remaining=5, data_count=660
+2026-05-12 16:34:09,620 - INFO - [Metrics] Batch 167/1000: current_frames=4, avg_latency=1.0370s, remaining=9, data_count=664
+2026-05-12 16:34:10,050 - INFO - [Metrics] Batch 168/1000: current_frames=4, avg_latency=0.9366s, remaining=11, data_count=668
+2026-05-12 16:34:10,494 - INFO - [Metrics] Batch 169/1000: current_frames=4, avg_latency=1.1006s, remaining=14, data_count=672
+2026-05-12 16:34:10,929 - INFO - [Metrics] Batch 170/1000: current_frames=4, avg_latency=1.2529s, remaining=15, data_count=676
+2026-05-12 16:34:11,358 - INFO - [Metrics] Batch 171/1000: current_frames=4, avg_latency=1.3876s, remaining=16, data_count=680
+2026-05-12 16:34:11,795 - INFO - [Metrics] Batch 172/1000: current_frames=4, avg_latency=1.5795s, remaining=16, data_count=684
+2026-05-12 16:34:12,232 - INFO - [Metrics] Batch 173/1000: current_frames=4, avg_latency=1.7225s, remaining=16, data_count=688
+2026-05-12 16:34:12,671 - INFO - [Metrics] Batch 174/1000: current_frames=4, avg_latency=1.8469s, remaining=19, data_count=692
+2026-05-12 16:34:13,114 - INFO - [Metrics] Batch 175/1000: current_frames=4, avg_latency=1.9493s, remaining=21, data_count=696
+2026-05-12 16:34:13,555 - INFO - [Metrics] Batch 176/1000: current_frames=4, avg_latency=1.9148s, remaining=24, data_count=700
+2026-05-12 16:34:13,990 - INFO - [Metrics] Batch 177/1000: current_frames=4, avg_latency=2.0842s, remaining=25, data_count=704
+2026-05-12 16:34:14,430 - INFO - [Metrics] Batch 178/1000: current_frames=4, avg_latency=2.0982s, remaining=29, data_count=708
+2026-05-12 16:34:14,866 - INFO - [Metrics] Batch 179/1000: current_frames=4, avg_latency=2.2708s, remaining=31, data_count=712
+2026-05-12 16:34:15,314 - INFO - [Metrics] Batch 180/1000: current_frames=4, avg_latency=2.4349s, remaining=33, data_count=716
+2026-05-12 16:34:15,754 - INFO - [Metrics] Batch 181/1000: current_frames=4, avg_latency=2.5540s, remaining=35, data_count=720
+2026-05-12 16:34:16,194 - INFO - [Metrics] Batch 182/1000: current_frames=4, avg_latency=2.7306s, remaining=38, data_count=724
+2026-05-12 16:34:16,629 - INFO - [Metrics] Batch 183/1000: current_frames=4, avg_latency=2.8918s, remaining=39, data_count=728
+2026-05-12 16:34:17,059 - INFO - [Metrics] Batch 184/1000: current_frames=4, avg_latency=3.0273s, remaining=41, data_count=732
+2026-05-12 16:34:17,495 - INFO - [Metrics] Batch 185/1000: current_frames=4, avg_latency=3.2346s, remaining=44, data_count=736
+2026-05-12 16:34:17,933 - INFO - [Metrics] Batch 186/1000: current_frames=4, avg_latency=3.4384s, remaining=45, data_count=740
+2026-05-12 16:34:18,370 - INFO - [Metrics] Batch 187/1000: current_frames=4, avg_latency=3.6088s, remaining=48, data_count=744
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:34:18,805 - INFO - [Metrics] Batch 188/1000: current_frames=4, avg_latency=3.7514s, remaining=51, data_count=748
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[4096, 5120] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:34:19,265 - INFO - [Metrics] Batch 189/1000: current_frames=4, avg_latency=3.8932s, remaining=54, data_count=752
+2026-05-12 16:34:19,704 - INFO - [Metrics] Batch 190/1000: current_frames=4, avg_latency=4.0607s, remaining=54, data_count=756
+2026-05-12 16:34:20,137 - INFO - [Metrics] Batch 191/1000: current_frames=4, avg_latency=4.1434s, remaining=58, data_count=760
+2026-05-12 16:34:20,576 - INFO - [Metrics] Batch 192/1000: current_frames=4, avg_latency=4.3300s, remaining=61, data_count=764
+2026-05-12 16:34:21,017 - INFO - [Metrics] Batch 193/1000: current_frames=4, avg_latency=4.4930s, remaining=64, data_count=768
+2026-05-12 16:34:21,458 - INFO - [Metrics] Batch 194/1000: current_frames=4, avg_latency=4.6159s, remaining=68, data_count=772
+2026-05-12 16:34:21,888 - INFO - [Metrics] Batch 195/1000: current_frames=4, avg_latency=4.7965s, remaining=70, data_count=776
+2026-05-12 16:34:22,327 - INFO - [Metrics] Batch 196/1000: current_frames=4, avg_latency=4.9404s, remaining=73, data_count=780
+2026-05-12 16:34:22,766 - INFO - [Metrics] Batch 197/1000: current_frames=4, avg_latency=5.1443s, remaining=75, data_count=784
+2026-05-12 16:34:23,198 - INFO - [Metrics] Batch 198/1000: current_frames=4, avg_latency=5.2256s, remaining=76, data_count=788
+2026-05-12 16:34:23,636 - INFO - [Metrics] Batch 199/1000: current_frames=4, avg_latency=5.4224s, remaining=79, data_count=792
+2026-05-12 16:34:24,071 - INFO - [Metrics] Batch 200/1000: current_frames=4, avg_latency=5.5497s, remaining=82, data_count=796
+2026-05-12 16:34:24,507 - INFO - [Metrics] Batch 201/1000: current_frames=4, avg_latency=5.7772s, remaining=84, data_count=800
+2026-05-12 16:34:24,945 - INFO - [Metrics] Batch 202/1000: current_frames=4, avg_latency=5.8996s, remaining=88, data_count=804
+2026-05-12 16:34:25,388 - INFO - [Metrics] Batch 203/1000: current_frames=4, avg_latency=6.1110s, remaining=90, data_count=808
+2026-05-12 16:34:25,823 - INFO - [Metrics] Batch 204/1000: current_frames=4, avg_latency=6.1775s, remaining=92, data_count=812
+2026-05-12 16:34:26,253 - INFO - [Metrics] Batch 205/1000: current_frames=4, avg_latency=6.3255s, remaining=94, data_count=816
+2026-05-12 16:34:26,690 - INFO - [Metrics] Batch 206/1000: current_frames=4, avg_latency=6.5170s, remaining=94, data_count=820
+2026-05-12 16:34:27,129 - INFO - [Metrics] Batch 207/1000: current_frames=4, avg_latency=6.7241s, remaining=97, data_count=824
+2026-05-12 16:34:27,568 - INFO - [Metrics] Batch 208/1000: current_frames=4, avg_latency=6.9487s, remaining=100, data_count=828
+2026-05-12 16:34:28,003 - INFO - [Metrics] Batch 209/1000: current_frames=4, avg_latency=7.1762s, remaining=102, data_count=832
+2026-05-12 16:34:28,432 - INFO - [Metrics] Batch 210/1000: current_frames=4, avg_latency=7.3063s, remaining=103, data_count=836
+2026-05-12 16:34:28,869 - INFO - [Metrics] Batch 211/1000: current_frames=4, avg_latency=7.5182s, remaining=106, data_count=840
+2026-05-12 16:34:29,306 - INFO - [Metrics] Batch 212/1000: current_frames=4, avg_latency=7.6695s, remaining=109, data_count=844
+2026-05-12 16:34:29,747 - INFO - [Metrics] Batch 213/1000: current_frames=4, avg_latency=7.8852s, remaining=111, data_count=848
+2026-05-12 16:34:30,178 - INFO - [Metrics] Batch 214/1000: current_frames=4, avg_latency=8.0157s, remaining=114, data_count=852
+2026-05-12 16:34:30,619 - INFO - [Metrics] Batch 215/1000: current_frames=4, avg_latency=8.2069s, remaining=117, data_count=856
+2026-05-12 16:34:31,050 - INFO - [Metrics] Batch 216/1000: current_frames=4, avg_latency=8.3477s, remaining=118, data_count=860
+2026-05-12 16:34:31,492 - INFO - [Metrics] Batch 217/1000: current_frames=4, avg_latency=8.5165s, remaining=121, data_count=864
+2026-05-12 16:34:31,927 - INFO - [Metrics] Batch 218/1000: current_frames=4, avg_latency=8.6521s, remaining=124, data_count=868
+2026-05-12 16:34:32,371 - INFO - [Metrics] Batch 219/1000: current_frames=4, avg_latency=8.8352s, remaining=126, data_count=872
+2026-05-12 16:34:32,806 - INFO - [Metrics] Batch 220/1000: current_frames=4, avg_latency=8.9978s, remaining=129, data_count=876
+2026-05-12 16:34:33,236 - INFO - [Metrics] Batch 221/1000: current_frames=4, avg_latency=9.1678s, remaining=132, data_count=880
+2026-05-12 16:34:33,675 - INFO - [Metrics] Batch 222/1000: current_frames=4, avg_latency=9.3434s, remaining=136, data_count=884
+2026-05-12 16:34:34,107 - INFO - [Metrics] Batch 223/1000: current_frames=4, avg_latency=9.5064s, remaining=138, data_count=888
+2026-05-12 16:34:34,545 - INFO - [Metrics] Batch 224/1000: current_frames=4, avg_latency=9.7179s, remaining=141, data_count=892
+2026-05-12 16:34:34,982 - INFO - [Metrics] Batch 225/1000: current_frames=4, avg_latency=9.8843s, remaining=143, data_count=896
+2026-05-12 16:34:35,416 - INFO - [Metrics] Batch 226/1000: current_frames=4, avg_latency=10.0150s, remaining=145, data_count=900
+2026-05-12 16:34:35,853 - INFO - [Metrics] Batch 227/1000: current_frames=4, avg_latency=10.1442s, remaining=147, data_count=904
+2026-05-12 16:34:36,287 - INFO - [Metrics] Batch 228/1000: current_frames=4, avg_latency=10.3171s, remaining=143, data_count=908
+2026-05-12 16:34:36,722 - INFO - [Metrics] Batch 229/1000: current_frames=4, avg_latency=10.4626s, remaining=139, data_count=912
+2026-05-12 16:34:37,160 - INFO - [Metrics] Batch 230/1000: current_frames=4, avg_latency=10.5287s, remaining=135, data_count=916
+2026-05-12 16:34:37,597 - INFO - [Metrics] Batch 231/1000: current_frames=4, avg_latency=10.6375s, remaining=131, data_count=920
+2026-05-12 16:34:38,037 - INFO - [Metrics] Batch 232/1000: current_frames=4, avg_latency=10.8544s, remaining=127, data_count=924
+2026-05-12 16:34:38,471 - INFO - [Metrics] Batch 233/1000: current_frames=4, avg_latency=11.0132s, remaining=123, data_count=928
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:34:38,907 - INFO - [Metrics] Batch 234/1000: current_frames=4, avg_latency=11.1703s, remaining=119, data_count=932
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+[causal_model] KV-cache slice degenerate, skipping write. i=0 c_start=4096 current_end=5120 num_new_tokens=1024 frame_seqlen=1024 sink_tokens=2048 kv_cache_size=5120 cache_bs=1 global_end_index[i]=51200 local_end_index[i]=5120 computed local_start=-41984 local_end=-40960 evict_idx[i]=[5120, 4096] roped_key.shape=(1, 1024, 12, 128) v.shape=(1, 1024, 12, 128)
+2026-05-12 16:34:39,369 - INFO - [Metrics] Batch 235/1000: current_frames=4, avg_latency=11.3561s, remaining=115, data_count=936
+2026-05-12 16:34:39,805 - INFO - [Metrics] Batch 236/1000: current_frames=4, avg_latency=11.4927s, remaining=111, data_count=940
+2026-05-12 16:34:40,240 - INFO - [Metrics] Batch 237/1000: current_frames=4, avg_latency=11.6456s, remaining=107, data_count=944
+2026-05-12 16:34:40,674 - INFO - [Metrics] Batch 238/1000: current_frames=4, avg_latency=11.7950s, remaining=103, data_count=948
+2026-05-12 16:34:41,109 - INFO - [Metrics] Batch 239/1000: current_frames=4, avg_latency=11.9561s, remaining=99, data_count=952
+2026-05-12 16:34:41,556 - INFO - [Metrics] Batch 240/1000: current_frames=4, avg_latency=12.1581s, remaining=95, data_count=956
+2026-05-12 16:34:41,976 - INFO - [Metrics] Batch 241/1000: current_frames=1, avg_latency=12.4260s, remaining=94, data_count=957
+2026-05-12 16:34:41,990 - INFO - [Metrics] Batch 242/1000: current_frames=3, avg_latency=12.3000s, remaining=91, data_count=960
+2026-05-12 16:34:42,437 - INFO - [Metrics] Batch 243/1000: current_frames=4, avg_latency=12.5196s, remaining=87, data_count=964
+2026-05-12 16:34:42,875 - INFO - [Metrics] Batch 244/1000: current_frames=4, avg_latency=12.7092s, remaining=83, data_count=968
+2026-05-12 16:34:43,313 - INFO - [Metrics] Batch 245/1000: current_frames=4, avg_latency=12.8838s, remaining=79, data_count=972
+2026-05-12 16:34:43,741 - INFO - [Metrics] Batch 246/1000: current_frames=4, avg_latency=13.0562s, remaining=75, data_count=976
+2026-05-12 16:34:44,186 - INFO - [Metrics] Batch 247/1000: current_frames=4, avg_latency=13.1814s, remaining=71, data_count=980
+2026-05-12 16:34:44,619 - INFO - [Metrics] Batch 248/1000: current_frames=4, avg_latency=13.3169s, remaining=67, data_count=984
+2026-05-12 16:34:45,064 - INFO - [Metrics] Batch 249/1000: current_frames=4, avg_latency=13.4986s, remaining=63, data_count=988
+2026-05-12 16:34:45,497 - INFO - [Metrics] Batch 250/1000: current_frames=4, avg_latency=13.6718s, remaining=59, data_count=992
+2026-05-12 16:34:45,934 - INFO - [Metrics] Batch 251/1000: current_frames=4, avg_latency=13.7961s, remaining=55, data_count=996
+2026-05-12 16:34:46,368 - INFO - [Metrics] Batch 252/1000: current_frames=4, avg_latency=13.9722s, remaining=51, data_count=1000
+2026-05-12 16:34:46,811 - INFO - [Metrics] Batch 253/1000: current_frames=4, avg_latency=14.1695s, remaining=47, data_count=1004
+2026-05-12 16:34:47,242 - INFO - [Metrics] Batch 254/1000: current_frames=4, avg_latency=14.3792s, remaining=43, data_count=1008
+2026-05-12 16:34:47,683 - INFO - [Metrics] Batch 255/1000: current_frames=4, avg_latency=14.5540s, remaining=39, data_count=1012
+2026-05-12 16:34:48,117 - INFO - [Metrics] Batch 256/1000: current_frames=4, avg_latency=14.7770s, remaining=35, data_count=1016
+2026-05-12 16:34:48,556 - INFO - [Metrics] Batch 257/1000: current_frames=4, avg_latency=14.9927s, remaining=31, data_count=1020
+2026-05-12 16:34:48,991 - INFO - [Metrics] Batch 258/1000: current_frames=4, avg_latency=15.1869s, remaining=27, data_count=1024
+2026-05-12 16:34:49,429 - INFO - [Metrics] Batch 259/1000: current_frames=4, avg_latency=15.3494s, remaining=23, data_count=1028
+2026-05-12 16:34:49,864 - INFO - [Metrics] Batch 260/1000: current_frames=4, avg_latency=15.5013s, remaining=19, data_count=1032
+2026-05-12 16:34:50,301 - INFO - [Metrics] Batch 261/1000: current_frames=4, avg_latency=15.6043s, remaining=15, data_count=1036
+2026-05-12 16:34:50,737 - INFO - [Metrics] Batch 262/1000: current_frames=4, avg_latency=15.7876s, remaining=11, data_count=1040
+2026-05-12 16:34:51,178 - INFO - [Metrics] Batch 263/1000: current_frames=4, avg_latency=15.8993s, remaining=7, data_count=1044
+2026-05-12 16:34:51,612 - INFO - [Metrics] Batch 264/1000: current_frames=4, avg_latency=16.1093s, remaining=3, data_count=1048

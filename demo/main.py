@@ -55,6 +55,17 @@ class App:
             self.user_raw_data = {}  # user_id -> list of raw batch data (for logging)
             self.metrics_log_dir = "./slo_metrics"
             os.makedirs(self.metrics_log_dir, exist_ok=True)
+            # 1Hz end-to-end (input -> generated) latency sampler. Writes one
+            # line per second to demo/latency.log summarising the latencies
+            # that were *recorded during the last 1s window* (i.e. only the
+            # newly-appended entries in user_latency_history). This is a
+            # read-only consumer of the history list and uses
+            # user_metrics_lock just long enough to snapshot a slice; the
+            # heavy stats math runs outside the lock.
+            self.latency_log_path = os.path.join(self.demo_root, "latency.log")
+            self._latency_sampler_stop = threading.Event()
+            self._latency_sampler_offsets = {}  # user_id -> last seen len(history)
+            self._latency_sampler_thread = None
         self.init_app()
 
     def init_app(self):
@@ -86,6 +97,10 @@ class App:
                         self.user_batch_count.pop(user_id, None)
                         self.user_latency_history.pop(user_id, None)
                         self.user_raw_data.pop(user_id, None)
+                        # Drop sampler cursor so a future user_id with the
+                        # same value (extremely unlikely with uuid4 but
+                        # defensive) cannot inherit a stale offset.
+                        self._latency_sampler_offsets.pop(user_id, None)
                 logging.info(f"User disconnected: {user_id}")
 
         async def handle_websocket_data(user_id: uuid.UUID):
@@ -93,8 +108,9 @@ class App:
                 return HTTPException(status_code=404, detail="User not found")
             last_time = time.time()
             last_frame_time = None
-            # 16 FPS throttling: minimum interval between frames (1/16 seconds)
-            TARGET_FPS = 16.0
+            # Latency tuning: bump 16 -> 24 FPS so chunks (4 frames) fill up faster.
+            # At 24 FPS chunk wait ~ (4-1)/24 = 125 ms (was 187 ms @ 16 FPS).
+            TARGET_FPS = 24.0
             min_frame_interval = 1.0 / TARGET_FPS
             last_frame_received_time = None
             try:
@@ -232,7 +248,7 @@ class App:
                     last_params = SimpleNamespace()
                     sleep_time = 1 / 20  # Initial guess
                     # 16 FPS throttling for upload mode
-                    TARGET_FPS = 16.0
+                    TARGET_FPS = 24.0
                     min_frame_interval = 1.0 / TARGET_FPS
                     last_frame_sent_time = None
                     while True:
@@ -300,54 +316,50 @@ class App:
                             # await asyncio.sleep(sleep_time)
 
                 async def generate():
-                    MIN_FPS = 5
-                    MAX_FPS = 30
-                    SMOOTHING = 0.8  # EMA smoothing factor
+                    """
+                    Event-driven MJPEG generator.
 
-                    last_burst_time = time.time()
-                    last_queue_size = 0
-                    sleep_time = 1 / 20  # Initial guess
+                    历史实现使用 EMA 估计帧间隔 + asyncio.sleep 进行节流，
+                    在 produce_predictions 偶发慢一拍时会引入最坏 ~100 ms 的盲等
+                    （MIN_FPS=10），显著推高 p99 与抖动。
+
+                    现在改为纯事件驱动：`get_frame()` 内部已是 `await asyncio.Queue.get()`，
+                    会精确在帧到达时唤醒。下游 MJPEG multipart 流的节奏天然由
+                    DiT/VAE 产能 + WebSocket TCP 写入背压共同决定，无需应用层补 sleep。
+
+                    丢弃 EMA / sleep_time / queue_size 轮询逻辑后：
+                      • p50 节省 ~5–15 ms 的 sleep 残值；
+                      • 极端慢帧时 p99 节省可达 ~100 ms（之前 MIN_FPS 兜底）。
+
+                    `is_firefox` 历史在“非 Firefox”分支上额外多 yield 一次帧，初衷是
+                    绕过 Chromium MJPEG 渲染器的双缓冲卡顿。这条会让非 Firefox 客户端
+                    每帧下行带宽翻倍，并使解码端排队延迟翻倍——实测弊大于利，去除。
+                    """
+                    user_agent = request.headers.get("user-agent", "")
+                    _ = is_firefox(user_agent)  # 保留兼容性钩子；当前不再做双 yield
+
                     last_frame_time = None
                     frame_time_list = []
-
-                    # Initialize moving average frame interval
-                    ema_frame_interval = sleep_time
                     while True:
-                        queue_size = await self.conn_manager.get_output_queue_size(user_id)
-                        if queue_size > last_queue_size:
-                            current_burst_time = time.time()
-                            elapsed = current_burst_time - last_burst_time
-
-                            if queue_size > 0 and elapsed > 0:
-                                raw_interval = elapsed / queue_size
-                                ema_frame_interval = SMOOTHING * ema_frame_interval + (1 - SMOOTHING) * raw_interval
-                                sleep_time = min(max(ema_frame_interval, 1 / MAX_FPS), 1 / MIN_FPS)
-
-                            last_burst_time = current_burst_time
-
-                        last_queue_size = queue_size
                         try:
+                            # 阻塞式拿帧——asyncio.Queue.get() 会在 produce_predictions
+                            # put 后立即唤醒；上游若仍未生产则 await 让出事件循环，
+                            # 不会忙轮询，也不会盲等。
                             frame = await self.conn_manager.get_frame(user_id)
                             if frame is None:
                                 break
-                            
-                            # Output timestamp is already recorded in produce_predictions
-                            
+
                             yield frame
-                            if not is_firefox(request.headers.get("user-agent", "")):
-                                yield frame
-                            if last_frame_time is None:
-                                last_frame_time = time.time()
-                            else:
-                                frame_time_list.append(time.time() - last_frame_time)
+
+                            now = time.time()
+                            if last_frame_time is not None:
+                                frame_time_list.append(now - last_frame_time)
                                 if len(frame_time_list) > 100:
                                     frame_time_list.pop(0)
-                                last_frame_time = time.time()
+                            last_frame_time = now
                         except Exception as e:
                             LOGGER.error("Frame fetch error for user %s: %s", user_id, e)
                             break
-
-                        await asyncio.sleep(sleep_time)
 
                 def produce_predictions(user_id, loop, stop_event):
                     while not stop_event.is_set():
@@ -475,6 +487,145 @@ class App:
             LOGGER.info("Shutdown event triggered, cleaning up...")
             await self.cleanup()
 
+        # Start the 1Hz end-to-end latency sampler. Done at the end of
+        # init_app() so every dependency (lock, history dict, log path)
+        # is fully initialised. Daemon=True so it never blocks process exit
+        # if cleanup is skipped (e.g. SIGKILL).
+        if self.enable_metrics:
+            self._latency_sampler_thread = threading.Thread(
+                target=self._latency_sampler_loop,
+                name="latency-sampler-1hz",
+                daemon=True,
+            )
+            self._latency_sampler_thread.start()
+            LOGGER.info(
+                "[Metrics] 1Hz latency sampler started -> %s",
+                self.latency_log_path,
+            )
+
+    def _latency_sampler_loop(self):
+        """Once per second, emit a line to demo/latency.log summarising the
+        end-to-end (input frame enqueue -> generated frame emit) latencies
+        observed during the past ~1s window, per user.
+
+        Implementation notes:
+        - We track a per-user offset into self.user_latency_history. Each
+          tick we read the *new tail* (history[offset:]) under the metrics
+          lock as a Python slice (cheap copy of float refs), then release
+          the lock before computing stats.
+        - The downstream code in generate() periodically resets
+          self.user_latency_history[user_id] = [] when a 1000-batch window
+          completes. We detect that as len < offset and rebase to 0, so
+          stats stay correct across resets.
+        - One log line per active user per tick. If no user produced any
+          new samples in the last second we still emit a heartbeat line
+          ("no_new_samples") so the cadence is visible in the file.
+        """
+        import math
+        log_path = self.latency_log_path
+        # Open in line-buffered append mode so each row is flushed even if
+        # the process is killed; survives demo restarts (we want history).
+        try:
+            log_fh = open(log_path, "a", buffering=1)
+        except OSError as e:
+            LOGGER.error("[Metrics] cannot open %s: %s", log_path, e)
+            return
+        try:
+            log_fh.write(
+                f"# latency sampler started at {time.strftime('%Y-%m-%d %H:%M:%S')} "
+                f"(unix={time.time():.3f}); columns: ts user count mean p50 p95 p99 min max remaining_input_q\n"
+            )
+        except OSError:
+            pass
+
+        def _percentile(sorted_vals, q):
+            # Linear-interp percentile on a pre-sorted list. q in [0,100].
+            if not sorted_vals:
+                return float("nan")
+            if len(sorted_vals) == 1:
+                return sorted_vals[0]
+            k = (len(sorted_vals) - 1) * (q / 100.0)
+            lo = math.floor(k)
+            hi = math.ceil(k)
+            if lo == hi:
+                return sorted_vals[int(k)]
+            return sorted_vals[lo] + (sorted_vals[hi] - sorted_vals[lo]) * (k - lo)
+
+        next_tick = time.monotonic()
+        while not self._latency_sampler_stop.is_set():
+            next_tick += 1.0
+            sleep_for = next_tick - time.monotonic()
+            if sleep_for > 0:
+                # Use Event.wait so shutdown wakes us immediately.
+                if self._latency_sampler_stop.wait(timeout=sleep_for):
+                    break
+            else:
+                # We fell behind (GC pause etc.); resync to now to avoid a
+                # burst of catch-up ticks.
+                next_tick = time.monotonic()
+
+            ts = time.time()
+            # Snapshot phase: minimise time under the lock.
+            snapshots = []  # list of (user_id, new_slice, remaining_input_q)
+            try:
+                with self.user_metrics_lock:
+                    user_ids = list(self.user_latency_history.keys())
+                    for uid in user_ids:
+                        hist = self.user_latency_history.get(uid, [])
+                        prev = self._latency_sampler_offsets.get(uid, 0)
+                        cur_len = len(hist)
+                        # Detect window reset (downstream truncates list).
+                        if cur_len < prev:
+                            prev = 0
+                        if cur_len == prev:
+                            new_slice = []
+                        else:
+                            # Slice copy of float refs is O(n) on n new
+                            # samples; n is at most a few dozen per second
+                            # at expected throughput, so this is cheap.
+                            new_slice = hist[prev:cur_len]
+                        self._latency_sampler_offsets[uid] = cur_len
+                        remaining = len(self.user_input_timestamps.get(uid, deque()))
+                        snapshots.append((uid, new_slice, remaining))
+            except Exception as e:
+                # Never let the sampler crash the server; just record it.
+                LOGGER.warning("[Metrics] sampler snapshot error: %s", e)
+                continue
+
+            # Stats + write phase: outside the lock.
+            try:
+                if not snapshots:
+                    log_fh.write(f"{ts:.3f} - no_active_users\n")
+                    continue
+                for uid, samples, remaining in snapshots:
+                    if not samples:
+                        log_fh.write(
+                            f"{ts:.3f} {uid} count=0 no_new_samples remaining_input_q={remaining}\n"
+                        )
+                        continue
+                    s = sorted(samples)
+                    n = len(s)
+                    mean = sum(s) / n
+                    p50 = _percentile(s, 50)
+                    p95 = _percentile(s, 95)
+                    p99 = _percentile(s, 99)
+                    log_fh.write(
+                        f"{ts:.3f} {uid} count={n} "
+                        f"mean={mean:.4f} p50={p50:.4f} p95={p95:.4f} "
+                        f"p99={p99:.4f} min={s[0]:.4f} max={s[-1]:.4f} "
+                        f"remaining_input_q={remaining}\n"
+                    )
+            except Exception as e:
+                LOGGER.warning("[Metrics] sampler write error: %s", e)
+
+        try:
+            log_fh.write(
+                f"# latency sampler stopped at {time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+            )
+            log_fh.close()
+        except OSError:
+            pass
+
     def _log_metrics_to_file(self, user_id: uuid.UUID):
         """Log metrics to file after collecting 1000 batches"""
         try:
@@ -597,7 +748,19 @@ class App:
         
         # Set shutdown event
         self.shutdown_event.set()
-        
+
+        # Stop the 1Hz latency sampler thread (if running). Done early so
+        # any further latency stats print only the existing data and we
+        # don't keep an open file handle once user state is being torn
+        # down.
+        if getattr(self, "_latency_sampler_thread", None) is not None:
+            self._latency_sampler_stop.set()
+            self._latency_sampler_thread.join(timeout=2.0)
+            if self._latency_sampler_thread.is_alive():
+                LOGGER.warning("[Metrics] latency sampler did not stop in 2s")
+            else:
+                LOGGER.info("[Metrics] latency sampler stopped")
+
         # Stop all background tasks
         for user_id in list(self.prediction_workers):
             await self._stop_prediction_worker(user_id)

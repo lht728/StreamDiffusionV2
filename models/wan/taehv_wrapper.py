@@ -428,12 +428,22 @@ class TAEHVWanVAEWrapper(VAEInterface):
         if device is not None:
             taehv_kwargs["device"] = device
         self.taehv.to(**taehv_kwargs)
+        import sys as _sys
+        print(f"[TAEHV-DBG] to() called: use_tensorrt={self.use_tensorrt} failed={self._tensorrt_failed} trt_module={trt is not None}", file=_sys.stderr, flush=True)
         if self.use_tensorrt and not self._tensorrt_failed:
-            self._tensorrt_decoder = TAEHVTensorRTDecoder(
-                decoder_module=TAEHVParallelDecoderModule(self.taehv.decoder).to(**taehv_kwargs).eval(),
-                cache_dir=self._tensorrt_cache_dir,
-                workspace_bytes=self._tensorrt_workspace_bytes,
-            )
+            try:
+                self._tensorrt_decoder = TAEHVTensorRTDecoder(
+                    decoder_module=TAEHVParallelDecoderModule(self.taehv.decoder).to(**taehv_kwargs).eval(),
+                    cache_dir=self._tensorrt_cache_dir,
+                    workspace_bytes=self._tensorrt_workspace_bytes,
+                )
+                print(f"[TAEHV-DBG] TAEHVTensorRTDecoder constructed OK cache_dir={self._tensorrt_cache_dir}", file=_sys.stderr, flush=True)
+            except Exception as _e:
+                self._tensorrt_failed = True
+                self._tensorrt_decoder = None
+                import traceback as _tb
+                print(f"[TAEHV-DBG] TAEHVTensorRTDecoder __init__ FAIL: {_e}", file=_sys.stderr, flush=True)
+                _tb.print_exc(file=_sys.stderr); _sys.stderr.flush()
         return self
 
     def _pixels_to_unit_range(self, video: torch.Tensor) -> torch.Tensor:
@@ -449,6 +459,38 @@ class TAEHVWanVAEWrapper(VAEInterface):
         return video.permute(0, 2, 1, 3, 4).contiguous()
 
     def _decode_video(self, latent: torch.Tensor) -> torch.Tensor:
+        if not getattr(self, "_dbg_logged_first", False):
+            import sys as _sys
+            print(f"[TAEHV-DBG] _decode_video first call: use_tensorrt={self.use_tensorrt} decoder={self._tensorrt_decoder is not None} failed={self._tensorrt_failed} latent_shape={tuple(latent.shape)} latent_device={latent.device}", file=_sys.stderr, flush=True)
+            self._dbg_logged_first = True
+        # Lazy construction of the TensorRT decoder. The original code only
+        # constructs it inside `to()`, but `nn.Module.to()` does NOT call the
+        # subclass-overridden `to()` recursively (it uses `_apply`), so the
+        # decoder never gets created in the demo / multi-GPU pipeline. We
+        # therefore (re)construct it here on first call, when we know the
+        # latent's device & dtype.
+        if (
+            self.use_tensorrt
+            and self._tensorrt_decoder is None
+            and not self._tensorrt_failed
+        ):
+            try:
+                import sys as _sys
+                target_dev = latent.device
+                taehv_kwargs = {"dtype": torch.float16, "device": target_dev}
+                self.taehv.to(**taehv_kwargs)
+                self._tensorrt_decoder = TAEHVTensorRTDecoder(
+                    decoder_module=TAEHVParallelDecoderModule(self.taehv.decoder).to(**taehv_kwargs).eval(),
+                    cache_dir=self._tensorrt_cache_dir,
+                    workspace_bytes=self._tensorrt_workspace_bytes,
+                )
+                print(f"[TAEHV-DBG] lazily constructed TAEHVTensorRTDecoder on device={target_dev} cache={self._tensorrt_cache_dir}", file=_sys.stderr, flush=True)
+            except Exception as _e:
+                self._tensorrt_failed = True
+                self._tensorrt_decoder = None
+                import traceback as _tb, sys as _sys
+                print(f"[TAEHV-DBG] lazy TAEHVTensorRTDecoder build FAIL: {_e}", file=_sys.stderr, flush=True)
+                _tb.print_exc(file=_sys.stderr); _sys.stderr.flush()
         if self.use_tensorrt and self._tensorrt_decoder is not None and not self._tensorrt_failed:
             try:
                 return self._tensorrt_decoder.decode(latent)

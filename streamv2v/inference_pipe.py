@@ -114,6 +114,16 @@ class InferencePipelineManager:
 
         self.com_stream = torch.cuda.Stream()
         self.control_stream = torch.cuda.Stream()
+        # Dedicated stream for VAE decode + D2H copy on the output rank.
+        # Lets the (relatively heavy) decoder run concurrently with the next
+        # chunk's NCCL recv on com_stream, instead of serializing on the
+        # default compute stream.
+        self.decode_stream = torch.cuda.Stream()
+        # Async-decode bookkeeping: the host-pinned uint8 buffer + completion
+        # event populated by `_decode_prediction_async`, consumed by
+        # `_decode_prediction_finish`.
+        self._decode_host_buffer: torch.Tensor | None = None
+        self._decode_event: torch.cuda.Event | None = None
         
         # Setup logging
         self.logger = setup_logging(rank)
@@ -250,11 +260,91 @@ class InferencePipelineManager:
             outstanding.append(work_objects)
 
     def _decode_prediction(self, denoised_pred: torch.Tensor) -> np.ndarray:
-        """Decode the newest latent prediction into pixel-space frames."""
+        """Decode the newest latent prediction into pixel-space frames.
+
+        Synchronous wrapper kept for compatibility (e.g. initial-batch
+        decoding before the streaming loop starts). Uses the same GPU-side
+        fuse as the async path so PCIe traffic is uint8 only.
+        """
         video = self._timed_stream_decode(denoised_pred[[-1]])
-        video = (video * 0.5 + 0.5).clamp(0, 1)
+        # Fuse: (x*0.5+0.5).clamp(0,1) * 255 -> round -> uint8 on GPU.
+        video = video.mul(127.5).add_(127.5).clamp_(0, 255)
         video = video[0].permute(0, 2, 3, 1).contiguous()
-        return video.cpu().float().numpy()
+        video = video.to(torch.uint8)
+        return video.cpu().numpy()
+
+    def _decode_prediction_async(self, denoised_pred: torch.Tensor) -> None:
+        """Issue VAE decode + D2H copy on a dedicated stream.
+
+        After this call the host-side numpy frames are *not yet* readable;
+        call ``_decode_prediction_finish`` to synchronize and obtain them.
+        Between these two calls the caller is free to launch the next
+        chunk's compute (e.g. NCCL recv / DiT forward) on the default
+        compute stream — that work overlaps with decode + D2H copy.
+
+        Memory model:
+          • Decode runs on ``self.decode_stream``.
+          • The fused uint8 result is copied into a persistent **pinned**
+            host tensor with ``non_blocking=True``; PyTorch is allowed to
+            schedule the copy on the same decode stream without blocking
+            the host.
+          • A CUDA event is recorded after the copy; the consumer waits on
+            it before reading the host buffer.
+        """
+        # The consumer of the previous async decode (if any) MUST have
+        # called _decode_prediction_finish before issuing a new one;
+        # otherwise we would race on the shared host buffer.
+        if self._decode_event is not None:
+            # Defensive: forcibly drain the previous one.
+            self._decode_event.synchronize()
+            self._decode_event = None
+
+        decode_stream = self.decode_stream
+        # Make sure decode_stream sees the latents produced on the default
+        # compute stream (rank's DiT forward writes to denoised_pred there).
+        decode_stream.wait_stream(torch.cuda.current_stream())
+
+        with torch.cuda.stream(decode_stream):
+            video = self._timed_stream_decode(denoised_pred[[-1]])
+            video = video.mul(127.5).add_(127.5).clamp_(0, 255)
+            video = video[0].permute(0, 2, 3, 1).contiguous().to(torch.uint8)
+
+            # Lazily (re)allocate a pinned host buffer matching the output
+            # shape. Pinned memory is the prerequisite for a true async D2H
+            # copy on a non-default stream.
+            if (
+                self._decode_host_buffer is None
+                or self._decode_host_buffer.shape != video.shape
+                or self._decode_host_buffer.dtype != video.dtype
+            ):
+                self._decode_host_buffer = torch.empty(
+                    video.shape,
+                    dtype=video.dtype,
+                    pin_memory=True,
+                )
+            # Async D2H copy on decode_stream.
+            self._decode_host_buffer.copy_(video, non_blocking=True)
+
+            event = torch.cuda.Event(blocking=False)
+            event.record(decode_stream)
+            self._decode_event = event
+
+    def _decode_prediction_finish(self) -> np.ndarray | None:
+        """Wait for the most recent async decode and return its uint8 frames.
+
+        Returns ``None`` when no async decode is pending — useful to make
+        the call idempotent in the output_process loop.
+        """
+        if self._decode_event is None or self._decode_host_buffer is None:
+            return None
+        # Block the host (cheaply) until the D2H copy is observable.
+        # Cost on the consumer thread is bounded by (decode + copy)
+        # whatever didn't overlap with the next chunk's compute.
+        self._decode_event.synchronize()
+        self._decode_event = None
+        # ``.numpy()`` shares storage with the pinned tensor; we copy here
+        # because the very next async decode will overwrite the buffer.
+        return self._decode_host_buffer.numpy().copy()
 
     def _rank_loop_complete(self, num_chunks: int, num_steps: int) -> bool:
         """Return whether a non-output rank has processed all required chunks."""

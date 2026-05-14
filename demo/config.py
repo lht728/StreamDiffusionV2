@@ -81,7 +81,7 @@ parser.add_argument(
 )
 parser.add_argument("--step", type=int, default=2)
 parser.add_argument("--noise_scale", type=float, default=0.8)
-parser.add_argument("--debug", type=bool, default=True)
+parser.add_argument("--debug", type=bool, default=False)
 parser.add_argument("--num_gpus", type=int, default=2)
 parser.add_argument("--gpu_ids", type=str, default="0,1") # id separated by comma, size should match num_gpus
 
@@ -89,13 +89,39 @@ parser.add_argument("--gpu_ids", type=str, default="0,1") # id separated by comm
 parser.add_argument("--max_outstanding", type=int, default=2, help="max number of outstanding sends/recv to keep")
 parser.add_argument("--schedule_block", action="store_true", default=False)
 parser.add_argument("--model_type", type=str, default="T2V-1.3B", help="Model type (e.g., T2V-1.3B)")
-parser.add_argument("--use_taehv", action="store_true", default=os.getenv("USE_TAEHV", "").lower() in {"1", "true", "yes", "on"}, help="Use the TAEHV decoder for online inference")
-parser.add_argument("--use_tensorrt", action="store_true", default=os.getenv("USE_TENSORRT", "").lower() in {"1", "true", "yes", "on"}, help="Enable available TensorRT acceleration paths for online inference")
-parser.add_argument("--fast", action="store_true", default=os.getenv("FAST", "").lower() in {"1", "true", "yes", "on"}, help="Enable the fast path: --use_taehv --use_tensorrt")
+def _env_truthy(name: str, default: bool) -> bool:
+    val = os.getenv(name)
+    if val is None:
+        return default
+    return val.strip().lower() in {"1", "true", "yes", "on"}
+
+
+# The fast path (TAEHV + TensorRT) is the supported production configuration:
+# ~2x VAE speedup with negligible quality loss, and TRT engines are required
+# for the recommended TAEHV decoder. We default all three flags ON and expose
+# `--no-use_taehv` / `--no-use_tensorrt` / `--no-fast` for A/B / debugging.
+parser.add_argument(
+    "--use_taehv",
+    action=argparse.BooleanOptionalAction,
+    default=_env_truthy("USE_TAEHV", True),
+    help="Use the TAEHV decoder for online inference (default: enabled). Disable with --no-use_taehv.",
+)
+parser.add_argument(
+    "--use_tensorrt",
+    action=argparse.BooleanOptionalAction,
+    default=_env_truthy("USE_TENSORRT", True),
+    help="Enable TensorRT acceleration paths for online inference (default: enabled). Disable with --no-use_tensorrt.",
+)
+parser.add_argument(
+    "--fast",
+    action=argparse.BooleanOptionalAction,
+    default=_env_truthy("FAST", True),
+    help="Enable the fast path: --use_taehv --use_tensorrt + _fast.yaml config (default: enabled). Disable with --no-fast.",
+)
 
 # Metrics collection
 parser.add_argument("--enable-metrics", dest="enable_metrics", action="store_true", default=False, help="Enable SLO metrics collection")
-parser.add_argument("--target-latency", dest="target_latency", type=float, default=1.0, help="Target latency in seconds for deadline miss rate calculation (default: 0.5s)")
+parser.add_argument("--target-latency", dest="target_latency", type=float, default=0.4, help="Target latency in seconds for deadline miss rate calculation (default: 0.4s, matches demo/run.sh)")
 parser.add_argument("--t2v", action="store_true", default=False)
 
 parsed_args = vars(parser.parse_args())
@@ -108,5 +134,17 @@ if len(gpu_ids) != parsed_args["num_gpus"]:
         f"--gpu_ids expects {parsed_args['num_gpus']} entries, got {len(gpu_ids)} from '{parsed_args['gpu_ids']}'"
     )
 parsed_args["gpu_ids"] = ",".join(gpu_ids)
+
+# `--fast` is documented as syntactic sugar for `--use_taehv --use_tensorrt`
+# (and it also implies the `_fast.yaml` model config). The shared normalizer
+# in streamv2v.inference_common handles all of that, but historically the
+# demo's multi-GPU path never invoked it, so `--fast` was a silent no-op
+# here (use_tensorrt stayed False, no TRT engine ever got built, and the
+# DiT kept falling back to scaled_dot_product_attention). Apply it once on
+# the parsed CLI dict so the same semantics hold no matter which entry
+# point the user picked.
+from streamv2v.inference_common import normalize_acceleration_flags  # noqa: E402
+
+parsed_args = normalize_acceleration_flags(parsed_args)
 
 config = Args(**parsed_args)

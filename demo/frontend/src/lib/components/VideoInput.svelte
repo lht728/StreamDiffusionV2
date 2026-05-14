@@ -22,6 +22,12 @@
   $: inputMode = inputModeProp;
   const size = { width, height };
 
+  // Mirror the camera horizontally so the user sees a "selfie view" preview
+  // and (more importantly) the frames sent to the backend are mirrored too.
+  // Only mirror in camera mode; uploaded videos are kept untouched.
+  export let mirrorCamera: boolean = true;
+  $: cameraMirrored = inputMode === 'camera' && mirrorCamera;
+
   let videoEl: HTMLVideoElement;
   let canvasEl: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
@@ -86,7 +92,16 @@
       height0 = videoWidth;
       y0 = (videoHeight - videoWidth) / 2;
     }
+    ctx.save();
+    if (cameraMirrored) {
+      // Flip horizontally around the canvas center so the JPEG blob we send
+      // upstream is mirrored as well (CSS transforms on <video> would only
+      // affect the on-screen preview, not the captured pixels).
+      ctx.translate(size.width, 0);
+      ctx.scale(-1, 1);
+    }
     ctx.drawImage(videoEl, x0, y0, width0, height0, 0, 0, size.width, size.height);
+    ctx.restore();
     const blob = await new Promise<Blob>((resolve) => {
       canvasEl.toBlob(
         (blob) => {
@@ -176,6 +191,12 @@
   }
 </script>
 
+<style>
+  .mirrored {
+    transform: scaleX(-1);
+  }
+</style>
+
 <div class="relative mx-auto aspect-square max-w-lg self-center overflow-hidden rounded-lg border border-slate-300">
   <div class="relative z-10 aspect-square w-full object-cover">
     {#if inputMode === 'camera' && $mediaDevices.length > 0}
@@ -186,6 +207,7 @@
     {#if !(inputMode === 'upload' && videoEnded)}
       <video
         class="pointer-events-none aspect-square w-full object-cover h-full"
+        class:mirrored={cameraMirrored}
         bind:this={videoEl}
         on:loadeddata={() => { videoIsReady = true; }}
         on:ended={inputMode === 'upload' ? handleVideoEnded : undefined}

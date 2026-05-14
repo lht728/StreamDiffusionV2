@@ -24,6 +24,8 @@ class CausalStreamInferencePipeline(torch.nn.Module):
         self.text_encoder = get_text_encoder_wrapper(
             model_name=args.model_name)(model_type=model_type)
         if getattr(args, "use_taehv", False):
+            import sys as _sys
+            print(f"[CAUSAL-DBG] Using TAEHV path: use_taehv=True use_tensorrt={getattr(args,'use_tensorrt',False)}", file=_sys.stderr, flush=True)
             LOGGER.info("Using TAEHV VAE wrapper for Wan inference")
             self.vae = TAEHVWanVAEWrapper(
                 model_type=model_type,
@@ -31,6 +33,8 @@ class CausalStreamInferencePipeline(torch.nn.Module):
                 use_tensorrt=getattr(args, "use_tensorrt", False),
             )
         else:
+            import sys as _sys
+            print(f"[CAUSAL-DBG] NOT using TAEHV: args.use_taehv={getattr(args,'use_taehv','MISSING')} args type={type(args).__name__} keys={list(vars(args).keys()) if hasattr(args,'__dict__') else 'no __dict__'}", file=_sys.stderr, flush=True)
             self.vae = get_vae_wrapper(model_name=args.model_name)(model_type=model_type)
 
         # Step 2: Initialize all causal hyperparmeters
