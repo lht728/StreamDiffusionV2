@@ -81,7 +81,7 @@ parser.add_argument(
 )
 parser.add_argument("--step", type=int, default=2)
 parser.add_argument("--noise_scale", type=float, default=0.8)
-parser.add_argument("--debug", type=bool, default=True)
+parser.add_argument("--debug", type=bool, default=False)
 parser.add_argument("--num_gpus", type=int, default=2)
 parser.add_argument("--gpu_ids", type=str, default="0,1") # id separated by comma, size should match num_gpus
 

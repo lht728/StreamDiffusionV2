@@ -24,13 +24,14 @@ export MODEL_TYPE="${MODEL_TYPE:-T2V-1.3B}"
 # these to 1; demo/config.py also defaults --fast / --use_taehv / --use_tensorrt
 # to True. To run the slow reference path for A/B, set FAST=0 USE_TAEHV=0
 # USE_TENSORRT=0 in the environment.
-export USE_TAEHV="${USE_TAEHV:-1}"
-export USE_TENSORRT="${USE_TENSORRT:-1}"
-export FAST="${FAST:-1}"
-export TARGET_LATENCY="${TARGET_LATENCY:-0.4}"
+export USE_TAEHV="${USE_TAEHV:-0}"
+export USE_TENSORRT="${USE_TENSORRT:-0}"
+export FAST="${FAST:-0}"
+export TARGET_LATENCY="${TARGET_LATENCY:-1}"
 export ENABLE_METRICS="${ENABLE_METRICS:-1}"
 export SKIP_FRONTEND_BUILD="${SKIP_FRONTEND_BUILD:-1}"
 export STREAMDIFF_DISABLE_FLASH="${STREAMDIFF_DISABLE_FLASH:-1}"
+export DEMO_DECODE_OVERLAP="${DEMO_DECODE_OVERLAP:-1}"
 
 is_running() {
   [ -s "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null
