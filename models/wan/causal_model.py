@@ -304,10 +304,22 @@ class CausalWanSelfAttention(nn.Module):
                     kv_cache["global_end_index"][i].fill_(c_start)
                     kv_cache["local_end_index"][i].fill_(kv_cache_size)
 
+                # 是否本帧 K/V 真正写入了 cache；只有写入成功才推进 global/local 计数器
+                # 否则保持 cache 与计数器原状（attention 复用上一帧的合法上下文），
+                # 避免出现"跳过写入但状态推进"导致的 cache 内容与状态错位。
+                wrote_kv = False
+
                 if (current_end > kv_cache["global_end_index"][i].item()) and (
                         num_new_tokens + kv_cache["local_end_index"][i].item() > kv_cache_size):
 
                     target_end = self.evict_idx[i][0]
+
+                    _nn_evict = int(num_new_tokens)
+                    _te = int(target_end)
+
+                    # 备份用于 fatal 退化时的回滚
+                    _evict_idx_backup = list(self.evict_idx[i])
+                    _current_step_backup = kv_cache['current_step']
 
                     # current_step = kv_cache['current_step']
                     # Update the buffer
@@ -319,24 +331,36 @@ class CausalWanSelfAttention(nn.Module):
                             self.evict_idx[i].append(evict_idx)
                         kv_cache['current_step']=kv_cache['total_steps']
 
-                    # print(f"self.evict_idx: {self.evict_idx[i]}, total steps: {kv_cache['total_steps']}, current step: {current_step}, target: {target_end-num_new_tokens}:{target_end}, kv size:{kv_cache_size}")
-
                     # ---- Defensive guard for the eviction (overwrite) branch ----
-                    _te = int(target_end)
-                    _nn_evict = int(num_new_tokens)
-                    if _te - _nn_evict < 0 or _te > kv_cache_size or _te < _nn_evict:
+                    # 方案 2（一般退化）：clamp target_end 到合法区间后仍然写入 K/V，
+                    #                     保证新 token 的 K/V 一定进入 cache。
+                    # 方案 1（致命退化，理论不会发生）：num_new_tokens 超过 cache 容量
+                    #                                  时无法 clamp，跳过写入并回滚 evict_idx
+                    #                                  与 current_step，让下一帧重试。
+                    if _nn_evict <= 0 or _nn_evict > kv_cache_size:
                         print(
-                            f"[causal_model] evict-branch target out of range, skipping write. "
+                            f"[causal_model] evict-branch fatal degenerate, skip & rollback. "
                             f"i={i} target_end={_te} num_new_tokens={_nn_evict} "
                             f"kv_cache_size={kv_cache_size} cache_bs={cache_bs} "
-                            f"evict_idx[i]={self.evict_idx[i]} sink_tokens={sink_tokens} "
-                            f"frame_seqlen={frame_seqlen}",
+                            f"sink_tokens={sink_tokens} frame_seqlen={frame_seqlen}",
                             flush=True,
                         )
+                        self.evict_idx[i] = _evict_idx_backup
+                        kv_cache['current_step'] = _current_step_backup
                     else:
-                        # Newly added cache covers the oldest one
-                        kv_cache["k"][i:i+1, target_end-num_new_tokens:target_end] = roped_key[i:i+1]
-                        kv_cache["v"][i:i+1, target_end-num_new_tokens:target_end] = v[i:i+1]
+                        if _te - _nn_evict < 0 or _te > kv_cache_size or _te < _nn_evict:
+                            _te_old = _te
+                            _te = max(_nn_evict, min(_te, kv_cache_size))
+                            print(
+                                f"[causal_model] evict-branch target clamped {_te_old}->{_te}. "
+                                f"i={i} num_new_tokens={_nn_evict} kv_cache_size={kv_cache_size} "
+                                f"evict_idx[i]={self.evict_idx[i]} sink_tokens={sink_tokens} "
+                                f"frame_seqlen={frame_seqlen}",
+                                flush=True,
+                            )
+                        kv_cache["k"][i:i+1, _te-_nn_evict:_te] = roped_key[i:i+1]
+                        kv_cache["v"][i:i+1, _te-_nn_evict:_te] = v[i:i+1]
+                        wrote_kv = True
 
                     local_end_index = kv_cache["local_end_index"][i].item()
 
@@ -349,18 +373,17 @@ class CausalWanSelfAttention(nn.Module):
                         self.evict_idx[i].append(rolling_end)
 
                     local_start_index = local_end_index - num_new_tokens
-                    # print(f"target: {local_start_index}:{local_end_index}")
 
-                    # ---- Defensive guard: detect degenerate KV-cache slice ----
-                    # When local_end_index <= local_start_index, the destination slice
-                    # is empty/inverted while roped_key still has num_new_tokens rows.
-                    # Assigning into it raises:
-                    #     RuntimeError: Target sizes: [1, 0, ...]. Tensor sizes: [N, ...]
-                    # We log full state and skip the write so the pipeline keeps running
-                    # instead of killing the worker process.
                     _le = int(local_end_index) if not torch.is_tensor(local_end_index) else int(local_end_index.item() if local_end_index.dim()==0 else local_end_index)
                     _ls = int(local_start_index) if not torch.is_tensor(local_start_index) else int(local_start_index.item() if local_start_index.dim()==0 else local_start_index)
                     _nn = int(num_new_tokens)
+
+                    # ---- Defensive guard: degenerate slice (典型由 c_start 倒退引起) ----
+                    # 方案 2：把目标位置 clamp 到 cache 末尾，覆盖最旧的位置后仍然写入新 K/V，
+                    #         同时下面把 global_end_index 同步到 current_end 以恢复对齐，
+                    #         避免下一帧再次算出负数 local_end_index。
+                    # 方案 1：仅在 num_new_tokens 异常（<=0 或 > cache 容量）时跳过并保持
+                    #         状态原样（回滚到 append 之前的 evict_idx/计数器）。
                     if _le - _ls != _nn or _ls < 0 or _le > kv_cache_size:
                         try:
                             _gei = kv_cache["global_end_index"][i].item()
@@ -369,29 +392,51 @@ class CausalWanSelfAttention(nn.Module):
                             _gei = _lei = "?"
                         _ce = int(current_end) if not torch.is_tensor(current_end) else int(current_end.item() if current_end.dim()==0 else current_end[0])
                         _cs = int(c_start) if not torch.is_tensor(c_start) else int(c_start.item() if c_start.dim()==0 else c_start[0])
-                        print(
-                            f"[causal_model] KV-cache slice degenerate, skipping write. "
-                            f"i={i} c_start={_cs} current_end={_ce} num_new_tokens={_nn} "
-                            f"frame_seqlen={frame_seqlen} sink_tokens={sink_tokens} "
-                            f"kv_cache_size={kv_cache_size} cache_bs={cache_bs} "
-                            f"global_end_index[i]={_gei} local_end_index[i]={_lei} "
-                            f"computed local_start={_ls} local_end={_le} "
-                            f"evict_idx[i]={self.evict_idx[i]} "
-                            f"roped_key.shape={tuple(roped_key.shape)} v.shape={tuple(v.shape)}",
-                            flush=True,
-                        )
-                        # Skip the cache write but still record the (clamped) seq_len so
-                        # downstream attention can run; clamp to a valid range.
-                        local_end_index = max(_nn, min(_le, kv_cache_size))
-                        local_start_index = max(0, local_end_index - _nn)
+
+                        if _nn <= 0 or _nn > kv_cache_size:
+                            print(
+                                f"[causal_model] append-branch fatal degenerate, skip & keep state. "
+                                f"i={i} c_start={_cs} current_end={_ce} num_new_tokens={_nn} "
+                                f"frame_seqlen={frame_seqlen} sink_tokens={sink_tokens} "
+                                f"kv_cache_size={kv_cache_size} cache_bs={cache_bs} "
+                                f"global_end_index[i]={_gei} local_end_index[i]={_lei} "
+                                f"computed local_start={_ls} local_end={_le} "
+                                f"evict_idx[i]={self.evict_idx[i]} "
+                                f"roped_key.shape={tuple(roped_key.shape)} v.shape={tuple(v.shape)}",
+                                flush=True,
+                            )
+                            # 撤销刚刚 append 进 evict_idx 的 rolling_end，保持队列原样
+                            if rolling_end > self.sink_size * frame_seqlen and rolling_end <= kv_cache_size \
+                                and self.evict_idx[i] and self.evict_idx[i][-1] == rolling_end:
+                                self.evict_idx[i].pop()
+                            local_end_index = kv_cache["local_end_index"][i].item()
+                        else:
+                            print(
+                                f"[causal_model] append-branch slice degenerate, clamp to tail & write. "
+                                f"i={i} c_start={_cs} current_end={_ce} num_new_tokens={_nn} "
+                                f"frame_seqlen={frame_seqlen} sink_tokens={sink_tokens} "
+                                f"kv_cache_size={kv_cache_size} cache_bs={cache_bs} "
+                                f"global_end_index[i]={_gei} local_end_index[i]={_lei} "
+                                f"computed local_start={_ls} local_end={_le} "
+                                f"evict_idx[i]={self.evict_idx[i]} "
+                                f"roped_key.shape={tuple(roped_key.shape)} v.shape={tuple(v.shape)}",
+                                flush=True,
+                            )
+                            local_end_index = kv_cache_size
+                            local_start_index = kv_cache_size - _nn
+                            kv_cache["k"][i:i+1, local_start_index:local_end_index] = roped_key[i:i+1]
+                            kv_cache["v"][i:i+1, local_start_index:local_end_index] = v[i:i+1]
+                            wrote_kv = True
                     else:
                         kv_cache["k"][i:i+1, local_start_index:local_end_index] = roped_key[i:i+1]
                         kv_cache["v"][i:i+1, local_start_index:local_end_index] = v[i:i+1]
+                        wrote_kv = True
 
                 seq_lens.append(local_end_index)
 
-                kv_cache["global_end_index"][i].fill_(current_end)
-                kv_cache["local_end_index"][i].fill_(local_end_index)
+                if wrote_kv:
+                    kv_cache["global_end_index"][i].fill_(current_end)
+                    kv_cache["local_end_index"][i].fill_(local_end_index)
             
             seq_lens = torch.tensor(seq_lens, dtype=torch.int32, device=roped_query.device)
 
